@@ -642,6 +642,35 @@
   /* Hide deck-stage overlay when lightbox is open (cosmetic) */
   body.lightbox-open deck-stage { pointer-events: none; }
   body.lightbox-open .lightbox { pointer-events: auto; }
+
+  /* ── Fullscreen toggle button ── */
+  #fs-btn {
+    position: fixed;
+    bottom: 22px;
+    right: 22px;
+    z-index: 2147483001;
+    width: 36px;
+    height: 36px;
+    background: rgba(0,0,0,0.55);
+    border: 1px solid rgba(255,255,255,0.18);
+    border-radius: 8px;
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: rgba(255,255,255,0.65);
+    transition: background 180ms ease, color 180ms ease, border-color 180ms ease, opacity 180ms ease;
+    opacity: 0;
+    animation: fadeIn 1s 1.5s forwards;
+  }
+  #fs-btn:hover {
+    background: rgba(184,150,90,0.25);
+    border-color: rgba(184,150,90,0.6);
+    color: #D4AF78;
+  }
+  #fs-btn svg { width: 16px; height: 16px; display: block; }
+  body.lightbox-open #fs-btn { display: none; }
 </style>
 </head>
 <body>
@@ -1483,6 +1512,8 @@
 
 </deck-stage>
 
+<button id="fs-btn" aria-label="Enter fullscreen (F)" title="Enter fullscreen (F)"></button>
+
 <!-- ═══════════════ LIGHTBOX ═══════════════ -->
 <div class="lightbox" id="lightbox" role="dialog" aria-modal="true">
   <div class="lb-header">
@@ -2019,6 +2050,47 @@
   "Operations structure — a single Event Director with five department heads coordinating over two hundred staff across ops, guest experience, technical, security, and media.",
   "This is حياة. Mid May 2026. Mansoura's most anticipated residential launch. Thank you."
 ]
+</script>
+
+<script>
+// ═══════════════ FULLSCREEN TOGGLE ═══════════════
+(function() {
+  const btn = document.getElementById('fs-btn');
+  if (!btn) return;
+
+  const iconEnter = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3"/><path d="M21 8V5a2 2 0 0 0-2-2h-3"/><path d="M3 16v3a2 2 0 0 0 2 2h3"/><path d="M16 21h3a2 2 0 0 0 2-2v-3"/></svg>';
+  const iconExit  = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3v3a2 2 0 0 1-2 2H3"/><path d="M21 8h-3a2 2 0 0 1-2-2V3"/><path d="M3 16h3a2 2 0 0 1 2 2v3"/><path d="M16 21v-3a2 2 0 0 1 2-2h3"/></svg>';
+
+  function updateIcon() {
+    btn.innerHTML = document.fullscreenElement ? iconExit : iconEnter;
+    btn.title = document.fullscreenElement ? 'Exit fullscreen (F)' : 'Enter fullscreen (F)';
+  }
+
+  function toggle() {
+    if (!document.fullscreenElement) {
+      document.documentElement.requestFullscreen && document.documentElement.requestFullscreen();
+    } else {
+      document.exitFullscreen && document.exitFullscreen();
+    }
+  }
+
+  btn.addEventListener('click', toggle);
+  document.addEventListener('fullscreenchange', updateIcon);
+
+  // F key when lightbox is closed (lightbox captures F in its own handler when open)
+  window.addEventListener('keydown', function(e) {
+    if (document.body.classList.contains('lightbox-open')) return;
+    if (e.key === 'f' || e.key === 'F') {
+      if (e.metaKey || e.ctrlKey || e.altKey) return;
+      const t = e.target;
+      if (t && (t.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName))) return;
+      e.preventDefault();
+      toggle();
+    }
+  });
+
+  updateIcon();
+})();
 </script>
 
 </body>
