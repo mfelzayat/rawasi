@@ -1,0 +1,2025 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>حياة — Launch Event | RAWASI Developments</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Artifika&family=Alyamama:wght@400;500;600;700;800;900&family=Noto+Naskh+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="project/deck-stage.js"></script>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #000; overflow: hidden; font-family: 'Montserrat', sans-serif; }
+  /* Artifika reserved for display headings; Montserrat for UI / body. */
+
+  :root {
+    --navy: #1B2444;
+    --navy-d: #0D1322;
+    --navy-m: #111A2F;
+    --gold: #B8965A;
+    --gold-l: #D4AF78;
+    --gold-s: #8C6E3F;
+    --green: #6B7F4F;
+    --green-d: #4A5A36;
+    --cream: #F7F3EC;
+    --warm: #F0EBE0;
+    --off-w: #FDFBF8;
+    --text: #1B2444;
+    --muted: rgba(27,36,68,0.5);
+    --f-head: 'Artifika', 'Montserrat', serif;
+    --f-body: 'Montserrat', sans-serif;
+    --f-ar: 'Alyamama', 'Noto Naskh Arabic', serif;
+  }
+
+  section {
+    width: 1920px;
+    height: 1080px;
+    font-family: var(--f-head);
+    overflow: hidden;
+    position: relative;
+  }
+
+  /* ── Shared slide chrome ── */
+  .head-band { position: absolute; top: 0; left: 0; right: 0; height: 6px; background: linear-gradient(to right, var(--navy), var(--gold), var(--navy)); z-index: 5; }
+  .sec-label { position: absolute; top: 56px; left: 100px; font-size: 18px; font-weight: 700; letter-spacing: 0.32em; color: var(--gold); text-transform: uppercase; }
+  .sec-label.light { color: var(--gold-l); }
+  .page-title { position: absolute; top: 92px; left: 100px; font-size: 56px; font-weight: 400; letter-spacing: -0.01em; line-height: 1; color: var(--navy); font-family: var(--f-head); }
+  .page-title.light { color: #fff; }
+  .page-title .ar { font-family: var(--f-ar); font-weight: 700; color: var(--gold); margin-left: 16px; font-size: 52px; }
+  .title-rule { position: absolute; top: 168px; left: 100px; width: 60px; height: 3px; background: var(--gold); }
+  .slide-idx { position: absolute; top: 56px; right: 100px; font-size: 18px; font-weight: 600; letter-spacing: 0.28em; color: var(--gold); opacity: 0.6; font-variant-numeric: tabular-nums; }
+
+  /* ═══════════ SLIDE 1 — COVER ═══════════ */
+  #s1 { background: var(--navy-d); }
+  #s1 .bg-img { position: absolute; inset: 0; }
+  #s1 .bg-img img { width: 100%; height: 100%; object-fit: cover; object-position: center 40%; }
+  #s1 .bg-img::after { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at center, rgba(13,19,34,0.65) 0%, rgba(13,19,34,0.85) 60%, rgba(13,19,34,0.95) 100%); }
+  #s1 .grid-dec { position: absolute; inset: 0; background-image: linear-gradient(rgba(184,150,90,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(184,150,90,0.04) 1px, transparent 1px); background-size: 100px 100px; }
+  #s1 .corner { position: absolute; width: 100px; height: 100px; }
+  #s1 .corner.tl { top: 40px; left: 40px; border-top: 1px solid rgba(184,150,90,0.4); border-left: 1px solid rgba(184,150,90,0.4); }
+  #s1 .corner.br { bottom: 40px; right: 40px; border-bottom: 1px solid rgba(184,150,90,0.4); border-right: 1px solid rgba(184,150,90,0.4); }
+  #s1 .content { position: absolute; left: 120px; right: 120px; top: 50%; transform: translateY(-50%); z-index: 2; text-align: center; display: flex; flex-direction: column; align-items: center; }
+  #s1 .rawasi { margin-bottom: 50px; }
+  #s1 .rawasi img { width: 240px; height: auto; display: block; }
+  #s1 .presents { font-size: 20px; font-weight: 600; letter-spacing: 0.4em; color: var(--gold); text-transform: uppercase; margin-bottom: 24px; opacity: 0.85; }
+  #s1 .project-ar { font-family: var(--f-ar); font-size: 160px; color: #fff; line-height: 0.9; font-weight: 700; margin-bottom: 0; letter-spacing: -0.01em; }
+  #s1 .project-logo { margin-bottom: 10px; }
+  #s1 .project-logo img { width: 420px; height: auto; display: block; margin: 0 auto; filter: drop-shadow(0 4px 16px rgba(0,0,0,0.4)); }
+  #s1 .project-en { font-size: 48px; font-weight: 400; letter-spacing: 0.35em; color: var(--gold-l); text-transform: uppercase; margin-top: 12px; margin-bottom: 60px; font-family: var(--f-head); }
+  #s1 .divider { width: 80px; height: 2px; background: var(--gold); margin: 0 auto 40px; }
+  #s1 .subtitle { font-size: 23px; font-weight: 500; letter-spacing: 0.28em; color: rgba(255,255,255,0.6); text-transform: uppercase; margin-bottom: 14px; }
+  #s1 .date { font-size: 32px; font-weight: 700; color: #fff; letter-spacing: 0.04em; margin-bottom: 6px; }
+  #s1 .loc { font-size: 24px; font-weight: 400; color: var(--gold-l); letter-spacing: 0.18em; text-transform: uppercase; }
+  #s1 .bottom-mark { position: absolute; bottom: 70px; left: 120px; right: 120px; display: flex; justify-content: space-between; align-items: center; font-size: 17px; font-weight: 500; letter-spacing: 0.3em; color: rgba(255,255,255,0.5); text-transform: uppercase; z-index: 2; }
+
+  /* ═══════════ TOC / INDEX ═══════════ */
+  #s2 { background: var(--cream); }
+  #s2 .index-grid { position: absolute; top: 220px; left: 100px; right: 100px; bottom: 100px; display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: repeat(3, 1fr); gap: 24px; }
+  .idx-item { position: relative; background: #fff; border: 1px solid rgba(27,36,68,0.08); padding: 36px 40px; display: flex; flex-direction: column; justify-content: space-between; overflow: hidden; transition: all .3s; }
+  .idx-item::before { content: ''; position: absolute; top: 0; left: 0; width: 3px; height: 100%; background: var(--gold); transform: scaleY(0); transform-origin: top; transition: transform .3s; }
+  .idx-item .idx-num { font-size: 20px; font-weight: 700; letter-spacing: 0.3em; color: var(--gold); font-variant-numeric: tabular-nums; }
+  .idx-item .idx-label { font-size: 28px; font-weight: 400; color: var(--navy); line-height: 1.15; letter-spacing: -0.005em; margin-top: auto; font-family: var(--f-head); }
+  .idx-item .idx-desc { font-size: 20px; color: var(--muted); line-height: 1.5; margin-top: 10px; }
+  .idx-item .idx-corner { position: absolute; top: 24px; right: 24px; font-size: 17px; font-weight: 700; letter-spacing: 0.2em; color: rgba(27,36,68,0.25); text-transform: uppercase; }
+
+  /* ═══════════ HERO STAGE + CRITICAL FACTS ═══════════ */
+  #s3 { background: var(--navy-d); }
+  #s3 .hero-img { position: absolute; inset: 0; }
+  #s3 .hero-img img { width: 100%; height: 100%; object-fit: cover; object-position: center 30%; }
+  #s3 .hero-img::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(13,19,34,0.3) 0%, rgba(13,19,34,0.5) 50%, rgba(13,19,34,0.98) 100%); }
+  #s3 .h-content { position: absolute; bottom: 80px; left: 100px; right: 100px; z-index: 2; }
+  #s3 .h-tag { display: inline-block; font-size: 17px; font-weight: 700; letter-spacing: 0.35em; color: var(--gold); text-transform: uppercase; padding: 8px 18px; border: 1px solid rgba(184,150,90,0.4); margin-bottom: 28px; }
+  #s3 .h-title { font-size: 72px; font-weight: 400; color: #fff; line-height: 1.05; letter-spacing: -0.01em; max-width: 1200px; margin-bottom: 28px; font-family: var(--f-head); }
+  #s3 .h-title span { color: var(--gold-l); }
+  #s3 .h-sub { font-size: 27px; color: rgba(255,255,255,0.65); line-height: 1.6; max-width: 780px; margin-bottom: 50px; font-weight: 400; }
+  #s3 .facts { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0; border-top: 1px solid rgba(184,150,90,0.25); padding-top: 32px; }
+  #s3 .fact { padding: 0 40px; border-left: 1px solid rgba(184,150,90,0.12); }
+  #s3 .fact:first-child { padding-left: 0; border-left: none; }
+  #s3 .fact-l { font-size: 17px; font-weight: 600; letter-spacing: 0.22em; color: rgba(184,150,90,0.85); text-transform: uppercase; margin-bottom: 10px; }
+  #s3 .fact-v { font-size: 24px; font-weight: 700; color: #fff; letter-spacing: -0.01em; line-height: 1.2; }
+
+  /* ═══════════ GALLERY SLIDES (shared) ═══════════ */
+  .gal { background: var(--cream); }
+  .gal-header { position: absolute; top: 56px; left: 100px; right: 100px; display: flex; align-items: flex-end; justify-content: space-between; z-index: 5; }
+  .gal-header-left .sec { font-size: 18px; font-weight: 700; letter-spacing: 0.32em; color: var(--gold); text-transform: uppercase; margin-bottom: 10px; }
+  .gal-header-left .ttl { font-size: 56px; font-weight: 400; letter-spacing: -0.01em; line-height: 1; color: var(--navy); font-family: var(--f-head); }
+  .gal-header-left .ttl .ar { font-family: var(--f-ar); font-weight: 700; color: var(--gold); margin-left: 14px; font-size: 50px; }
+  .gal-header-left .ttl-rule { width: 60px; height: 3px; background: var(--gold); margin-top: 20px; }
+  .gal-header-right { text-align: right; color: var(--muted); font-size: 20px; line-height: 1.6; max-width: 460px; margin-bottom: 8px; font-weight: 400; }
+  .gal-header-right .count { font-family: var(--f-head); font-size: 21px; font-weight: 700; color: var(--navy); letter-spacing: 0.15em; margin-bottom: 6px; }
+  .gal-hint { position: absolute; bottom: 42px; left: 50%; transform: translateX(-50%); font-size: 17px; font-weight: 600; letter-spacing: 0.25em; color: var(--muted); text-transform: uppercase; display: flex; align-items: center; gap: 10px; }
+  .gal-hint svg { width: 14px; }
+
+  .gal-grid { position: absolute; top: 250px; left: 100px; right: 100px; bottom: 100px; display: grid; gap: 16px; }
+  .gal-3-2 { grid-template-columns: 2fr 1fr 1fr; grid-template-rows: 1fr 1fr; }
+  .gal-4-2 { grid-template-columns: repeat(4, 1fr); grid-template-rows: 1fr 1fr; }
+  .gal-2-2 { grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; }
+  .gal-hero { grid-column: 1 / 2; grid-row: 1 / 3; }
+  .gal-wide { grid-column: span 2; }
+  .gal-tall { grid-row: span 2; }
+
+  .g-tile { position: relative; overflow: hidden; background: var(--navy-d); cursor: zoom-in; transition: transform .35s cubic-bezier(.2,.8,.2,1); }
+  .g-tile img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s cubic-bezier(.2,.8,.2,1), filter .3s; display: block; }
+  .g-tile:hover { transform: translateY(-2px); }
+  .g-tile:hover img { transform: scale(1.04); filter: brightness(1.05); }
+  .g-tile .g-label { position: absolute; left: 20px; bottom: 18px; right: 20px; z-index: 2; color: #fff; }
+  .g-tile .g-label .gl-idx { font-size: 15px; font-weight: 700; letter-spacing: 0.25em; color: var(--gold-l); text-transform: uppercase; margin-bottom: 4px; opacity: 0.9; }
+  .g-tile .g-label .gl-name { font-size: 21px; font-weight: 700; letter-spacing: -0.005em; line-height: 1.2; }
+  .g-tile::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.1) 50%, transparent 100%); opacity: 0.95; transition: opacity .3s; pointer-events: none; }
+  .g-tile:hover::after { opacity: 1; }
+  .g-tile .g-zoom { position: absolute; top: 16px; right: 16px; width: 36px; height: 36px; background: rgba(17,24,39,0.75); backdrop-filter: blur(10px); display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity .25s; z-index: 3; border: 1px solid rgba(184,150,90,0.5); }
+  .g-tile .g-zoom svg { width: 16px; height: 16px; color: var(--gold-l); }
+  .g-tile:hover .g-zoom { opacity: 1; }
+
+  /* ═══════════ SCHEDULE ═══════════ */
+  #s-schedule { background: var(--cream); }
+  #s-schedule .timeline { position: absolute; top: 230px; left: 100px; right: 100px; bottom: 80px; display: flex; flex-direction: column; justify-content: space-between; }
+  .tl-row { display: grid; grid-template-columns: 170px 2px 1fr 180px; align-items: start; gap: 0 30px; }
+  .tl-time { font-size: 22px; font-weight: 700; color: var(--navy); text-align: right; padding-top: 2px; }
+  .tl-time .ampm { font-size: 18px; font-weight: 500; color: var(--muted); margin-left: 4px; }
+  .tl-track { background: rgba(27,36,68,0.12); position: relative; align-self: stretch; }
+  .tl-dot { position: absolute; top: 6px; left: -6px; width: 14px; height: 14px; background: var(--gold); border: 2px solid var(--cream); }
+  .tl-body { padding-bottom: 0; }
+  .tl-badge { display: inline-block; padding: 4px 12px; font-size: 15px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; margin-bottom: 8px; }
+  .tl-title { font-size: 29px; font-weight: 700; color: var(--navy); margin-bottom: 4px; }
+  .tl-desc { font-size: 20px; color: var(--muted); line-height: 1.5; max-width: 640px; }
+  .tl-dur { font-size: 20px; color: var(--muted); padding-top: 28px; text-align: right; font-weight: 500; }
+  .bd-vip { background: rgba(184,150,90,0.15); color: var(--gold-s); }
+  .bd-show { background: rgba(27,36,68,0.08); color: var(--navy); }
+  .bd-open { background: rgba(34,197,94,0.12); color: #166534; }
+  .bd-reveal { background: var(--gold); color: #fff; }
+
+  /* ═══════════ CROWD / OPS SLIDES ═══════════ */
+  .op-slide { background: var(--navy); }
+  .op-slide .bg-texture { position: absolute; inset: 0; background: repeating-linear-gradient(45deg, rgba(184,150,90,0.02) 0, rgba(184,150,90,0.02) 1px, transparent 1px, transparent 60px); }
+  .op-grid { position: absolute; top: 230px; left: 100px; right: 100px; bottom: 80px; }
+  .cm-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; height: 100%; }
+  .cm-col { display: flex; flex-direction: column; gap: 18px; }
+  .cm-block { border: 1px solid rgba(184,150,90,0.18); padding: 30px 34px; background: rgba(255,255,255,0.025); flex: 1; }
+  .cb-title { font-size: 20px; font-weight: 700; color: var(--gold); letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 18px; display: flex; align-items: center; gap: 12px; }
+  .cb-title svg { width: 18px; flex-shrink: 0; }
+  .cm-block ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .cm-block ul li { font-size: 21px; color: rgba(255,255,255,0.72); display: flex; align-items: flex-start; gap: 12px; line-height: 1.5; }
+  .cm-block ul li::before { content: ''; width: 5px; height: 5px; background: var(--gold); flex-shrink: 0; margin-top: 7px; border-radius: 50%; }
+  .cm-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  .cm-stat-item { text-align: center; padding: 24px 16px; background: rgba(184,150,90,0.08); border: 1px solid rgba(184,150,90,0.15); }
+  .cm-stat-item .csn { font-size: 40px; font-weight: 800; color: var(--gold); letter-spacing: -0.02em; line-height: 1; }
+  .cm-stat-item .csl { font-size: 17px; font-weight: 600; color: rgba(255,255,255,0.5); letter-spacing: 0.18em; text-transform: uppercase; margin-top: 8px; }
+
+  /* ═══════════ SECURITY ═══════════ */
+  #s-sec { background: var(--cream); }
+  #s-sec .sec-grid { position: absolute; top: 230px; left: 100px; right: 100px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+  .sec-card { background: var(--navy); padding: 36px 30px; position: relative; overflow: hidden; min-height: 280px; }
+  .sec-card::before { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: var(--gold); opacity: 0.5; }
+  .sc-icon { width: 48px; height: 48px; background: rgba(184,150,90,0.14); display: flex; align-items: center; justify-content: center; margin-bottom: 22px; }
+  .sc-icon svg { width: 22px; color: var(--gold); }
+  .sc-title { font-size: 26px; font-weight: 700; color: #fff; margin-bottom: 10px; }
+  .sc-desc { font-size: 20px; color: rgba(255,255,255,0.6); line-height: 1.6; }
+  #s-sec .protocol { position: absolute; bottom: 80px; left: 100px; right: 100px; background: var(--navy); padding: 36px 50px; display: grid; grid-template-columns: repeat(5, 1fr); }
+  .proto-step { text-align: center; position: relative; padding: 0 18px; }
+  .proto-step + .proto-step::before { content: '→'; position: absolute; left: -8px; top: 16px; color: var(--gold); font-size: 27px; }
+  .proto-num { width: 44px; height: 44px; background: rgba(184,150,90,0.15); border: 1.5px solid var(--gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 12px; font-size: 24px; font-weight: 700; color: var(--gold); }
+  .proto-label { font-size: 18px; font-weight: 600; color: rgba(255,255,255,0.72); line-height: 1.4; }
+
+  /* ═══════════ TEAM / ORG ═══════════ */
+  #s-team { background: var(--navy); }
+  #s-team .bg-texture { position: absolute; inset: 0; background: repeating-linear-gradient(45deg, rgba(184,150,90,0.02) 0, rgba(184,150,90,0.02) 1px, transparent 1px, transparent 60px); }
+  #s-team .teams-intro {
+    position: absolute; top: 240px; left: 100px; right: 100px;
+    font-size: 20px; color: rgba(255,255,255,0.65); line-height: 1.55;
+    max-width: 1100px;
+  }
+  #s-team .teams-grid {
+    position: absolute; top: 360px; left: 100px; right: 100px; bottom: 80px;
+    display: grid; grid-template-columns: repeat(4, 1fr); grid-auto-rows: 1fr;
+    gap: 14px;
+  }
+  .tm-card {
+    background: rgba(184,150,90,0.06);
+    border: 1px solid rgba(184,150,90,0.22);
+    padding: 24px 26px 22px;
+    display: flex; flex-direction: column; justify-content: space-between;
+    position: relative;
+  }
+  .tm-card::before {
+    content: ''; position: absolute; top: 0; left: 0; width: 32px; height: 1px;
+    background: var(--gold);
+  }
+  .tm-num {
+    font-family: var(--f-head); font-size: 58px; font-weight: 700;
+    color: #fff; line-height: 1; letter-spacing: -0.03em;
+    margin-bottom: 18px;
+  }
+  .tm-num span {
+    font-size: 24px; color: var(--gold-l); font-weight: 600;
+    letter-spacing: 0; margin-left: 2px;
+  }
+  .tm-name {
+    font-size: 20px; font-weight: 700; color: #fff;
+    letter-spacing: 0.01em; margin-bottom: 6px;
+  }
+  .tm-sub {
+    font-size: 13px; color: rgba(255,255,255,0.45);
+    line-height: 1.5; font-weight: 400;
+  }
+  .tm-card.tm-tbc { opacity: 0.78; border-style: dashed; }
+  .tm-card.tm-tbc .tm-num { color: var(--gold); font-size: 42px; }
+  .tm-card.tm-tbc::after {
+    content: 'TBC'; position: absolute; top: 18px; right: 22px;
+    font-size: 10px; font-weight: 700; letter-spacing: 0.3em;
+    color: var(--gold); border: 1px solid var(--gold);
+    padding: 3px 8px;
+  }
+  .tm-card.tm-total {
+    background: var(--gold);
+    border-color: var(--gold);
+    color: var(--navy);
+  }
+  .tm-card.tm-total::before { background: var(--navy); }
+  .tm-card.tm-total .tm-num { color: var(--navy); }
+  .tm-card.tm-total .tm-num span { color: rgba(27,36,68,0.6); }
+  .tm-card.tm-total .tm-name { color: var(--navy); }
+  .tm-card.tm-total .tm-sub { color: rgba(27,36,68,0.72); }
+
+  /* ═══════════ GUEST JOURNEY ═══════════ */
+  #s-journey { background: var(--navy-d); }
+  #s-journey .bg-texture { position: absolute; inset: 0; background: repeating-linear-gradient(45deg, rgba(184,150,90,0.02) 0, rgba(184,150,90,0.02) 1px, transparent 1px, transparent 60px); }
+  #s-journey .journey-track { position: absolute; top: 260px; left: 100px; right: 100px; }
+  #s-journey .track-line { position: absolute; top: 38px; left: 40px; right: 40px; height: 2px; background: linear-gradient(to right, var(--gold) 0%, rgba(184,150,90,0.3) 100%); }
+  #s-journey .steps-row { display: grid; grid-template-columns: repeat(6, 1fr); position: relative; }
+  .jstep { text-align: center; padding: 0 10px; }
+  .js-circle { width: 80px; height: 80px; border: 2px solid var(--gold); display: flex; align-items: center; justify-content: center; margin: 0 auto 22px; background: var(--navy-d); position: relative; z-index: 1; }
+  .js-circle svg { width: 34px; color: var(--gold); }
+  .js-title { font-size: 26px; font-weight: 700; color: #fff; margin-bottom: 8px; }
+  .js-desc { font-size: 18px; color: rgba(255,255,255,0.5); line-height: 1.5; }
+  .touch-points { position: absolute; top: 600px; left: 100px; right: 100px; bottom: 80px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .tp-block { background: rgba(255,255,255,0.04); border: 1px solid rgba(184,150,90,0.15); padding: 26px 30px; }
+  .tp-title { font-size: 20px; font-weight: 700; color: var(--gold); text-transform: uppercase; letter-spacing: 0.18em; margin-bottom: 14px; }
+  .tp-text { font-size: 20px; color: rgba(255,255,255,0.6); line-height: 1.65; }
+
+  /* ═══════════ VENUE / MAP ═══════════ */
+  #s-venue { background: var(--warm); }
+  #s-venue .map-block { position: absolute; top: 230px; left: 100px; width: 900px; height: 780px; border: 2px solid rgba(27,36,68,0.15); overflow: hidden; background: #c8bfaa; }
+  #s-venue .map-block img { width: 100%; height: 100%; object-fit: cover; }
+  #s-venue .map-block::after { content: ''; position: absolute; inset: 0; background: rgba(27,36,68,0.18); }
+  #s-venue .map-pin { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); z-index: 2; }
+  #s-venue .map-pin svg { width: 40px; filter: drop-shadow(0 2px 6px rgba(0,0,0,0.5)); }
+  #s-venue .map-pin .pulse { position: absolute; inset: 50% 50% 50% 50%; width: 60px; height: 60px; border: 2px solid var(--gold); border-radius: 50%; transform: translate(-50%,-50%); animation: pulse 2s ease-out infinite; }
+  @keyframes pulse { 0% { width: 20px; height: 20px; opacity: 1; } 100% { width: 140px; height: 140px; opacity: 0; } }
+  #s-venue .map-scale { position: absolute; bottom: 16px; left: 16px; background: rgba(13,19,34,0.7); padding: 6px 12px; color: var(--gold-l); font-size: 17px; letter-spacing: 0.15em; z-index: 3; display: flex; align-items: center; gap: 10px; }
+  #s-venue .map-scale .bar { width: 40px; height: 1px; background: var(--gold-l); }
+  #s-venue .info-side { position: absolute; top: 230px; left: 1040px; right: 100px; bottom: 80px; display: flex; flex-direction: column; }
+  #s-venue .info-row { padding: 20px 0; border-bottom: 1px solid rgba(27,36,68,0.1); }
+  #s-venue .info-row:last-child { border-bottom: none; }
+  #s-venue .info-label { font-size: 17px; font-weight: 700; letter-spacing: 0.22em; color: var(--gold); text-transform: uppercase; margin-bottom: 6px; }
+  #s-venue .info-val { font-size: 30px; font-weight: 700; color: var(--navy); letter-spacing: -0.005em; }
+  #s-venue .info-sub { font-size: 20px; color: var(--muted); margin-top: 4px; line-height: 1.5; }
+  #s-venue .addr-block { background: var(--navy); padding: 26px 32px; margin-top: auto; display: flex; align-items: center; gap: 20px; }
+  #s-venue .addr-icon svg { color: var(--gold); width: 26px; }
+  #s-venue .addr-text { font-size: 20px; color: rgba(255,255,255,0.72); line-height: 1.55; }
+  #s-venue .addr-text strong { color: #fff; display: block; font-size: 23px; margin-bottom: 4px; }
+
+  /* ━━━ SITE LAYOUT (TOP VIEW) ━━━ */
+  #s-layout { background: var(--warm); }
+  #s-layout .layout-block { position: absolute; top: 210px; left: 100px; width: 1100px; height: 820px; background: #0d1322; overflow: hidden; border: 2px solid rgba(27,36,68,0.15); }
+  #s-layout .layout-block img { width: 100%; height: 100%; object-fit: contain; display: block; }
+  #s-layout .info-side { position: absolute; top: 210px; left: 1240px; right: 100px; bottom: 80px; display: flex; flex-direction: column; }
+  #s-layout .zone-intro { font-size: 20px; color: var(--muted); line-height: 1.65; margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid rgba(27,36,68,0.12); }
+  #s-layout .zone-list { display: flex; flex-direction: column; gap: 0; }
+  #s-layout .zrow { display: grid; grid-template-columns: 44px 1fr auto; gap: 14px; align-items: flex-start; padding: 14px 0; border-bottom: 1px solid rgba(27,36,68,0.08); }
+  #s-layout .zrow:last-child { border-bottom: none; }
+  #s-layout .zn { width: 34px; height: 34px; display: flex; align-items: center; justify-content: center; background: var(--navy); color: var(--gold); font-size: 20px; font-weight: 700; letter-spacing: 0.05em; }
+  #s-layout .zrow.accent .zn { background: var(--gold); color: #fff; }
+  #s-layout .ztxt { flex: 1; }
+  #s-layout .zttl { font-size: 24px; font-weight: 700; color: var(--navy); letter-spacing: -0.005em; margin-bottom: 2px; }
+  #s-layout .zsub { font-size: 18px; color: var(--muted); line-height: 1.45; }
+  #s-layout .zdim { font-size: 15px; font-weight: 700; color: var(--gold); letter-spacing: 0.18em; white-space: nowrap; padding-top: 4px; text-transform: uppercase; }
+  #s-layout .dim-footer { margin-top: auto; background: var(--navy); padding: 22px 28px; display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  #s-layout .dim-item .dl { font-size: 15px; font-weight: 600; letter-spacing: 0.24em; color: rgba(255,255,255,0.5); text-transform: uppercase; margin-bottom: 6px; }
+  #s-layout .dim-item .dv { font-size: 26px; font-weight: 400; color: var(--gold-l); font-family: var(--f-head); letter-spacing: -0.005em; }
+
+  /* ━━━ VENUE FOCUS (TOP VIEW DETAIL) ━━━ */
+  #s-venue-focus { background: #000; color: #fff; }
+  #s-venue-focus .sec-label { color: var(--gold); }
+  #s-venue-focus .page-title { color: #fff; }
+  #s-venue-focus .page-title span { color: var(--gold); }
+  #s-venue-focus .slide-idx { color: var(--gold); opacity: 0.6; }
+  #s-venue-focus .head-band { opacity: 0.5; }
+  #s-venue-focus .title-rule { background: var(--gold); }
+  #s-venue-focus .focus-img { position: absolute; top: 40px; left: 660px; right: 660px; bottom: 0; display: flex; align-items: center; justify-content: center; }
+  #s-venue-focus .focus-img img { max-height: 100%; max-width: 100%; height: auto; width: auto; display: block; }
+  #s-venue-focus .callouts-l { position: absolute; top: 220px; left: 100px; width: 520px; display: flex; flex-direction: column; gap: 18px; }
+  #s-venue-focus .callouts-r { position: absolute; top: 220px; right: 100px; width: 520px; display: flex; flex-direction: column; gap: 18px; }
+  #s-venue-focus .co { position: relative; padding: 18px 22px; background: rgba(184,150,90,0.06); border-left: 2px solid var(--gold); }
+  #s-venue-focus .co.primary { background: linear-gradient(to right, rgba(184,150,90,0.18), rgba(184,150,90,0.04)); border-left-color: var(--gold-l); }
+  #s-venue-focus .co-idx { font-size: 15px; font-weight: 700; letter-spacing: 0.24em; color: var(--gold); margin-bottom: 6px; }
+  #s-venue-focus .co-title { font-size: 30px; font-weight: 400; color: #fff; margin-bottom: 6px; font-family: var(--f-head); letter-spacing: -0.005em; }
+  #s-venue-focus .co-title .cnt { color: var(--gold-l); font-size: 23px; font-weight: 600; letter-spacing: 0.12em; margin-left: 10px; font-family: var(--f-body); }
+  #s-venue-focus .co-desc { font-size: 18px; color: rgba(255,255,255,0.5); line-height: 1.55; }
+  #s-venue-focus .cap-strip { position: absolute; bottom: 60px; left: 100px; right: 100px; background: rgba(255,255,255,0.03); border: 1px solid rgba(184,150,90,0.18); padding: 20px 32px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+  #s-venue-focus .cap-item { text-align: center; }
+  #s-venue-focus .cap-item + .cap-item { border-left: 1px solid rgba(184,150,90,0.18); }
+  #s-venue-focus .cap-l { font-size: 15px; font-weight: 600; letter-spacing: 0.24em; color: rgba(255,255,255,0.45); text-transform: uppercase; margin-bottom: 8px; }
+  #s-venue-focus .cap-v { font-size: 38px; font-weight: 400; color: var(--gold-l); font-family: var(--f-head); letter-spacing: -0.005em; line-height: 1; }
+  #s-venue-focus .cap-v .plus { color: rgba(255,255,255,0.3); margin: 0 4px; }
+
+  /* ═══════════ CLOSING ═══════════ */
+  #s-close { background: var(--navy-d); }
+  #s-close .bg-img { position: absolute; inset: 0; }
+  #s-close .bg-img img { width: 100%; height: 100%; object-fit: cover; object-position: center; opacity: 0.35; }
+  #s-close .bg-img::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(13,19,34,0.75) 0%, rgba(13,19,34,0.55) 50%, rgba(13,19,34,0.9) 100%); }
+  #s-close .content { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 2; }
+  #s-close .sub { font-size: 20px; font-weight: 600; letter-spacing: 0.4em; color: var(--gold); text-transform: uppercase; margin-bottom: 40px; }
+  #s-close .ar { font-family: var(--f-ar); font-size: 180px; color: #fff; font-weight: 700; line-height: 0.95; margin-bottom: 20px; }
+  #s-close .logo-lg { margin-bottom: 28px; }
+  #s-close .logo-lg img { width: 560px; height: auto; display: block; filter: drop-shadow(0 6px 20px rgba(0,0,0,0.5)); }
+  #s-close .en { font-size: 34px; font-weight: 400; letter-spacing: 0.4em; color: var(--gold-l); text-transform: uppercase; margin-bottom: 54px; font-family: var(--f-head); }
+  #s-close .div { width: 240px; height: 1px; background: linear-gradient(to right, transparent, var(--gold), transparent); margin-bottom: 54px; opacity: 0.6; }
+  #s-close .tag { font-size: 26px; font-weight: 400; color: rgba(255,255,255,0.7); letter-spacing: 0.02em; margin-bottom: 54px; font-style: italic; font-family: var(--f-head); }
+  #s-close .tag em { color: var(--gold-l); font-style: normal; font-weight: 500; }
+  #s-close .info-row { display: flex; align-items: center; gap: 0; }
+  #s-close .info-row .itm { padding: 0 32px; text-align: center; }
+  #s-close .info-row .itm + .itm { border-left: 1px solid rgba(184,150,90,0.28); }
+  #s-close .itm-v { font-size: 22px; font-weight: 700; color: #fff; }
+  #s-close .itm-l { font-size: 17px; font-weight: 500; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 0.22em; margin-top: 6px; }
+  #s-close .corner { position: absolute; width: 90px; height: 90px; }
+  #s-close .corner.tl { top: 40px; left: 60px; border-top: 1px solid var(--gold); border-left: 1px solid var(--gold); opacity: 0.3; }
+  #s-close .corner.br { bottom: 40px; right: 60px; border-bottom: 1px solid var(--gold); border-right: 1px solid var(--gold); opacity: 0.3; }
+  #s-close .logo-cr { position: absolute; bottom: 60px; right: 100px; z-index: 3; }
+  #s-close .logo-cr svg { width: 150px; opacity: 0.7; }
+
+  /* ═══════════ FIREWORKS & REVEAL SLIDE ═══════════ */
+  #s-fireworks {
+    background: #05080F;
+    color: #fff;
+    overflow: hidden;
+  }
+  #s-fireworks .fw-bg {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 70% 50% at 50% 20%, rgba(212,175,120,0.18) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 40% at 20% 80%, rgba(184,150,90,0.12) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 40% at 85% 90%, rgba(212,175,120,0.1) 0%, transparent 60%),
+      linear-gradient(180deg, #0A1020 0%, #05080F 55%, #0D1322 100%);
+  }
+  #s-fireworks .fw-grain {
+    position: absolute; inset: 0;
+    background-image:
+      radial-gradient(circle at 10% 15%, rgba(255,255,255,0.02) 0, transparent 30%),
+      radial-gradient(circle at 90% 85%, rgba(255,255,255,0.02) 0, transparent 30%);
+    mix-blend-mode: screen;
+  }
+  #s-fireworks .fw-sparks { position: absolute; inset: 0; pointer-events: none; }
+  #s-fireworks .fw-sparks span {
+    position: absolute; width: 3px; height: 3px; border-radius: 50%;
+    background: var(--gold-l, #D4AF78);
+    box-shadow: 0 0 8px 2px rgba(212,175,120,0.8), 0 0 24px 6px rgba(212,175,120,0.35);
+    opacity: 0.7;
+  }
+  #s-fireworks .fw-sparks span:nth-child(1){ top: 8%; left: 12%; }
+  #s-fireworks .fw-sparks span:nth-child(2){ top: 14%; left: 28%; width: 2px; height: 2px; opacity:.5;}
+  #s-fireworks .fw-sparks span:nth-child(3){ top: 6%; left: 46%; }
+  #s-fireworks .fw-sparks span:nth-child(4){ top: 12%; left: 62%; width: 2px; height: 2px; opacity:.4;}
+  #s-fireworks .fw-sparks span:nth-child(5){ top: 9%; left: 78%; }
+  #s-fireworks .fw-sparks span:nth-child(6){ top: 18%; left: 88%; width: 2px; height: 2px; opacity:.55;}
+  #s-fireworks .fw-sparks span:nth-child(7){ top: 22%; left: 8%; width: 2px; height: 2px; opacity:.4;}
+  #s-fireworks .fw-sparks span:nth-child(8){ top: 28%; left: 72%; width: 2px; height: 2px; opacity:.45;}
+  #s-fireworks .fw-sparks span:nth-child(9){ bottom: 24%; left: 6%; }
+  #s-fireworks .fw-sparks span:nth-child(10){ bottom: 18%; left: 22%; width: 2px; height: 2px; opacity:.55;}
+  #s-fireworks .fw-sparks span:nth-child(11){ bottom: 32%; left: 38%; width: 2px; height: 2px; opacity:.45;}
+  #s-fireworks .fw-sparks span:nth-child(12){ bottom: 20%; left: 58%; }
+  #s-fireworks .fw-sparks span:nth-child(13){ bottom: 28%; left: 76%; width: 2px; height: 2px; opacity:.5;}
+  #s-fireworks .fw-sparks span:nth-child(14){ bottom: 12%; left: 92%; }
+  #s-fireworks .fw-sparks span:nth-child(15){ top: 42%; left: 4%; width: 2px; height: 2px; opacity:.35;}
+  #s-fireworks .fw-sparks span:nth-child(16){ top: 50%; left: 96%; width: 2px; height: 2px; opacity:.35;}
+
+  #s-fireworks .head-band { background: linear-gradient(to right, rgba(212,175,120,0.15), transparent); }
+  #s-fireworks .sec-label { color: var(--gold, #D4AF78); }
+  #s-fireworks .slide-idx { color: var(--gold, #D4AF78); }
+  #s-fireworks .page-title { color: #fff; font-family: var(--f-head); font-weight: 400; }
+  #s-fireworks .title-rule { background: var(--gold, #D4AF78); }
+
+  #s-fireworks .fw-layout {
+    position: absolute;
+    top: 280px; left: 100px; right: 100px; bottom: 120px;
+    display: grid; grid-template-columns: 1fr 1.25fr; gap: 80px;
+  }
+  #s-fireworks .fw-left { display: flex; flex-direction: column; justify-content: flex-start; }
+  #s-fireworks .fw-quote {
+    font-family: var(--f-head); font-style: italic; font-weight: 400;
+    font-size: 38px; line-height: 1.25; color: var(--gold-l, #D4AF78);
+    letter-spacing: -0.005em; margin-bottom: 28px;
+  }
+  #s-fireworks .fw-lead {
+    font-size: 22px; line-height: 1.55; color: rgba(255,255,255,0.72);
+    max-width: 540px; margin-bottom: 48px; font-weight: 400;
+  }
+  #s-fireworks .fw-timing {
+    display: flex; align-items: center; gap: 32px;
+    padding: 28px 0; border-top: 1px solid rgba(184,150,90,0.25);
+    border-bottom: 1px solid rgba(184,150,90,0.25);
+  }
+  #s-fireworks .fwt-big {
+    font-family: var(--f-head); font-weight: 700;
+    font-size: 140px; line-height: 1; color: #fff;
+    letter-spacing: -0.04em; display: flex; align-items: baseline; gap: 10px;
+  }
+  #s-fireworks .fwt-unit { font-size: 24px; font-weight: 600; letter-spacing: 0.25em; color: var(--gold, #D4AF78); }
+  #s-fireworks .fwt-meta { flex: 1; display: flex; flex-direction: column; gap: 10px; }
+  #s-fireworks .fwt-row {
+    display: flex; justify-content: space-between; align-items: baseline;
+    padding-bottom: 8px; border-bottom: 1px dotted rgba(255,255,255,0.12);
+  }
+  #s-fireworks .fwt-l { font-size: 13px; letter-spacing: 0.24em; text-transform: uppercase; color: rgba(255,255,255,0.4); font-weight: 600; }
+  #s-fireworks .fwt-v { font-size: 20px; font-weight: 700; color: #fff; letter-spacing: 0.02em; }
+
+  #s-fireworks .fw-right { display: flex; flex-direction: column; gap: 24px; }
+  #s-fireworks .fw-phase {
+    display: grid; grid-template-columns: 72px 4px 1fr; gap: 20px;
+    align-items: start;
+  }
+  #s-fireworks .fw-pnum {
+    font-family: var(--f-head); font-size: 42px; font-weight: 700;
+    color: var(--gold, #D4AF78); line-height: 1; padding-top: 4px;
+    letter-spacing: -0.02em;
+  }
+  #s-fireworks .fw-pbar {
+    width: 4px; height: 100%; min-height: 90px;
+    background: rgba(184,150,90,0.15); position: relative; border-radius: 2px;
+  }
+  #s-fireworks .fw-pbar span {
+    position: absolute; top: 0; left: 0; width: 100%;
+    background: linear-gradient(to bottom, var(--gold-l, #D4AF78), var(--gold, #B8965A));
+    box-shadow: 0 0 12px rgba(212,175,120,0.6);
+    border-radius: 2px;
+  }
+  #s-fireworks .fw-pbody { padding-top: 2px; }
+  #s-fireworks .fw-ptitle {
+    font-size: 22px; font-weight: 700; color: #fff;
+    margin-bottom: 6px; letter-spacing: -0.005em;
+  }
+  #s-fireworks .fw-pdur {
+    font-size: 15px; font-weight: 500; color: var(--gold-l, #D4AF78);
+    letter-spacing: 0.08em; font-family: var(--f-head);
+  }
+  #s-fireworks .fw-ptext {
+    font-size: 17px; line-height: 1.6; color: rgba(255,255,255,0.62);
+    max-width: 580px;
+  }
+
+  #s-fireworks .fw-ticker {
+    position: absolute; left: 0; right: 0; bottom: 50px;
+    display: flex; justify-content: center; align-items: center; gap: 0;
+    font-size: 13px; font-weight: 700; letter-spacing: 0.32em;
+    color: rgba(212,175,120,0.55); text-transform: uppercase;
+    font-family: var(--f-head);
+  }
+  #s-fireworks .fw-ticker span { padding: 0 28px; position: relative; }
+  #s-fireworks .fw-ticker span + span::before {
+    content: ''; position: absolute; left: 0; top: 50%; width: 4px; height: 4px;
+    background: var(--gold, #D4AF78); border-radius: 50%;
+    transform: translateY(-50%);
+  }
+
+  /* ═══════════ LIGHTBOX OVERLAY ═══════════ */
+  .lightbox {
+    position: fixed;
+    inset: 0;
+    background: rgba(5,8,15,0.96);
+    backdrop-filter: blur(18px);
+    z-index: 2147483647;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 80px 40px;
+    opacity: 0;
+    transition: opacity .25s ease;
+  }
+  .lightbox.open { display: flex; opacity: 1; }
+  .lb-content {
+    position: relative;
+    flex: 1;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  .lb-image {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    box-shadow: 0 24px 80px rgba(0,0,0,0.6);
+    transition: transform .35s cubic-bezier(.2,.8,.2,1);
+    user-select: none;
+    -webkit-user-drag: none;
+  }
+  .lb-header {
+    position: absolute;
+    top: 24px;
+    left: 80px;
+    right: 80px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    color: #fff;
+    gap: 24px;
+  }
+  .lb-meta { flex: 1; }
+  .lb-category {
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 0.35em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .lb-title {
+    font-size: 24px;
+    font-weight: 600;
+    color: #fff;
+    letter-spacing: -0.01em;
+    line-height: 1.3;
+  }
+  .lb-counter {
+    font-size: 20px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.55);
+    letter-spacing: 0.2em;
+    font-variant-numeric: tabular-nums;
+    padding-top: 6px;
+  }
+  .lb-close {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.12);
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: #fff;
+    transition: all .2s;
+    flex-shrink: 0;
+  }
+  .lb-close:hover { background: var(--gold); border-color: var(--gold); }
+  .lb-close svg { width: 18px; height: 18px; }
+  .lb-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 56px;
+    height: 56px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.12);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: #fff;
+    transition: all .2s;
+    z-index: 3;
+  }
+  .lb-nav:hover { background: var(--gold); border-color: var(--gold); }
+  .lb-nav svg { width: 22px; height: 22px; }
+  .lb-nav.prev { left: 24px; }
+  .lb-nav.next { right: 24px; }
+  .lb-thumbs {
+    display: flex;
+    gap: 8px;
+    padding: 20px 0 0;
+    overflow-x: auto;
+    max-width: 100%;
+    flex-wrap: nowrap;
+    justify-content: center;
+  }
+  .lb-thumb {
+    flex-shrink: 0;
+    width: 88px;
+    height: 56px;
+    overflow: hidden;
+    cursor: pointer;
+    opacity: 0.4;
+    transition: all .2s;
+    border: 2px solid transparent;
+  }
+  .lb-thumb.active { opacity: 1; border-color: var(--gold); }
+  .lb-thumb:hover { opacity: 0.85; }
+  .lb-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .lb-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding-top: 16px;
+    gap: 20px;
+  }
+  .lb-hint {
+    font-size: 17px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    color: rgba(255,255,255,0.45);
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .lb-kbd {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 20px;
+    height: 20px;
+    padding: 0 6px;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.15);
+    font-family: ui-monospace, monospace;
+    font-size: 15px;
+    color: rgba(255,255,255,0.75);
+    letter-spacing: 0;
+  }
+
+  /* Hide deck-stage overlay when lightbox is open (cosmetic) */
+  body.lightbox-open deck-stage { pointer-events: none; }
+  body.lightbox-open .lightbox { pointer-events: auto; }
+</style>
+</head>
+<body>
+
+<deck-stage width="1920" height="1080">
+
+  <!-- ═══════════════ SLIDE 1 — COVER ═══════════════ -->
+  <section id="s1" data-label="Cover">
+    <div class="bg-img">
+      <img src="project/uploads/Edit_this_image_202604201439.png" alt="Main stage">
+    </div>
+    <div class="grid-dec"></div>
+    <div class="corner tl"></div>
+    <div class="corner br"></div>
+
+    <div class="content">
+      <div class="rawasi">
+        <img src="project/assets/rawasi-logo-white.png" alt="RAWASI">
+      </div>
+      <div class="presents">Proudly Presents</div>
+      <div class="project-logo"><img src="project/assets/hayat-logo-white.png" alt="حياة المنصورة"></div>
+      <div class="project-en">In the Heart of Mansoura</div>
+      <div class="divider"></div>
+      <div class="subtitle">Grand Launch Event</div>
+      <div class="date">Mid May 2026</div>
+      <div class="loc">Al Mansoura · Egypt</div>
+    </div>
+
+    <div class="bottom-mark">
+      <div>Event Presentation · 2026</div>
+      <div>Confidential · Internal Use</div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ SLIDE 2 — INDEX ═══════════════ -->
+  <section id="s2" data-label="Index">
+    <div class="head-band"></div>
+    <div class="slide-idx">01</div>
+    <div class="sec-label">Table of Contents</div>
+    <div class="page-title">The <span style="color:var(--gold);">Presentation</span></div>
+    <div class="title-rule"></div>
+
+    <div class="index-grid">
+      <div class="idx-item"><div class="idx-num">01 · INTRO</div><div class="idx-corner">EVENT</div><div><div class="idx-label">Event Overview</div><div class="idx-desc">Vision, key facts, agenda</div></div></div>
+      <div class="idx-item"><div class="idx-num">02 · VENUE</div><div class="idx-corner">SITE</div><div><div class="idx-label">Site & Location</div><div class="idx-desc">Mansoura, Saad El-Sherbiny</div></div></div>
+      <div class="idx-item"><div class="idx-num">03 · SCHEDULE</div><div class="idx-corner">TIMING</div><div><div class="idx-label">Run of Show</div><div class="idx-desc">Evening programme 7 PM – 1 AM</div></div></div>
+      <div class="idx-item"><div class="idx-num">04 · RENDERS</div><div class="idx-corner">GALLERY</div><div><div class="idx-label">Visual Gallery</div><div class="idx-desc">Reception · Stage · VIP · F&B</div></div></div>
+      <div class="idx-item"><div class="idx-num">05 · GUESTS</div><div class="idx-corner">CX</div><div><div class="idx-label">Guest Journey</div><div class="idx-desc">Invitation to farewell</div></div></div>
+      <div class="idx-item"><div class="idx-num">06 · OPS</div><div class="idx-corner">CONTROL</div><div><div class="idx-label">Crowd & Logistics</div><div class="idx-desc">Capacity, flow, parking</div></div></div>
+      <div class="idx-item"><div class="idx-num">07 · SAFETY</div><div class="idx-corner">SECURITY</div><div><div class="idx-label">Security & Safety</div><div class="idx-desc">Screening, access control, medical</div></div></div>
+      <div class="idx-item"><div class="idx-num">08 · TEAM</div><div class="idx-corner">ORG</div><div><div class="idx-label">Operations Team</div><div class="idx-desc">Structure and headcount</div></div></div>
+      <div class="idx-item"><div class="idx-num">09 · REVEAL</div><div class="idx-corner">FINALE</div><div><div class="idx-label">The Grand Reveal</div><div class="idx-desc">The moment Hayat opens</div></div></div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ SLIDE 3 — HERO EVENT OVERVIEW ═══════════════ -->
+  <section id="s3" data-label="Event Overview">
+    <div class="hero-img">
+      <img src="project/uploads/Edit_this_image_202604201608.png" alt="Event aerial">
+    </div>
+
+    <div class="h-content">
+      <div class="h-tag">01 · Event Overview</div>
+      <div class="h-title">A grand stage for a <span>life well lived</span></div>
+      <div class="h-sub">A premium launch gala for حياة by RAWASI Developments — bringing together investors, media, and Mansoura's community for an evening of architecture, culture, and celebration.</div>
+
+      <div class="facts">
+        <div class="fact"><div class="fact-l">Date</div><div class="fact-v">Mid May 2026</div></div>
+        <div class="fact"><div class="fact-l">Location</div><div class="fact-v">Mansoura, Egypt</div></div>
+        <div class="fact"><div class="fact-l">Guests</div><div class="fact-v">700 + 300 VIP</div></div>
+        <div class="fact"><div class="fact-l">Duration</div><div class="fact-v">7 PM – 1 AM</div></div>
+        <div class="fact"><div class="fact-l">Format</div><div class="fact-v">Launch Premium Gala</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ SLIDE 4 — VENUE ═══════════════ -->
+  <section id="s-venue" data-label="Venue & Site">
+    <div class="head-band"></div>
+    <div class="slide-idx">02</div>
+    <div class="sec-label">Venue</div>
+    <div class="page-title">Site & <span style="color:var(--gold);">Location</span></div>
+    <div class="title-rule"></div>
+
+    <div class="map-block">
+      <img src="project/uploads/pasted-1776708742510-0.png" alt="Satellite map">
+      <div class="map-pin">
+        <span class="pulse"></span>
+        <svg viewBox="0 0 24 24" fill="#B8965A"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="3" fill="white"/></svg>
+      </div>
+      <div class="map-scale"><span class="bar"></span> 50m</div>
+    </div>
+
+    <div class="info-side">
+      <div class="info-row">
+        <div class="info-label">Address</div>
+        <div class="info-val">Saad El-Sherbiny Street</div>
+        <div class="info-sub">Mansoura, Dakahlia Governorate · adjacent to main railway line</div>
+      </div>
+      <div class="info-row">
+        <div class="info-label">Plot Area</div>
+        <div class="info-val">Approx. 65,000 m²</div>
+        <div class="info-sub">Long diagonal plot aligned with the railway corridor</div>
+      </div>
+      <div class="info-row">
+        <div class="info-label">Parking & Traffic</div>
+        <div class="info-val">Large Parking · Smooth Flow</div>
+        <div class="info-sub">Fakhr El-Din Khaled St. (South) · Saad El-Sherbiny (West)</div>
+      </div>
+      <div class="info-row">
+        <div class="info-label">Zone Allocation</div>
+        <div class="info-val">5 Dedicated Zones</div>
+        <div class="info-sub">Stage · VIP · Reception · F&B · Parking</div>
+      </div>
+
+      <div class="addr-block">
+        <div class="addr-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+        </div>
+        <div class="addr-text">
+          <strong>حياة — Hayat · Mansoura</strong>
+          Saad El-Sherbiny St., adjacent to main railway station · Mansoura, Dakahlia
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ SLIDE 4.5 — SITE LAYOUT TOP VIEW ═══════════════ -->
+  <section id="s-layout" data-label="Site Layout">
+    <div class="head-band"></div>
+    <div class="slide-idx">02.1</div>
+    <div class="sec-label">Venue</div>
+    <div class="page-title">Site <span style="color:var(--gold);">Layout</span></div>
+    <div class="title-rule"></div>
+
+    <div class="layout-block">
+      <img src="project/assets/site-layout-topview.png" alt="Event site top-view layout">
+    </div>
+
+    <div class="info-side">
+      <div class="zone-intro">Top-view plan of the Hayat launch venue. A single-axis journey — from dedicated parking, through a branded entrance point, into the foyer, and opening onto the main venue and stage.</div>
+
+      <div class="zone-list">
+        <div class="zrow"><div class="zn">01</div><div class="ztxt"><div class="zttl">Parking</div><div class="zsub">Dedicated guest parking · valet pickup</div></div><div class="zdim">N — LOT</div></div>
+        <div class="zrow accent"><div class="zn">02</div><div class="ztxt"><div class="zttl">Entrance Point</div><div class="zsub">Arrival gate · ticket scan · welcome greeting</div></div><div class="zdim">GATE A</div></div>
+        <div class="zrow"><div class="zn">03</div><div class="ztxt"><div class="zttl">Entrance & Foyer</div><div class="zsub">Branded arrival axis · reception desks · welcome lounge</div></div><div class="zdim">AXIS</div></div>
+        <div class="zrow"><div class="zn">04</div><div class="ztxt"><div class="zttl">Main Venue</div><div class="zsub">Seated dining · F&B village · central experience</div></div><div class="zdim">CORE</div></div>
+        <div class="zrow accent"><div class="zn">05</div><div class="ztxt"><div class="zttl">Stage</div><div class="zsub">Performance, reveal & fireworks · south-facing orientation</div></div><div class="zdim">SOUTH</div></div>
+      </div>
+
+      <div class="dim-footer">
+        <div class="dim-item"><div class="dl">Length</div><div class="dv">100 m</div></div>
+        <div class="dim-item"><div class="dl">Width</div><div class="dv">50 m</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ SLIDE 4.6 — VENUE FOCUS (TOP VIEW) ═══════════════ -->
+  <section id="s-venue-focus" data-label="Venue Focus">
+    <div class="head-band"></div>
+    <div class="slide-idx">02.2</div>
+    <div class="sec-label">Venue · Top View</div>
+    <div class="page-title">Venue <span>Footprint</span></div>
+    <div class="title-rule"></div>
+
+    <div class="focus-img">
+      <img src="project/assets/venue-topview-detail.png" alt="Venue top view footprint">
+    </div>
+
+    <div class="callouts-l">
+      <div class="co primary">
+        <div class="co-idx">01 · VIP LEFT</div>
+        <div class="co-title">VIP Lounge <span class="cnt">150 PAX</span></div>
+        <div class="co-desc">Elevated seating wing with direct stage sightline · dedicated hospitality</div>
+      </div>
+      <div class="co">
+        <div class="co-idx">02 · GUEST LEFT</div>
+        <div class="co-title">Guest Seating <span class="cnt">350 PAX</span></div>
+        <div class="co-desc">Main banquet seating · round tables with full stage view</div>
+      </div>
+      <div class="co">
+        <div class="co-idx">03 · FOYER</div>
+        <div class="co-title">Welcome Foyer</div>
+        <div class="co-desc">Branded transition hall · fragrance activation · opens onto the main hall</div>
+      </div>
+    </div>
+
+    <div class="callouts-r">
+      <div class="co primary">
+        <div class="co-idx">04 · VIP RIGHT</div>
+        <div class="co-title">VIP Lounge <span class="cnt">150 PAX</span></div>
+        <div class="co-desc">Mirror wing · private access from VIP circulation route</div>
+      </div>
+      <div class="co">
+        <div class="co-idx">05 · GUEST RIGHT</div>
+        <div class="co-title">Guest Seating <span class="cnt">350 PAX</span></div>
+        <div class="co-desc">Mirrored dining wing · equal access to F&B stations and promenade</div>
+      </div>
+      <div class="co">
+        <div class="co-idx">06 · STAGE</div>
+        <div class="co-title">Main Stage</div>
+        <div class="co-desc">Performance, reveal & fireworks launch point · 180° audience arc</div>
+      </div>
+    </div>
+
+    <div class="cap-strip">
+      <div class="cap-item">
+        <div class="cap-l">VIP Capacity</div>
+        <div class="cap-v">300</div>
+      </div>
+      <div class="cap-item">
+        <div class="cap-l">Guest Capacity</div>
+        <div class="cap-v">700</div>
+      </div>
+      <div class="cap-item">
+        <div class="cap-l">Total Seated</div>
+        <div class="cap-v">1,000</div>
+      </div>
+      <div class="cap-item">
+        <div class="cap-l">Footprint</div>
+        <div class="cap-v">100<span class="plus">×</span>50 m</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ SLIDE 5 — RUN OF SHOW ═══════════════ -->
+  <section id="s-schedule" data-label="Run of Show">
+    <div class="head-band"></div>
+    <div class="slide-idx">03</div>
+    <div class="sec-label">Schedule</div>
+    <div class="page-title">Run of <span style="color:var(--gold);">Show</span></div>
+    <div class="title-rule"></div>
+
+    <div class="timeline">
+      <div class="tl-row">
+        <div class="tl-time">07:00<span class="ampm">PM</span></div>
+        <div class="tl-track"><div class="tl-dot"></div></div>
+        <div class="tl-body">
+          <div class="tl-badge bd-open">Reception</div>
+          <div class="tl-title">Guest Arrival & Welcome Reception</div>
+          <div class="tl-desc">VIP fast-track check-in · ambient music · welcome drinks · networking zone opens</div>
+        </div>
+        <div class="tl-dur">60 min</div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-time">08:00<span class="ampm">PM</span></div>
+        <div class="tl-track"><div class="tl-dot"></div></div>
+        <div class="tl-body">
+          <div class="tl-badge bd-show">Event Start</div>
+          <div class="tl-title">Talks & Speeches</div>
+          <div class="tl-desc">RAWASI leadership address · Hayat vision film · project story · investor welcome</div>
+        </div>
+        <div class="tl-dur">45 min</div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-time">08:45<span class="ampm">PM</span></div>
+        <div class="tl-track"><div class="tl-dot"></div></div>
+        <div class="tl-body">
+          <div class="tl-badge bd-reveal">Grand Reveal</div>
+          <div class="tl-title">Project Reveal & Fireworks</div>
+          <div class="tl-desc">Spectacular launch moment · 3D projection mapping · synchronized fireworks · live broadcast</div>
+        </div>
+        <div class="tl-dur">15 min</div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-time">09:00<span class="ampm">PM</span></div>
+        <div class="tl-track"><div class="tl-dot"></div></div>
+        <div class="tl-body">
+          <div class="tl-badge bd-show">Dinner</div>
+          <div class="tl-title">Gala Dinner Service</div>
+          <div class="tl-desc">Premium seated dinner · F&B village active · networking across VIP and main zones</div>
+        </div>
+        <div class="tl-dur">60 min</div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-time">10:00<span class="ampm">PM</span></div>
+        <div class="tl-track"><div class="tl-dot"></div></div>
+        <div class="tl-body">
+          <div class="tl-badge bd-show">Main Show</div>
+          <div class="tl-title">Live Entertainment</div>
+          <div class="tl-desc">Headline musical performances · light show · interactive experiences · sales floor active</div>
+        </div>
+        <div class="tl-dur">Until 1 AM</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ SLIDE 6 — GALLERY DIVIDER ═══════════════ -->
+  <section id="s-gal-intro" class="gal" data-label="Gallery Intro">
+    <div class="head-band"></div>
+    <div class="slide-idx">04</div>
+    <div class="sec-label">Visuals</div>
+    <div class="page-title">The <span style="color:var(--gold);">Gallery</span></div>
+    <div class="title-rule"></div>
+
+    <div style="position:absolute; top: 260px; left: 100px; right: 100px; bottom: 100px; display:grid; grid-template-columns: 1.2fr 1fr; gap: 50px;">
+      <div style="display:flex; flex-direction:column; justify-content: space-between;">
+        <div>
+          <div style="font-size: 21px; font-weight: 700; letter-spacing: 0.3em; color: var(--gold); text-transform: uppercase; margin-bottom: 24px;">18 Renders · 6 Sections</div>
+          <div style="font-size: 28px; font-weight: 400; color: var(--navy); line-height: 1.5; letter-spacing: -0.005em; max-width: 720px;">The following slides present the event's visual identity across six functional zones. <strong style="font-weight: 700; color: var(--gold-s);">Click any image to view fullscreen</strong>; navigate with arrow keys or swipe.</div>
+        </div>
+        <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 40px;">
+          <div style="background: #fff; border: 1px solid rgba(27,36,68,0.08); padding: 20px 22px;"><div style="font-size: 17px; font-weight: 700; letter-spacing: 0.22em; color: var(--gold); text-transform: uppercase; margin-bottom: 8px;">04.1</div><div style="font-size: 24px; font-weight: 700; color: var(--navy);">Arrival & Registration</div></div>
+          <div style="background: #fff; border: 1px solid rgba(27,36,68,0.08); padding: 20px 22px;"><div style="font-size: 17px; font-weight: 700; letter-spacing: 0.22em; color: var(--gold); text-transform: uppercase; margin-bottom: 8px;">04.2</div><div style="font-size: 24px; font-weight: 700; color: var(--navy);">Foyer & Monument</div></div>
+          <div style="background: #fff; border: 1px solid rgba(27,36,68,0.08); padding: 20px 22px;"><div style="font-size: 17px; font-weight: 700; letter-spacing: 0.22em; color: var(--gold); text-transform: uppercase; margin-bottom: 8px;">04.3</div><div style="font-size: 24px; font-weight: 700; color: var(--navy);">Main Stage & Speaker</div></div>
+          <div style="background: #fff; border: 1px solid rgba(27,36,68,0.08); padding: 20px 22px;"><div style="font-size: 17px; font-weight: 700; letter-spacing: 0.22em; color: var(--gold); text-transform: uppercase; margin-bottom: 8px;">04.4</div><div style="font-size: 24px; font-weight: 700; color: var(--navy);">Guest Seating</div></div>
+          <div style="background: #fff; border: 1px solid rgba(27,36,68,0.08); padding: 20px 22px;"><div style="font-size: 17px; font-weight: 700; letter-spacing: 0.22em; color: var(--gold); text-transform: uppercase; margin-bottom: 8px;">04.5</div><div style="font-size: 24px; font-weight: 700; color: var(--navy);">VIP Lounges</div></div>
+          <div style="background: #fff; border: 1px solid rgba(27,36,68,0.08); padding: 20px 22px;"><div style="font-size: 17px; font-weight: 700; letter-spacing: 0.22em; color: var(--gold); text-transform: uppercase; margin-bottom: 8px;">04.6</div><div style="font-size: 24px; font-weight: 700; color: var(--navy);">Media & Ambience</div></div>
+        </div>
+      </div>
+      <div style="position: relative; overflow: hidden;">
+        <img src="project/assets/g-birdeye-stage.png" alt="Main stage preview" style="position:absolute; inset:0; width: 100%; height: 100%; object-fit: cover; cursor: zoom-in;" data-gallery-preview data-category="Preview" data-title="Gallery Preview">
+        <div style="position:absolute; inset:0; background: linear-gradient(to top, rgba(13,19,34,0.75), transparent 40%);"></div>
+        <div style="position:absolute; bottom: 28px; left: 28px; right: 28px; color: #fff;">
+          <div style="font-size: 17px; font-weight: 700; letter-spacing: 0.3em; color: var(--gold-l); text-transform: uppercase; margin-bottom: 8px;">Preview</div>
+          <div style="font-size: 22px; font-weight: 700; letter-spacing: -0.01em;">Full Gallery Ahead</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ SLIDE 7 — RECEPTION & ENTRANCE ═══════════════ -->
+  <section id="s-gal-reception" class="gal" data-label="Arrival & Registration">
+    <div class="head-band"></div>
+    <div class="slide-idx">04.1</div>
+    <div class="gal-header">
+      <div class="gal-header-left">
+        <div class="sec">Gallery · Section 01</div>
+        <div class="ttl">Arrival & Registration <span class="ar">الوصول</span></div>
+        <div class="ttl-rule"></div>
+      </div>
+      <div class="gal-header-right">
+        <div class="count">04 Renders</div>
+        The guest's first impression — a branded entry axis opens onto registration counters, dedicated check-in desks, and a generous pre-event mingling area for early arrivals.
+      </div>
+    </div>
+
+    <div class="gal-grid gal-3-2">
+      <div class="g-tile gal-hero" data-img="project/assets/g-registration.png" data-category="Arrival · Registration Hub" data-title="Registration & Check-In Area">
+        <img src="project/assets/g-registration.png" alt="Registration & check-in">
+        <div class="g-zoom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
+        <div class="g-label"><div class="gl-idx">01 · Hero View</div><div class="gl-name">Registration & Check-In Hub</div></div>
+      </div>
+      <div class="g-tile" data-img="project/assets/g-checkin-1.png" data-category="Arrival · Check-In Desk" data-title="Guest Check-In Desk">
+        <img src="project/assets/g-checkin-1.png" alt="Check-in desk 01">
+        <div class="g-zoom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
+        <div class="g-label"><div class="gl-idx">02</div><div class="gl-name">Check-In Desk — Arch</div></div>
+      </div>
+      <div class="g-tile" data-img="project/assets/g-checkin-2.png" data-category="Arrival · Check-In Desk 02" data-title="Secondary Check-In Desk">
+        <img src="project/assets/g-checkin-2.png" alt="Check-in desk 02">
+        <div class="g-zoom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
+        <div class="g-label"><div class="gl-idx">03</div><div class="gl-name">Check-In Desk — Tiered</div></div>
+      </div>
+      <div class="g-tile" data-img="project/assets/g-pre-event.png" data-category="Arrival · Pre-Event" data-title="Pre-Event Socialisation Area">
+        <img src="project/assets/g-pre-event.png" alt="Pre-event mingling">
+        <div class="g-zoom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
+        <div class="g-label"><div class="gl-idx">04</div><div class="gl-name">Pre-Event Socialisation</div></div>
+      </div>
+    </div>
+    <div class="gal-hint">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35M11 8v6M8 11h6"/></svg>
+      Click any image to view fullscreen
+    </div>
+  </section>
+
+  <!-- ═══════════════ SLIDE 8 — FOYER & MONUMENT ═══════════════ -->
+  <section id="s-gal-stage" class="gal" data-label="Foyer & Monument">
+    <div class="head-band"></div>
+    <div class="slide-idx">04.2</div>
+    <div class="gal-header">
+      <div class="gal-header-left">
+        <div class="sec">Gallery · Section 02</div>
+        <div class="ttl">Foyer & Monument <span class="ar">البهو</span></div>
+        <div class="ttl-rule"></div>
+      </div>
+      <div class="gal-header-right">
+        <div class="count">03 Renders</div>
+        The branded welcome hall and the central حياة sculpture — the emotional anchor of the venue, where guests first encounter the Hayat identity face-to-face.
+      </div>
+    </div>
+
+    <div class="gal-grid gal-3-2">
+      <div class="g-tile gal-hero" data-img="project/assets/g-foyer.png" data-category="Foyer · Main Hall" data-title="Welcome Foyer">
+        <img src="project/assets/g-foyer.png" alt="Main foyer">
+        <div class="g-zoom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
+        <div class="g-label"><div class="gl-idx">01 · Hero View</div><div class="gl-name">Welcome Foyer</div></div>
+      </div>
+      <div class="g-tile gal-wide" data-img="project/assets/g-foyer-monument.png" data-category="Foyer · Monument View" data-title="Foyer with Central Monument">
+        <img src="project/assets/g-foyer-monument.png" alt="Foyer monument view">
+        <div class="g-zoom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
+        <div class="g-label"><div class="gl-idx">02</div><div class="gl-name">Foyer → Monument Axis</div></div>
+      </div>
+      <div class="g-tile gal-wide" data-img="project/assets/g-central-monument.png" data-category="Foyer · Hayat Sculpture" data-title="Central Hayat Monument">
+        <img src="project/assets/g-central-monument.png" alt="Central monument">
+        <div class="g-zoom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
+        <div class="g-label"><div class="gl-idx">03</div><div class="gl-name">Central حياة Monument</div></div>
+      </div>
+    </div>
+    <div class="gal-hint">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35M11 8v6M8 11h6"/></svg>
+      Click any image to view fullscreen
+    </div>
+  </section>
+
+  <!-- ═══════════════ SLIDE 9 — MAIN STAGE & SPEAKER ═══════════════ -->
+  <section id="s-gal-vip" class="gal" data-label="Main Stage & Speaker">
+    <div class="head-band"></div>
+    <div class="slide-idx">04.3</div>
+    <div class="gal-header">
+      <div class="gal-header-left">
+        <div class="sec">Gallery · Section 03</div>
+        <div class="ttl">Main Stage & Speaker <span class="ar">المسرح</span></div>
+        <div class="ttl-rule"></div>
+      </div>
+      <div class="gal-header-right">
+        <div class="count">04 Renders</div>
+        The performance core — sculpted stage with Hayat wave identity, LED arrays, a dedicated speaker podium, and a branded photo opportunity for the evening's keynote moments.
+      </div>
+    </div>
+
+    <div class="gal-grid gal-3-2">
+      <div class="g-tile gal-hero" data-img="project/assets/g-birdeye-stage.png" data-category="Stage · Birdseye" data-title="Birdseye — Stage Full Shot">
+        <img src="project/assets/g-birdeye-stage.png" alt="Birdseye stage">
+        <div class="g-zoom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
+        <div class="g-label"><div class="gl-idx">01 · Hero View</div><div class="gl-name">Birdseye — Stage Full Shot</div></div>
+      </div>
+      <div class="g-tile" data-img="project/assets/g-main-stage.png" data-category="Stage · Main View" data-title="Main Stage Front View">
+        <img src="project/assets/g-main-stage.png" alt="Main stage">
+        <div class="g-zoom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
+        <div class="g-label"><div class="gl-idx">02</div><div class="gl-name">Main Stage</div></div>
+      </div>
+      <div class="g-tile" data-img="project/assets/g-podium.png" data-category="Stage · Speaker Podium" data-title="Speaker Podium">
+        <img src="project/assets/g-podium.png" alt="Speaker podium">
+        <div class="g-zoom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
+        <div class="g-label"><div class="gl-idx">03</div><div class="gl-name">Speaker Podium</div></div>
+      </div>
+      <div class="g-tile" data-img="project/assets/g-photo-op.png" data-category="Stage · Photo Opportunity" data-title="Photo Opportunity Installation">
+        <img src="project/assets/g-photo-op.png" alt="Photo opportunity">
+        <div class="g-zoom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
+        <div class="g-label"><div class="gl-idx">04</div><div class="gl-name">Photo Opportunity</div></div>
+      </div>
+    </div>
+    <div class="gal-hint">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35M11 8v6M8 11h6"/></svg>
+      Click any image to view fullscreen
+    </div>
+  </section>
+
+  <!-- ═══════════════ SLIDE 10 — GUEST SEATING ═══════════════ -->
+  <section id="s-gal-fb" class="gal" data-label="Guest Seating">
+    <div class="head-band"></div>
+    <div class="slide-idx">04.4</div>
+    <div class="gal-header">
+      <div class="gal-header-left">
+        <div class="sec">Gallery · Section 04</div>
+        <div class="ttl">Guest Seating <span class="ar">الجلوس</span></div>
+        <div class="ttl-rule"></div>
+      </div>
+      <div class="gal-header-right">
+        <div class="count">02 Renders</div>
+        The two mirrored guest wings — 350 seats each — offering equal sightlines onto the stage and a shared, celebratory atmosphere across the main hall.
+      </div>
+    </div>
+
+    <div class="gal-grid gal-2-2">
+      <div class="g-tile gal-tall" data-img="project/assets/g-guest-left.png" data-category="Guest · Left Wing" data-title="View from Guest Left Section">
+        <img src="project/assets/g-guest-left.png" alt="Guest left section">
+        <div class="g-zoom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
+        <div class="g-label"><div class="gl-idx">01 · Hero View</div><div class="gl-name">Guest Left — Stage Sightline</div></div>
+      </div>
+      <div class="g-tile" data-img="project/assets/g-guest-right.png" data-category="Guest · Right Wing" data-title="Guest Right Area">
+        <img src="project/assets/g-guest-right.png" alt="Guest right area">
+        <div class="g-zoom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
+        <div class="g-label"><div class="gl-idx">02</div><div class="gl-name">Guest Right Area</div></div>
+      </div>
+    </div>
+    <div class="gal-hint">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35M11 8v6M8 11h6"/></svg>
+      Click any image to view fullscreen
+    </div>
+  </section>
+
+  <!-- ═══════════════ SLIDE 11 — VIP LOUNGES ═══════════════ -->
+  <section id="s-gal-prom" class="gal" data-label="VIP Lounges">
+    <div class="head-band"></div>
+    <div class="slide-idx">04.5</div>
+    <div class="gal-header">
+      <div class="gal-header-left">
+        <div class="sec">Gallery · Section 05</div>
+        <div class="ttl">VIP Lounges <span class="ar">صالة كبار الضيوف</span></div>
+        <div class="ttl-rule"></div>
+      </div>
+      <div class="gal-header-right">
+        <div class="count">03 Renders</div>
+        Two mirrored VIP wings — 150 guests each — with private lounge seating, premium bar service, dedicated hospitality, and uninterrupted stage views.
+      </div>
+    </div>
+
+    <div class="gal-grid gal-3-2">
+      <div class="g-tile gal-hero" data-img="project/assets/g-vip-perspective.png" data-category="VIP · Perspective" data-title="VIP Area Perspective">
+        <img src="project/assets/g-vip-perspective.png" alt="VIP perspective">
+        <div class="g-zoom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
+        <div class="g-label"><div class="gl-idx">01 · Hero View</div><div class="gl-name">VIP Area Perspective</div></div>
+      </div>
+      <div class="g-tile" data-img="project/assets/g-vip-lounge.png" data-category="VIP · Lounge Seating" data-title="VIP Guest Lounges">
+        <img src="project/assets/g-vip-lounge.png" alt="VIP lounges">
+        <div class="g-zoom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
+        <div class="g-label"><div class="gl-idx">02</div><div class="gl-name">VIP Guest Lounges</div></div>
+      </div>
+      <div class="g-tile" data-img="project/assets/g-vip-right.png" data-category="VIP · Right Wing" data-title="VIP Right Section">
+        <img src="project/assets/g-vip-right.png" alt="VIP right section">
+        <div class="g-zoom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
+        <div class="g-label"><div class="gl-idx">03</div><div class="gl-name">VIP Right Section</div></div>
+      </div>
+    </div>
+    <div class="gal-hint">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35M11 8v6M8 11h6"/></svg>
+      Click any image to view fullscreen
+    </div>
+  </section>
+
+  <!-- ═══════════════ SLIDE 12 — MEDIA & AMBIENCE ═══════════════ -->
+  <section id="s-gal-finale" class="gal" data-label="Media & Ambience">
+    <div class="head-band"></div>
+    <div class="slide-idx">04.6</div>
+    <div class="gal-header">
+      <div class="gal-header-left">
+        <div class="sec">Gallery · Section 06</div>
+        <div class="ttl">Media & Ambience <span class="ar">الإعلام والأجواء</span></div>
+        <div class="ttl-rule"></div>
+      </div>
+      <div class="gal-header-right">
+        <div class="count">02 Renders</div>
+        The supporting layer — a branded media & interview set for press coverage, and the quiet ambient moments that give the evening its warmth.
+      </div>
+    </div>
+
+    <div class="gal-grid gal-2-2">
+      <div class="g-tile gal-tall" data-img="project/assets/g-media.png" data-category="Media · Interview Set" data-title="Media & Interview Section">
+        <img src="project/assets/g-media.png" alt="Media section">
+        <div class="g-zoom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
+        <div class="g-label"><div class="gl-idx">01 · Hero View</div><div class="gl-name">Media & Interview Section</div></div>
+      </div>
+      <div class="g-tile" data-img="project/assets/g-warm-moment.png" data-category="Ambience · Warm Moment" data-title="Warm Ambient Moment">
+        <img src="project/assets/g-warm-moment.png" alt="Warm ambient moment">
+        <div class="g-zoom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
+        <div class="g-label"><div class="gl-idx">02</div><div class="gl-name">Warm Happy Moment</div></div>
+      </div>
+    </div>
+    <div class="gal-hint">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35M11 8v6M8 11h6"/></svg>
+      Click any image to view fullscreen
+    </div>
+  </section>
+
+  <!-- ════════════ SLIDE — FIREWORKS & REVEAL ════════════ -->
+  <section id="s-fireworks" data-label="Fireworks & Reveal">
+    <div class="fw-bg"></div>
+    <div class="fw-grain"></div>
+    <div class="fw-sparks">
+      <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+      <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+    </div>
+    <div class="head-band"></div>
+    <div class="slide-idx">04.7</div>
+    <div class="sec-label">The Moment</div>
+    <div class="page-title">Fireworks &amp; <span style="color:var(--gold);">Project Reveal</span></div>
+    <div class="title-rule"></div>
+
+    <div class="fw-layout">
+      <div class="fw-left">
+        <div class="fw-quote">“The sky opens. The music swells. حياة appears.”</div>
+        <div class="fw-lead">A 15-minute pyrotechnic performance synchronised to original score, culminating in a time-coded light &amp; laser sequence that delivers the project reveal film.</div>
+
+        <div class="fw-timing">
+          <div class="fwt-big">15<span class="fwt-unit">MIN</span></div>
+          <div class="fwt-meta">
+            <div class="fwt-row"><span class="fwt-l">Start</span><span class="fwt-v">8:45 PM</span></div>
+            <div class="fwt-row"><span class="fwt-l">End</span><span class="fwt-v">9:00 PM</span></div>
+            <div class="fwt-row"><span class="fwt-l">Placement</span><span class="fwt-v">Post-Speeches</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="fw-right">
+        <div class="fw-phase">
+          <div class="fw-pnum">01</div>
+          <div class="fw-pbar"><span style="width:30%;"></span></div>
+          <div class="fw-pbody">
+            <div class="fw-ptitle">Opening Pyro <span class="fw-pdur">· 0:00 – 4:30</span></div>
+            <div class="fw-ptext">Aerial shells open the sequence — low, mid, and high tier bursts choreographed to a building orchestral overture. Stage lighting dimmed to silhouette the skyline.</div>
+          </div>
+        </div>
+        <div class="fw-phase">
+          <div class="fw-pnum">02</div>
+          <div class="fw-pbar"><span style="width:60%;"></span></div>
+          <div class="fw-pbody">
+            <div class="fw-ptitle">Laser &amp; Light Bridge <span class="fw-pdur">· 4:30 – 10:00</span></div>
+            <div class="fw-ptext">Ground-based lasers and beam lights take over, painting the audience and venue axis. Pyro recedes into rhythmic ground effects. Music transitions to the Hayat theme.</div>
+          </div>
+        </div>
+        <div class="fw-phase">
+          <div class="fw-pnum">03</div>
+          <div class="fw-pbar"><span style="width:100%;"></span></div>
+          <div class="fw-pbody">
+            <div class="fw-ptitle">Project Reveal Film <span class="fw-pdur">· 10:00 – 15:00</span></div>
+            <div class="fw-ptext">Time-coded video reveal: the حياة project film plays on the stage LED wall, frame-synced to laser lines across the facade and a final pyro crescendo on the closing shot.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="fw-ticker">
+      <span>PYROTECHNIC SHOW</span>
+      <span>LIVE ORIGINAL SCORE</span>
+      <span>TIME-CODED LASERS</span>
+      <span>STAGE LED REVEAL</span>
+      <span>BROADCAST LIVE</span>
+      <span>15 MINUTES</span>
+    </div>
+  </section>
+  <section id="s-journey" data-label="Guest Journey">
+    <div class="bg-texture"></div>
+    <div class="head-band"></div>
+    <div class="slide-idx">05</div>
+    <div class="sec-label light">Experience Design</div>
+    <div class="page-title light">Guest <span style="color:var(--gold);">Journey</span></div>
+    <div class="title-rule"></div>
+
+    <div class="journey-track">
+      <div class="track-line"></div>
+      <div class="steps-row">
+        <div class="jstep">
+          <div class="js-circle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+          <div class="js-title">Invitation</div>
+          <div class="js-desc">WhatsApp + SMS + formal printed card</div>
+        </div>
+        <div class="jstep">
+          <div class="js-circle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></div>
+          <div class="js-title">Arrival &amp; Check-In</div>
+          <div class="js-desc">7 PM · valet · welcome arch · QR scan · wristband</div>
+        </div>
+        <div class="jstep">
+          <div class="js-circle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2a7 7 0 0 0-7 7c0 3 2 5 2 8h10c0-3 2-5 2-8a7 7 0 0 0-7-7z"/><path d="M9 21h6M10 17v4M14 17v4"/></svg></div>
+          <div class="js-title">Welcome Reception</div>
+          <div class="js-desc">Drinks · ambient music · networking zone</div>
+        </div>
+        <div class="jstep">
+          <div class="js-circle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="12" rx="1"/><path d="M8 20h8M12 16v4"/></svg></div>
+          <div class="js-title">Talks &amp; Speeches</div>
+          <div class="js-desc">8 PM · RAWASI address · Hayat vision film</div>
+        </div>
+        <div class="jstep">
+          <div class="js-circle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+          <div class="js-title">Grand Reveal</div>
+          <div class="js-desc">8:45 PM · حياة reveal · mapping · fireworks</div>
+        </div>
+        <div class="jstep">
+          <div class="js-circle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 11h18M6 7h12a2 2 0 0 1 2 2v2H4V9a2 2 0 0 1 2-2z"/><path d="M5 11v6M19 11v6M8 17h8"/></svg></div>
+          <div class="js-title">Dinner &amp; Show</div>
+          <div class="js-desc">9 PM · gala dinner · live entertainment till 1 AM</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="touch-points">
+      <div class="tp-block">
+        <div class="tp-title">Pre-Event</div>
+        <div class="tp-text">Digital invitation with Google Maps pin · Event teaser video · WhatsApp reminder 48h + 2h before · Dress code: Smart Casual / Elegant</div>
+      </div>
+      <div class="tp-block">
+        <div class="tp-title">On-Site Experience</div>
+        <div class="tp-text">Welcome arch with حياة branding · Fragrance activation at entry · Branded photo moments · Live social media wall on LED screens</div>
+      </div>
+      <div class="tp-block">
+        <div class="tp-title">Post-Event</div>
+        <div class="tp-text">Thank-you SMS within 24h · Event recap video within 48h · Sales follow-up call · Exclusive early-bird booking window (72h)</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ SLIDE 14 — CROWD MGMT ═══════════════ -->
+  <section id="s-crowd" class="op-slide" data-label="Crowd Management">
+    <div class="bg-texture"></div>
+    <div class="head-band"></div>
+    <div class="slide-idx">06</div>
+    <div class="sec-label light">Operations</div>
+    <div class="page-title light">Crowd <span style="color:var(--gold);">Management</span></div>
+    <div class="title-rule"></div>
+
+    <div class="op-grid">
+      <div class="cm-layout">
+        <div class="cm-col">
+          <div class="cm-block">
+            <div class="cb-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>Capacity & Entry Control</div>
+            <ul>
+              <li>Total event capacity: 1,000 seated guests (700 + 300 VIP)</li>
+              <li>4 entry gates with dedicated VIP fast-track lane</li>
+              <li>Digital QR ticketing & RFID wristbands</li>
+              <li>Real-time occupancy monitoring via counter system</li>
+              <li>Max entry rate: 200 guests / 10 min at peak</li>
+            </ul>
+          </div>
+          <div class="cm-block">
+            <div class="cb-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>Zone Flow Strategy</div>
+            <ul>
+              <li>Colour-coded wristbands per zone (General / VIP / Media)</li>
+              <li>One-way flow corridors to avoid counter-flow congestion</li>
+              <li>Barrier system with 6 marshalled checkpoint stations</li>
+              <li>Emergency evacuation routes signposted (4 exits)</li>
+              <li>Separate exit channels to prevent bottlenecks at close</li>
+            </ul>
+          </div>
+        </div>
+        <div class="cm-col">
+          <div class="cm-stats">
+            <div class="cm-stat-item"><div class="csn">1,000</div><div class="csl">Seated Guests</div></div>
+            <div class="cm-stat-item"><div class="csn">4</div><div class="csl">Entry Gates</div></div>
+            <div class="cm-stat-item"><div class="csn">60+</div><div class="csl">Ushers</div></div>
+          </div>
+          <div class="cm-block">
+            <div class="cb-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>Parking & Transport</div>
+            <ul>
+              <li>On-site valet: 200 cars (VIP + premium)</li>
+              <li>Overflow parking: Fakhr El-Din Khaled corridor</li>
+              <li>Shuttle buses from designated pick-up points</li>
+              <li>Dedicated media & supplier unloading zone</li>
+              <li>Traffic coordinators on all approach roads</li>
+            </ul>
+          </div>
+          <div class="cm-block">
+            <div class="cb-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.18 2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.6a16 16 0 0 0 6 6l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.5 16z"/></svg>Communications</div>
+            <ul>
+              <li>Operations command center (on-site war room)</li>
+              <li>Two-way radio system across all staff teams</li>
+              <li>Dedicated WhatsApp ops group + backup phone tree</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ SLIDE 15 — SECURITY ═══════════════ -->
+  <section id="s-sec" data-label="Security & Safety">
+    <div class="head-band"></div>
+    <div class="slide-idx">07</div>
+    <div class="sec-label">Safety</div>
+    <div class="page-title">Security & <span style="color:var(--gold);">Safety Plan</span></div>
+    <div class="title-rule"></div>
+
+    <div class="sec-grid">
+      <div class="sec-card">
+        <div class="sc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <div class="sc-title">Security Personnel</div>
+        <div class="sc-desc">150+ trained officers across all zones and backstage. Uniformed and plainclothes units, licensed private security.</div>
+      </div>
+      <div class="sec-card">
+        <div class="sc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="14" rx="1"/><path d="M8 21h8M12 18v3M7 8h3M7 12h3M14 8h3M14 12h3"/></svg></div>
+        <div class="sc-title">Ops Command Center</div>
+        <div class="sc-desc">On-site war room coordinating all security, medical, and event teams. Two-way radio across all units with dedicated supervisor channel.</div>
+      </div>
+      <div class="sec-card">
+        <div class="sc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+        <div class="sc-title">Bag Check & Screening</div>
+        <div class="sc-desc">Walk-through metal detectors at all gates. X-ray screening at VIP entry. Prohibited items list communicated in advance.</div>
+      </div>
+      <div class="sec-card">
+        <div class="sc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></div>
+        <div class="sc-title">First Aid & Medical</div>
+        <div class="sc-desc">2 medical units with paramedics, ambulance on standby, AED equipment. Coordinated with Mansoura University Hospital.</div>
+      </div>
+    </div>
+
+    <div class="protocol">
+      <div class="proto-step"><div class="proto-num">1</div><div class="proto-label">Guest Arrival<br/>& ID Check</div></div>
+      <div class="proto-step"><div class="proto-num">2</div><div class="proto-label">Bag Screen<br/>& Wristband</div></div>
+      <div class="proto-step"><div class="proto-num">3</div><div class="proto-label">Zone<br/>Assignment</div></div>
+      <div class="proto-step"><div class="proto-num">4</div><div class="proto-label">In-Event<br/>Monitoring</div></div>
+      <div class="proto-step"><div class="proto-num">5</div><div class="proto-label">Controlled<br/>Departure</div></div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ SLIDE 16 — OPS TEAM ═══════════════ -->
+  <section id="s-team" data-label="Operations Team">
+    <div class="bg-texture"></div>
+    <div class="head-band"></div>
+    <div class="slide-idx">08</div>
+    <div class="sec-label light">Organization</div>
+    <div class="page-title light">Operations <span style="color:var(--gold);">Teams</span></div>
+    <div class="title-rule"></div>
+
+    <div class="teams-intro">Eleven coordinated teams deliver the event — from production and stage management through to hospitality, security, and media. Headcounts below reflect total active personnel across setup, showtime, and breakdown.</div>
+
+    <div class="teams-grid">
+      <div class="tm-card"><div class="tm-num">150<span>+</span></div><div class="tm-name">Production</div><div class="tm-sub">Build · rigging · setup · breakdown</div></div>
+      <div class="tm-card"><div class="tm-num">150<span>+</span></div><div class="tm-name">Security</div><div class="tm-sub">Uniformed + plainclothes · gates · zones · backstage</div></div>
+      <div class="tm-card"><div class="tm-num">150<span>+</span></div><div class="tm-name">F&amp;B</div><div class="tm-sub">Chefs · service staff · banquet captains · bar teams</div></div>
+      <div class="tm-card"><div class="tm-num">60<span>+</span></div><div class="tm-name">Guest Management</div><div class="tm-sub">Ushers · coordinators · VIP hosts · check-in</div></div>
+      <div class="tm-card"><div class="tm-num">40<span>+</span></div><div class="tm-name">AV</div><div class="tm-sub">Audio · lighting · video · LED walls · control</div></div>
+      <div class="tm-card"><div class="tm-num">30<span>+</span></div><div class="tm-name">Valet</div><div class="tm-sub">On-site valet · traffic · car retrieval</div></div>
+      <div class="tm-card"><div class="tm-num">30<span>+</span></div><div class="tm-name">Housekeeping</div><div class="tm-sub">Venue cleaning · restrooms · turnover · waste</div></div>
+      <div class="tm-card"><div class="tm-num">20<span>+</span></div><div class="tm-name">Media</div><div class="tm-sub">Video · photography · live broadcast · social</div></div>
+      <div class="tm-card"><div class="tm-num">15<span>+</span></div><div class="tm-name">Stage Management</div><div class="tm-sub">Show calling · cue sheets · run sheet · backstage flow</div></div>
+      <div class="tm-card tm-tbc"><div class="tm-num">—</div><div class="tm-name">Fireworks</div><div class="tm-sub">Licensed pyro crew · safety officers · time-code ops</div></div>
+      <div class="tm-card tm-tbc"><div class="tm-num">—</div><div class="tm-name">Floor Furnish</div><div class="tm-sub">Carpeting · flooring · staging finish · decor install</div></div>
+      <div class="tm-card tm-total">
+        <div class="tm-num">645<span>+</span></div>
+        <div class="tm-name">Total Personnel</div>
+        <div class="tm-sub">Across all confirmed teams</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ SLIDE 17 — CLOSING ═══════════════ -->
+  <section id="s-close" data-label="Closing">
+    <div class="bg-img"><img src="project/uploads/Edit_this_image_202604201417.png" alt="Finale panorama"></div>
+    <div class="corner tl"></div>
+    <div class="corner br"></div>
+
+    <div class="content">
+      <div class="sub">RAWASI Developments · <span>Mid May 2026</span></div>
+      <div class="logo-lg"><img src="project/assets/hayat-logo-white.png" alt="حياة المنصورة"></div>
+      <div class="en">Where Life Begins</div>
+      <div class="div"></div>
+      <div class="tag">Mansoura's most anticipated residential launch — <em>a life well lived</em></div>
+      <div class="info-row">
+        <div class="itm"><div class="itm-v">Mid May 2026</div><div class="itm-l">Event Date</div></div>
+        <div class="itm"><div class="itm-v">Mansoura</div><div class="itm-l">Location</div></div>
+        <div class="itm"><div class="itm-v">1,000</div><div class="itm-l">Guests</div></div>
+        <div class="itm"><div class="itm-v">7 PM – 1 AM</div><div class="itm-l">Event Hours</div></div>
+      </div>
+    </div>
+
+    <div class="logo-cr">
+      <img src="project/assets/rawasi-logo-white.png" alt="RAWASI" style="width: 180px; height: auto; display: block; opacity: 0.75;">
+    </div>
+  </section>
+
+</deck-stage>
+
+<!-- ═══════════════ LIGHTBOX ═══════════════ -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true">
+  <div class="lb-header">
+    <div class="lb-meta">
+      <div class="lb-category" id="lb-category"></div>
+      <div class="lb-title" id="lb-title"></div>
+    </div>
+    <div class="lb-counter" id="lb-counter"></div>
+    <button class="lb-close" id="lb-close" aria-label="Close">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+  </div>
+  <div class="lb-content">
+    <button class="lb-nav prev" id="lb-prev" aria-label="Previous">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+    </button>
+    <img class="lb-image" id="lb-image" src="" alt="">
+    <button class="lb-nav next" id="lb-next" aria-label="Next">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg>
+    </button>
+  </div>
+  <div class="lb-footer">
+    <div class="lb-hint">
+      <span><span class="lb-kbd">←</span> <span class="lb-kbd">→</span> Navigate</span>
+      <span><span class="lb-kbd">Esc</span> Close</span>
+    </div>
+    <div class="lb-thumbs" id="lb-thumbs"></div>
+    <div class="lb-hint" style="justify-content: flex-end;">
+      <span><span class="lb-kbd">F</span> Fullscreen</span>
+    </div>
+  </div>
+</div>
+
+<style id="hayat-anim-styles">
+  /* ═══════════════════════ MASTER ANIMATION SYSTEM ═══════════════════════ */
+
+  /* ── HAYAT LOGO TRANSITION — elegant, slow, brand-forward ── */
+  .hayat-transition {
+    position: fixed; inset: 0; z-index: 9999; pointer-events: none;
+    display: flex; align-items: center; justify-content: center;
+    background: rgba(13, 19, 34, 0);
+    animation: htVeil 1.8s cubic-bezier(.5,0,.2,1) forwards;
+  }
+  @keyframes htVeil {
+    0%   { background: rgba(13, 19, 34, 0); }
+    30%  { background: rgba(13, 19, 34, 0.92); }
+    70%  { background: rgba(13, 19, 34, 0.92); }
+    100% { background: rgba(13, 19, 34, 0); }
+  }
+  .hayat-transition .ht-logo {
+    width: 620px; height: auto;
+    opacity: 0; transform: scale(.92);
+    filter: drop-shadow(0 0 60px rgba(212,175,120,0.35));
+    animation: htLogo 1.8s cubic-bezier(.5,0,.2,1) forwards;
+  }
+  @keyframes htLogo {
+    0%   { opacity: 0; transform: scale(.92); filter: blur(10px) drop-shadow(0 0 60px rgba(212,175,120,0.35)); }
+    25%  { opacity: 1; transform: scale(.98); filter: blur(0) drop-shadow(0 0 60px rgba(212,175,120,0.5)); }
+    60%  { opacity: 1; transform: scale(1.02); filter: blur(0) drop-shadow(0 0 80px rgba(212,175,120,0.6)); }
+    100% { opacity: 0; transform: scale(1.08); filter: blur(6px) drop-shadow(0 0 100px rgba(212,175,120,0.3)); }
+  }
+  /* (Per-element data-anim primitives kept simple — slides trigger via .slide-active) */
+
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes drawRule { from { opacity: 0; transform: scaleX(0); } to { opacity: 1; transform: scaleX(1); } }
+  @keyframes slideRight { from { opacity: 0; transform: translateX(-40px); } to { opacity: 1; transform: translateX(0); } }
+  @keyframes slideLeft { from { opacity: 0; transform: translateX(40px); } to { opacity: 1; transform: translateX(0); } }
+  @keyframes scaleIn { from { opacity: 0; transform: scale(.88); } to { opacity: 1; transform: scale(1); } }
+  @keyframes kenBurns { from { transform: scale(1.08); } to { transform: scale(1.18); } }
+  @keyframes shimmerRule {
+    0% { box-shadow: 0 0 0 rgba(212,175,120,0); }
+    50% { box-shadow: 0 0 20px rgba(212,175,120,0.7); }
+    100% { box-shadow: 0 0 0 rgba(212,175,120,0); }
+  }
+
+  /* Stagger helpers — data-anim-delay="1..12" */
+  [data-anim-delay="1"] { animation-delay: .08s !important; }
+  [data-anim-delay="2"] { animation-delay: .16s !important; }
+  [data-anim-delay="3"] { animation-delay: .24s !important; }
+  [data-anim-delay="4"] { animation-delay: .32s !important; }
+  [data-anim-delay="5"] { animation-delay: .40s !important; }
+  [data-anim-delay="6"] { animation-delay: .48s !important; }
+  [data-anim-delay="7"] { animation-delay: .56s !important; }
+  [data-anim-delay="8"] { animation-delay: .64s !important; }
+  [data-anim-delay="9"] { animation-delay: .72s !important; }
+  [data-anim-delay="10"] { animation-delay: .80s !important; }
+  [data-anim-delay="11"] { animation-delay: .88s !important; }
+  [data-anim-delay="12"] { animation-delay: .96s !important; }
+
+  /* ── COVER-SLIDE CINEMATICS (trigger on #s1.slide-active) ── */
+  #s1 .bg-img img { will-change: transform; }
+  #s1.slide-active .bg-img img { animation: kenBurns 24s ease-out forwards; }
+  #s1.slide-active .content { animation: fadeIn 1.2s .4s both; }
+  #s1.slide-active .rawasi { animation: fadeUp 1s .6s cubic-bezier(.2,.7,.2,1) both; }
+  #s1.slide-active .presents { animation: expandSpace 1.4s 1.0s cubic-bezier(.2,.7,.2,1) both; }
+  @keyframes expandSpace { from { opacity: 0; letter-spacing: 1em; } to { opacity: 1; letter-spacing: normal; } }
+  #s1.slide-active .project-logo { animation: heroLogo 1.6s 1.4s cubic-bezier(.2,.8,.2,1) both; }
+  @keyframes heroLogo {
+    0% { opacity: 0; transform: scale(.85); filter: blur(8px); }
+    60% { opacity: 1; filter: blur(0); }
+    100% { opacity: 1; transform: scale(1); filter: blur(0); }
+  }
+  #s1.slide-active .project-en { animation: fadeUp .9s 2.2s cubic-bezier(.2,.7,.2,1) both; }
+  #s1.slide-active .divider { animation: fadeUp .9s 2.4s cubic-bezier(.2,.7,.2,1) both; }
+  #s1.slide-active .subtitle { animation: fadeUp .9s 2.6s cubic-bezier(.2,.7,.2,1) both; }
+  #s1.slide-active .date { animation: fadeUp .9s 2.8s cubic-bezier(.2,.7,.2,1) both; }
+  #s1.slide-active .loc { animation: fadeUp .9s 3.0s cubic-bezier(.2,.7,.2,1) both; }
+  #s1.slide-active .corner.tl { animation: cornerIn 1s .2s cubic-bezier(.2,.7,.2,1) both; transform-origin: top left; }
+  #s1.slide-active .corner.br { animation: cornerIn 1s .2s cubic-bezier(.2,.7,.2,1) both; transform-origin: bottom right; }
+  @keyframes cornerIn { from { opacity: 0; transform: scale(.3); } to { opacity: 1; transform: scale(1); } }
+  #s1.slide-active .bottom-mark { animation: fadeIn 1s 3.2s both; }
+
+  /* Floating gold particles on cover */
+  .gold-particles { position: absolute; inset: 0; pointer-events: none; overflow: hidden; z-index: 1; }
+  .gold-particles .gp {
+    position: absolute; width: 3px; height: 3px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(212,175,120,0.9), rgba(212,175,120,0));
+    animation: gpFloat var(--dur, 18s) linear infinite;
+    animation-delay: var(--delay, 0s);
+    left: var(--x, 50%); bottom: -20px;
+  }
+  @keyframes gpFloat {
+    0% { transform: translateY(0) translateX(0) scale(.5); opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: .7; }
+    100% { transform: translateY(-1200px) translateX(var(--drift, 40px)) scale(1.2); opacity: 0; }
+  }
+
+  /* ── TITLE RULE SHIMMER (universal for all page-titles) ── */
+  .title-rule, .ttl-rule {
+    position: relative; overflow: hidden;
+  }
+  .title-rule::after, .ttl-rule::after {
+    content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.85), transparent);
+    animation: shimmerSweep 2.8s 1.5s infinite;
+  }
+  @keyframes shimmerSweep { to { left: 200%; } }
+
+  /* ── GALLERY HERO KEN BURNS ── */
+  .gal .g-tile.gal-hero img, .hero-img img, #s3 .hero-img img { transition: transform 6s ease-out; }
+  section.slide-active .g-tile.gal-hero img,
+  section.slide-active .hero-img img { transform: scale(1.08); }
+
+  /* ── GALLERY TILE STAGGER ── */
+  .gal .g-tile { opacity: 0; transform: translateY(40px) scale(.97); }
+  section.slide-active .g-tile {
+    animation: tileIn .9s cubic-bezier(.2,.8,.2,1) forwards;
+  }
+  section.slide-active .g-tile:nth-child(1) { animation-delay: .2s; }
+  section.slide-active .g-tile:nth-child(2) { animation-delay: .32s; }
+  section.slide-active .g-tile:nth-child(3) { animation-delay: .44s; }
+  section.slide-active .g-tile:nth-child(4) { animation-delay: .56s; }
+  section.slide-active .g-tile:nth-child(5) { animation-delay: .68s; }
+  section.slide-active .g-tile:nth-child(6) { animation-delay: .80s; }
+  @keyframes tileIn { to { opacity: 1; transform: translateY(0) scale(1); } }
+
+  /* Hover micro-interaction for tiles */
+  .g-tile { transition: transform .5s cubic-bezier(.2,.8,.2,1), box-shadow .5s ease; }
+  .g-tile:hover { transform: translateY(-6px); box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
+  .g-tile:hover img { transform: scale(1.05); }
+  .g-tile img { transition: transform .8s cubic-bezier(.2,.8,.2,1); }
+
+  /* ── INDEX GRID STAGGER ── */
+  #s2 .idx-item { opacity: 0; transform: translateY(30px); }
+  section.slide-active.s2-indexed .idx-item,
+  #s2.slide-active .idx-item {
+    animation: idxIn .8s cubic-bezier(.2,.8,.2,1) forwards;
+  }
+  #s2.slide-active .idx-item:nth-child(1) { animation-delay: .15s; }
+  #s2.slide-active .idx-item:nth-child(2) { animation-delay: .22s; }
+  #s2.slide-active .idx-item:nth-child(3) { animation-delay: .29s; }
+  #s2.slide-active .idx-item:nth-child(4) { animation-delay: .36s; }
+  #s2.slide-active .idx-item:nth-child(5) { animation-delay: .43s; }
+  #s2.slide-active .idx-item:nth-child(6) { animation-delay: .50s; }
+  #s2.slide-active .idx-item:nth-child(7) { animation-delay: .57s; }
+  #s2.slide-active .idx-item:nth-child(8) { animation-delay: .64s; }
+  #s2.slide-active .idx-item:nth-child(9) { animation-delay: .71s; }
+  @keyframes idxIn { to { opacity: 1; transform: translateY(0); } }
+  #s2 .idx-item { transition: transform .4s ease, border-color .4s ease, box-shadow .4s ease; }
+  #s2 .idx-item:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(27,36,68,0.08); }
+
+  /* ── SHARED: page-title + sec-label + title-rule entrance (any slide) ── */
+  section.slide-active > .sec-label { animation: slideRight .8s .1s cubic-bezier(.2,.7,.2,1) backwards; }
+  section.slide-active > .page-title { animation: fadeUp .9s .2s cubic-bezier(.2,.7,.2,1) backwards; }
+  section.slide-active > .title-rule { animation: drawRule .8s .45s cubic-bezier(.7,0,.3,1) backwards; transform-origin: left; }
+  section.slide-active > .slide-idx { animation: slideLeft .8s .1s cubic-bezier(.2,.7,.2,1) backwards; }
+  section.slide-active > .head-band { animation: drawRule 1s cubic-bezier(.7,0,.3,1) backwards; transform-origin: left; }
+
+  /* Gallery headers */
+  section.gal.slide-active .gal-header-left > * { animation: fadeUp .8s .2s cubic-bezier(.2,.7,.2,1) backwards; }
+  section.gal.slide-active .gal-header-left > *:nth-child(2) { animation-delay: .3s; }
+  section.gal.slide-active .gal-header-left > *:nth-child(3) { animation-delay: .4s; }
+  section.gal.slide-active .gal-header-right { animation: fadeUp .9s .35s cubic-bezier(.2,.7,.2,1) backwards; }
+
+  /* ── HAYAT WAVE PARTICLES (stage gallery slide) ── */
+  .wave-ambient {
+    position: absolute; inset: 0; pointer-events: none; overflow: hidden; z-index: 1;
+  }
+  .wave-ambient .wv {
+    position: absolute; bottom: 0; left: 50%; width: 800px; height: 800px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(184,150,90,0.08) 0%, transparent 60%);
+    transform: translate(-50%, 50%);
+    animation: wvPulse 6s ease-in-out infinite;
+  }
+  .wave-ambient .wv:nth-child(2) { animation-delay: 1.5s; opacity: .6; }
+  .wave-ambient .wv:nth-child(3) { animation-delay: 3s; opacity: .4; }
+  @keyframes wvPulse {
+    0%, 100% { transform: translate(-50%, 50%) scale(.8); opacity: .3; }
+    50% { transform: translate(-50%, 50%) scale(1.2); opacity: .9; }
+  }
+
+  /* ── SECTION DIVIDERS — gold accent sweep ── */
+  .sec-label::before {
+    content: ''; display: inline-block; width: 20px; height: 1px;
+    background: currentColor; margin-right: 10px; vertical-align: middle; opacity: 0.6;
+  }
+
+  /* ── Powered-by footer subtle pulse on load ── */
+  .powered-footer { opacity: 0; animation: fadeIn 1s 1.2s forwards; }
+
+  /* Respect reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: .01s !important; animation-delay: 0s !important; transition-duration: .01s !important; }
+  }
+</style>
+
+<script>
+// ═══════════════ SLIDE ACTIVATION + ANIMATIONS ═══════════════
+(function() {
+  // Mark the currently-visible slide with .slide-active so per-slide animations trigger.
+  // deck-stage switches slides via internal logic; we observe visibility via IntersectionObserver
+  // and also listen for the slideIndexChanged message the component posts.
+
+  function markActive(idx) {
+    const sections = Array.from(document.querySelectorAll('deck-stage > section'));
+    sections.forEach((sec, i) => {
+      if (i === idx) {
+        // Re-trigger: remove then add to restart CSS animations
+        sec.classList.remove('slide-active');
+        void sec.offsetWidth;
+        sec.classList.add('slide-active');
+      } else {
+        sec.classList.remove('slide-active');
+      }
+    });
+  }
+
+  window.addEventListener('message', (e) => {
+    if (e.data && typeof e.data.slideIndexChanged === 'number') {
+      markActive(e.data.slideIndexChanged);
+      if (window.__transitionReady && window.playTransition) window.playTransition();
+    }
+  });
+
+  // Fallback — activate slide 0 on load
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      const sections = document.querySelectorAll('deck-stage > section');
+      if (sections.length) sections[0].classList.add('slide-active');
+    }, 100);
+  });
+})();
+
+// ═══════════════ COVER — FLOATING GOLD PARTICLES ═══════════════
+(function() {
+  const cover = document.querySelector('#s1');
+  if (!cover) return;
+  const container = document.createElement('div');
+  container.className = 'gold-particles';
+  for (let i = 0; i < 24; i++) {
+    const p = document.createElement('div');
+    p.className = 'gp';
+    p.style.setProperty('--x', Math.random()*100 + '%');
+    p.style.setProperty('--drift', (Math.random()*200 - 100) + 'px');
+    p.style.setProperty('--dur', (12 + Math.random()*16) + 's');
+    p.style.setProperty('--delay', (Math.random()*20) + 's');
+    const scale = 0.5 + Math.random()*1.5;
+    p.style.width = (3*scale) + 'px'; p.style.height = (3*scale) + 'px';
+    container.appendChild(p);
+  }
+  cover.appendChild(container);
+})();
+
+// ═══════════════ STAGE GALLERY — HAYAT WAVE AMBIENT GLOW ═══════════════
+(function() {
+  const stage = document.querySelector('#s-gal-stage');
+  if (!stage) return;
+  const wa = document.createElement('div');
+  wa.className = 'wave-ambient';
+  wa.innerHTML = '<div class="wv"></div><div class="wv"></div><div class="wv"></div>';
+  // Insert behind content
+  stage.insertBefore(wa, stage.firstChild.nextSibling);
+})();
+
+// ═══════════════ HAYAT LOGO TRANSITION BETWEEN SLIDES ═══════════════
+(function() {
+  let el = null;
+  let removeTimer = null;
+
+  window.playTransition = function() {
+    if (!document.body) return;
+    if (el) { el.remove(); clearTimeout(removeTimer); }
+    el = document.createElement('div');
+    el.className = 'hayat-transition';
+    el.innerHTML = '<img class="ht-logo" src="project/assets/hayat-logo-white.png" alt="حياة">';
+    document.body.appendChild(el);
+    removeTimer = setTimeout(() => { if (el) { el.remove(); el = null; } }, 1900);
+  };
+
+  window.addEventListener('load', () => {
+    setTimeout(() => { window.__transitionReady = true; }, 800);
+  });
+})();
+
+</script>
+
+<script>
+// ═══════════════ GLOBAL FOOTER — POWERED BY STRIKE MEDIA ═══════════════
+(function() {
+  const css = `
+    .powered-footer {
+      position: absolute;
+      bottom: 22px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      z-index: 50;
+      pointer-events: none;
+      font-family: var(--serif, 'Cormorant Garamond', serif);
+    }
+    .powered-footer .pf-label {
+      font-family: 'Inter', system-ui, sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.28em;
+      color: rgba(255,255,255,0.55);
+      text-transform: uppercase;
+    }
+    .powered-footer .pf-logo {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      overflow: hidden;
+      background: #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+    }
+    .powered-footer .pf-logo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .powered-footer .pf-brand {
+      font-family: 'Inter', system-ui, sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      color: rgba(255,255,255,0.75);
+      text-transform: uppercase;
+    }
+    /* Dark variant for light-bg slides (index + close) */
+    .powered-footer.pf-dark .pf-label { color: rgba(27,36,68,0.45); }
+    .powered-footer.pf-dark .pf-brand { color: rgba(27,36,68,0.7); }
+  `;
+  const style = document.createElement('style');
+  style.textContent = css;
+  document.head.appendChild(style);
+
+  function luminance(rgbStr) {
+    const m = rgbStr.match(/\d+(\.\d+)?/g);
+    if (!m || m.length < 3) return 0;
+    const [r,g,b] = m.slice(0,3).map(Number);
+    return (0.299*r + 0.587*g + 0.114*b) / 255;
+  }
+
+  function effectiveBg(el) {
+    let node = el;
+    while (node && node !== document.body) {
+      const cs = getComputedStyle(node);
+      const bg = cs.backgroundColor;
+      const m = bg.match(/rgba?\(([^)]+)\)/);
+      if (m) {
+        const parts = m[1].split(',').map(s => parseFloat(s.trim()));
+        const alpha = parts.length === 4 ? parts[3] : 1;
+        if (alpha > 0.1 && !(parts[0]===0 && parts[1]===0 && parts[2]===0 && alpha===0)) {
+          return `rgb(${parts[0]},${parts[1]},${parts[2]})`;
+        }
+      }
+      node = node.parentElement;
+    }
+    return 'rgb(255,255,255)';
+  }
+
+  document.querySelectorAll('deck-stage > section').forEach(sec => {
+    const footer = document.createElement('div');
+    footer.className = 'powered-footer';
+    const bg = effectiveBg(sec);
+    if (luminance(bg) > 0.5) footer.classList.add('pf-dark');
+    footer.innerHTML = `
+      <span class="pf-label">Powered by</span>
+      <span class="pf-logo"><img src="project/assets/strike-media-logo.jpg" alt="Strike Media"></span>
+      <span class="pf-brand">Strike Media</span>
+    `;
+    sec.appendChild(footer);
+  });
+})();
+
+(function() {
+  // Collect all tiles on gallery slides.
+  const allTiles = Array.from(document.querySelectorAll('.g-tile[data-img]'));
+  const previewImg = document.querySelector('[data-gallery-preview]');
+
+  const lb = document.getElementById('lightbox');
+  const lbImg = document.getElementById('lb-image');
+  const lbCat = document.getElementById('lb-category');
+  const lbTitle = document.getElementById('lb-title');
+  const lbCounter = document.getElementById('lb-counter');
+  const lbClose = document.getElementById('lb-close');
+  const lbPrev = document.getElementById('lb-prev');
+  const lbNext = document.getElementById('lb-next');
+  const lbThumbs = document.getElementById('lb-thumbs');
+
+  // Build a flat deduped image set for navigation.
+  const items = [];
+  const seen = new Map();
+  allTiles.forEach(t => {
+    const src = t.getAttribute('data-img');
+    const category = t.getAttribute('data-category') || '';
+    const title = t.getAttribute('data-title') || '';
+    if (!seen.has(src)) {
+      items.push({ src, category, title });
+      seen.set(src, items.length - 1);
+    }
+  });
+
+  // Build thumbs.
+  items.forEach((it, i) => {
+    const t = document.createElement('div');
+    t.className = 'lb-thumb';
+    t.setAttribute('data-i', i);
+    t.innerHTML = '<img src="' + it.src + '" alt="">';
+    t.addEventListener('click', () => openAt(i));
+    lbThumbs.appendChild(t);
+  });
+
+  let curIdx = 0;
+
+  function openAt(i) {
+    if (i < 0) i = items.length - 1;
+    if (i >= items.length) i = 0;
+    curIdx = i;
+    const it = items[i];
+    lbImg.src = it.src;
+    lbCat.textContent = it.category;
+    lbTitle.textContent = it.title;
+    lbCounter.textContent = String(i + 1).padStart(2, '0') + ' / ' + String(items.length).padStart(2, '0');
+    // Highlight active thumb
+    lbThumbs.querySelectorAll('.lb-thumb').forEach((t, j) => t.classList.toggle('active', j === i));
+    // Scroll thumb into view
+    const activeThumb = lbThumbs.querySelector('.lb-thumb.active');
+    if (activeThumb) {
+      activeThumb.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+    }
+    if (!lb.classList.contains('open')) {
+      lb.classList.add('open');
+      document.body.classList.add('lightbox-open');
+    }
+  }
+
+  function close() {
+    lb.classList.remove('open');
+    document.body.classList.remove('lightbox-open');
+  }
+
+  // Bind tile clicks.
+  allTiles.forEach(t => {
+    const src = t.getAttribute('data-img');
+    t.addEventListener('click', (e) => {
+      e.preventDefault();
+      const idx = seen.get(src);
+      if (idx != null) openAt(idx);
+    });
+  });
+  if (previewImg) {
+    previewImg.addEventListener('click', () => openAt(0));
+  }
+
+  lbClose.addEventListener('click', close);
+  lbPrev.addEventListener('click', () => openAt(curIdx - 1));
+  lbNext.addEventListener('click', () => openAt(curIdx + 1));
+  lb.addEventListener('click', (e) => {
+    // Close on backdrop click (not on inner content)
+    if (e.target === lb) close();
+  });
+
+  // Keyboard control — only when lightbox is open.
+  window.addEventListener('keydown', (e) => {
+    if (!lb.classList.contains('open')) return;
+    if (e.key === 'Escape') { close(); e.stopPropagation(); }
+    else if (e.key === 'ArrowLeft') { openAt(curIdx - 1); e.stopPropagation(); }
+    else if (e.key === 'ArrowRight') { openAt(curIdx + 1); e.stopPropagation(); }
+    else if (e.key === 'f' || e.key === 'F') {
+      if (!document.fullscreenElement) {
+        lb.requestFullscreen && lb.requestFullscreen();
+      } else {
+        document.exitFullscreen && document.exitFullscreen();
+      }
+      e.stopPropagation();
+    }
+  }, true); // capture phase so we intercept before the deck-stage's keydown
+})();
+</script>
+
+<script type="application/json" id="speaker-notes">
+[
+  "Welcome. Tonight we are presenting the grand launch event for Hayat — the flagship residential compound from RAWASI Developments in Mansoura, Egypt. Scheduled for mid May 2026, this is a premium-scale launch gala designed to establish Hayat as the Delta's most aspirational new community.",
+  "This deck is organized into nine sections: an event overview, the venue site, run of show, a visual gallery of eighteen renders, the guest journey, crowd management, security, operations team, and a grand closing. The visual gallery is the centerpiece — click any render to view it fullscreen.",
+  "The event is a six-hour evening gala — from five PM to eleven PM — designed for approximately two thousand general guests plus one hundred fifty VIPs. The objective is dual: launch Phase One sales and establish the Hayat brand in the market.",
+  "Our venue is the project's actual plot on Saad El-Sherbiny Street in Mansoura, directly adjacent to the main railway line. The site is approximately sixty-five thousand square meters with multi-point access — perfect for the five event zones: stage, VIP, reception, F&B, and parking.",
+  "The run of show flows from soft open at five PM, through a dedicated VIP preview at six, the official opening ceremony at seven, ninety minutes of main entertainment, and climaxes with the grand project reveal at nine-thirty PM — our choreographed fireworks moment.",
+  "Now, the gallery. Eighteen renders across six functional sections. I'll walk you through each zone — and you can click any image to zoom into full detail.",
+  "Reception and Entrance — four key renders showing the main welcome arch, the fireworks-lit reception, the circular check-in desk, and the Hayat interview lounge where opening statements will be captured for broadcast.",
+  "The Main Stage — the heart of the evening. Twenty-four meters wide, featuring the signature Hayat wave graphic, full LED backdrops, synchronized laser arrays, and a dedicated speaker podium for the opening address.",
+  "The VIP Lounge — an exclusive rooftop environment for one hundred fifty premium guests. Lush green walls, illuminated Hayat calligraphy, premium bar, and uninterrupted skyline views.",
+  "F&B Experience — a fine dining terrace for five hundred covers, framed by the Hayat wave. Specialty bars, live cooking stations, and the 'Breath of Light' installation as centerpiece.",
+  "The Promenade — the transitional spaces. Cocktail foyers, green archways, and illuminated lanterns that shape the guest's journey between zones.",
+  "Finale and Reveal — the climactic moment at nine-thirty PM. Synchronized fireworks, choreographed lasers, and the full Hayat identity revealed across the skyline.",
+  "The guest journey is mapped across six touchpoints — from invitation through departure. Each stage has a defined experience standard and a follow-up mechanism.",
+  "Crowd management — we operate at one thousand seated guests with four entry gates, sixty-plus ushers, and a dedicated operations command center. Colour-coded wristbands manage zone access.",
+  "Security and safety — one hundred fifty-plus licensed officers, walk-through metal detection at all gates, and two on-site medical units coordinated with Mansoura University Hospital.",
+  "Operations structure — a single Event Director with five department heads coordinating over two hundred staff across ops, guest experience, technical, security, and media.",
+  "This is حياة. Mid May 2026. Mansoura's most anticipated residential launch. Thank you."
+]
+</script>
+
+</body>
+</html>
