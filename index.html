@@ -67,12 +67,15 @@
   #s1 .project-ar { font-family: var(--f-ar); font-size: 160px; color: #fff; line-height: 0.9; font-weight: 700; margin-bottom: 0; letter-spacing: -0.01em; }
   #s1 .project-logo { margin-bottom: 10px; }
   #s1 .project-logo img { width: 420px; height: auto; display: block; margin: 0 auto; filter: drop-shadow(0 4px 16px rgba(0,0,0,0.4)); }
-  #s1 .project-en { font-size: 48px; font-weight: 400; letter-spacing: 0.35em; color: var(--gold-l); text-transform: uppercase; margin-top: 12px; margin-bottom: 60px; font-family: var(--f-head); }
-  #s1 .divider { width: 80px; height: 2px; background: var(--gold); margin: 0 auto 40px; }
-  #s1 .subtitle { font-size: 23px; font-weight: 500; letter-spacing: 0.28em; color: rgba(255,255,255,0.6); text-transform: uppercase; margin-bottom: 14px; }
-  #s1 .date { font-size: 32px; font-weight: 700; color: #fff; letter-spacing: 0.04em; margin-bottom: 6px; }
-  #s1 .loc { font-size: 24px; font-weight: 400; color: var(--gold-l); letter-spacing: 0.18em; text-transform: uppercase; }
-  #s1 .bottom-mark { position: absolute; bottom: 70px; left: 120px; right: 120px; display: flex; justify-content: space-between; align-items: center; font-size: 17px; font-weight: 500; letter-spacing: 0.3em; color: rgba(255,255,255,0.5); text-transform: uppercase; z-index: 2; }
+  #s1 .project-en { font-size: 48px; font-weight: 400; letter-spacing: 0.26em; color: var(--gold-l); text-transform: uppercase; margin-top: 12px; margin-bottom: 36px; font-family: var(--f-head); }
+  #s1 .divider { width: 80px; height: 2px; background: var(--gold); margin: 0 auto 24px; }
+  #s1 .subtitle { font-size: 23px; font-weight: 500; letter-spacing: 0.22em; color: rgba(255,255,255,0.7); text-transform: uppercase; margin-bottom: 14px; }
+  #s1 .date { font-size: 26px; font-weight: 500; color: #fff; letter-spacing: 0.06em; margin-bottom: 6px; }
+  #s1 .loc { font-size: 22px; font-weight: 400; color: var(--gold-l); letter-spacing: 0.18em; text-transform: uppercase; }
+  #s1 .bottom-mark { position: absolute; bottom: 70px; left: 120px; right: 120px; display: flex; justify-content: space-between; align-items: center; font-size: 17px; font-weight: 500; letter-spacing: 0.3em; color: rgba(255,255,255,0.72); text-transform: uppercase; z-index: 2; }
+  /* Ken Burns — subtle looping zoom on cover */
+  @keyframes s1-ken-burns { 0% { transform: scale(1); } 100% { transform: scale(1.08); } }
+  #s1 .bg-img img { animation: s1-ken-burns 24s ease-in-out infinite alternate; }
 
   /* ═══════════ TOC / INDEX ═══════════ */
   #s2 { background: var(--cream); }
@@ -1843,26 +1846,26 @@
     .powered-footer {
       position: absolute;
       bottom: 22px;
-      left: 50%;
-      transform: translateX(-50%);
+      right: 40px;
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
       z-index: 50;
       pointer-events: none;
       font-family: var(--serif, 'Cormorant Garamond', serif);
+      opacity: 0.85;
     }
     .powered-footer .pf-label {
       font-family: 'Inter', system-ui, sans-serif;
-      font-size: 14px;
+      font-size: 12px;
       font-weight: 600;
       letter-spacing: 0.28em;
       color: rgba(255,255,255,0.55);
       text-transform: uppercase;
     }
     .powered-footer .pf-logo {
-      width: 26px;
-      height: 26px;
+      width: 22px;
+      height: 22px;
       border-radius: 50%;
       overflow: hidden;
       background: #000;
@@ -1874,7 +1877,7 @@
     .powered-footer .pf-logo img { width: 100%; height: 100%; object-fit: cover; display: block; }
     .powered-footer .pf-brand {
       font-family: 'Inter', system-ui, sans-serif;
-      font-size: 15px;
+      font-size: 13px;
       font-weight: 700;
       letter-spacing: 0.18em;
       color: rgba(255,255,255,0.75);
