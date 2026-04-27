@@ -679,7 +679,6 @@
   body.lightbox-open #fs-btn { display: none; }
 
   /* ════════════════════════ CHOOSER SLIDE ════════════════════════ */
-  #s-choose { background: var(--cream); }
 
   .choose-grid {
     position: absolute;
@@ -804,33 +803,47 @@
   }
   .choose-card:hover .cc-cta .arrow { transform: translateX(6px); }
 
-  /* ════════ OPTION BADGE ════════ */
-  .option-badge {
+  /* ════════ BRANCHING: opt-a / opt-b visibility ════════ */
+  /* Before choosing: hide both branches */
+  .opt-a, .opt-b { display: none; }
+  /* After choosing: show the selected branch */
+  body.option-a .opt-a { display: block; }
+  body.option-b .opt-b { display: block; }
+
+  /* ════════ CHANGE OPTION PILL ════════ */
+  .change-option-pill {
     position: absolute;
     top: 56px;
     right: 200px;
-    font-size: 15px;
+    font-size: 13px;
     font-weight: 700;
-    letter-spacing: 0.28em;
+    letter-spacing: 0.22em;
     color: var(--gold);
     text-transform: uppercase;
-    padding: 5px 14px;
-    border: 1px solid rgba(184,150,90,0.45);
-    background: rgba(184,150,90,0.08);
-    display: none;
-    z-index: 6;
+    padding: 6px 16px;
+    border: 1px solid rgba(184,150,90,0.5);
+    background: rgba(184,150,90,0.07);
+    cursor: pointer;
+    z-index: 20;
     font-family: var(--f-body);
+    transition: background 200ms, border-color 200ms, color 200ms;
+    display: flex;
+    align-items: center;
+    gap: 8px;
   }
-  body[data-option="1"] .option-badge,
-  body[data-option="2"] .option-badge { display: block; }
-  #s1 .option-badge,
-  #s2 .option-badge,
-  #s3 .option-badge,
-  #s-venue .option-badge,
-  #s-layout .option-badge,
-  #s-venue-focus .option-badge,
-  #s-schedule .option-badge,
-  #s-choose .option-badge { display: none !important; }
+  .change-option-pill:hover {
+    background: rgba(184,150,90,0.16);
+    border-color: rgba(184,150,90,0.8);
+    color: var(--gold-l);
+  }
+  /* Only show pill when an option is active */
+  .opt-a .change-option-pill,
+  .opt-b .change-option-pill { display: none; }
+  body.option-a .opt-a .change-option-pill,
+  body.option-b .opt-b .change-option-pill { display: flex; }
+
+  /* ════════ CHOOSER SLIDE ID rename ════════ */
+  #s-chooser { background: var(--cream); }
 
   /* ── Option toggle floating pill ── */
   .opt-toggle {
@@ -1026,16 +1039,17 @@
     </div>
   </section>
 
-  <!-- ═══════════════ SLIDE 4.6 — VENUE FOCUS (TOP VIEW) ═══════════════ -->
-  <section id="s-venue-focus" data-label="Venue Focus">
+  <!-- ═══════════════ SLIDE 7A — VENUE FOCUS (OPT-A) ═══════════════ -->
+  <section id="s-venue-focus" class="opt-a" data-label="Venue Focus">
     <div class="head-band"></div>
+    <button class="change-option-pill" data-change-option>&#8592; Change Option</button>
     <div class="slide-idx">02.2</div>
     <div class="sec-label">Venue · Top View</div>
     <div class="page-title">Venue <span>Footprint</span></div>
     <div class="title-rule"></div>
 
     <div class="focus-img">
-      <img src="project/assets/venue-topview-detail.png" data-o1="project/assets/venue-topview-detail.png" data-o2="project/option2/page_10.jpg" alt="Venue top view footprint">
+      <img src="project/assets/venue-topview-detail.png" alt="Venue top view footprint">
     </div>
 
     <div class="callouts-l">
@@ -1070,27 +1084,72 @@
       <div class="co">
         <div class="co-idx">06 · STAGE</div>
         <div class="co-title">Main Stage</div>
-        <div class="co-desc">Performance, reveal & fireworks launch point · 180° audience arc</div>
+        <div class="co-desc">Performance, reveal &amp; fireworks launch point · 180° audience arc</div>
       </div>
     </div>
 
     <div class="cap-strip">
-      <div class="cap-item">
-        <div class="cap-l">VIP Capacity</div>
-        <div class="cap-v">300</div>
+      <div class="cap-item"><div class="cap-l">VIP Capacity</div><div class="cap-v">300</div></div>
+      <div class="cap-item"><div class="cap-l">Guest Capacity</div><div class="cap-v">700</div></div>
+      <div class="cap-item"><div class="cap-l">Total Seated</div><div class="cap-v">1,000</div></div>
+      <div class="cap-item"><div class="cap-l">Footprint</div><div class="cap-v">100<span class="plus">×</span>50 m</div></div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ SLIDE 7B — VENUE FOCUS (OPT-B) ═══════════════ -->
+  <section id="s-venue-focus-b" class="opt-b" data-label="Venue Focus">
+    <div class="head-band"></div>
+    <button class="change-option-pill" data-change-option>&#8592; Change Option</button>
+    <div class="slide-idx">02.2</div>
+    <div class="sec-label">Venue · Top View</div>
+    <div class="page-title">Venue <span>Footprint</span></div>
+    <div class="title-rule"></div>
+
+    <div class="focus-img">
+      <img src="project/option2/page_06.jpg" alt="Venue top-down plan — Option B">
+    </div>
+
+    <div class="callouts-l">
+      <div class="co primary">
+        <div class="co-idx">01 · VIP LEFT</div>
+        <div class="co-title">VIP Lounge <span class="cnt">150 PAX</span></div>
+        <div class="co-desc">Elevated seating wing with direct stage sightline · dedicated hospitality</div>
       </div>
-      <div class="cap-item">
-        <div class="cap-l">Guest Capacity</div>
-        <div class="cap-v">700</div>
+      <div class="co">
+        <div class="co-idx">02 · GUEST LEFT</div>
+        <div class="co-title">Guest Seating <span class="cnt">350 PAX</span></div>
+        <div class="co-desc">Main banquet seating · round tables with full stage view</div>
       </div>
-      <div class="cap-item">
-        <div class="cap-l">Total Seated</div>
-        <div class="cap-v">1,000</div>
+      <div class="co">
+        <div class="co-idx">03 · FOYER</div>
+        <div class="co-title">Welcome Foyer</div>
+        <div class="co-desc">Triangle arch entry · branded transition axis · opens onto multi-zone venue</div>
       </div>
-      <div class="cap-item">
-        <div class="cap-l">Footprint</div>
-        <div class="cap-v">100<span class="plus">×</span>50 m</div>
+    </div>
+
+    <div class="callouts-r">
+      <div class="co primary">
+        <div class="co-idx">04 · VIP RIGHT</div>
+        <div class="co-title">VIP Lounge <span class="cnt">150 PAX</span></div>
+        <div class="co-desc">Mirror wing · private access from VIP circulation route</div>
       </div>
+      <div class="co">
+        <div class="co-idx">05 · GUEST RIGHT</div>
+        <div class="co-title">Guest Seating <span class="cnt">350 PAX</span></div>
+        <div class="co-desc">Mirrored dining wing · equal access to F&amp;B stations and promenade</div>
+      </div>
+      <div class="co">
+        <div class="co-idx">06 · STAGE</div>
+        <div class="co-title">Main Stage</div>
+        <div class="co-desc">Performance, reveal &amp; fireworks launch point · 180° audience arc</div>
+      </div>
+    </div>
+
+    <div class="cap-strip">
+      <div class="cap-item"><div class="cap-l">VIP Capacity</div><div class="cap-v">300</div></div>
+      <div class="cap-item"><div class="cap-l">Guest Capacity</div><div class="cap-v">700</div></div>
+      <div class="cap-item"><div class="cap-l">Total Seated</div><div class="cap-v">1,000</div></div>
+      <div class="cap-item"><div class="cap-l">Footprint</div><div class="cap-v">100<span class="plus">×</span>50 m</div></div>
     </div>
   </section>
 
@@ -1158,60 +1217,59 @@
 
 
   <!-- ═══════════════ SLIDE 6 — CHOOSE A VISION ═══════════════ -->
-  <section id="s-choose" data-label="Choose a Vision">
+  <section id="s-chooser" data-label="Choose Vision">
     <div class="head-band"></div>
-    <div class="slide-idx">03.1</div>
-    <div class="sec-label">VISUAL DIRECTION · <span style="font-family:var(--f-ar);font-size:16px;font-weight:700;letter-spacing:0.05em;">اختر التصميم</span></div>
-    <div class="page-title">Choose a <span style="color:var(--gold);">Vision</span></div>
+    <div class="sec-label">DESIGN VISIONS</div>
+    <div class="page-title">Choose a Vision <span style="font-family:var(--f-ar);font-weight:700;color:var(--gold);margin-left:16px;font-size:52px;">اختر التصميم</span></div>
     <div class="title-rule"></div>
+    <div class="slide-idx">06</div>
 
     <div class="choose-grid">
 
-      <!-- CARD 1: Option 1 — Stage & Floor Design -->
-      <div class="choose-card" id="cc-opt1" role="button" tabindex="0" aria-label="Select Option 1: Stage and Floor Design">
-        <div class="cc-corner">01</div>
+      <!-- CARD A: Option A — Stage & Floor Design -->
+      <div class="choose-card" id="cc-opt-a" role="button" tabindex="0" aria-label="Select Option A: Stage and Floor Design">
+        <div class="cc-corner">A</div>
         <div class="cc-thumb">
-          <img src="project/assets/g-main-stage.png" alt="Option 1 — Stage and Floor Design" loading="eager">
+          <img src="project/assets/g-main-stage.png" alt="Option A — Stage and Floor Design" loading="eager">
         </div>
         <div class="cc-body">
-          <div class="cc-eyebrow">Option One</div>
+          <div class="cc-eyebrow">OPTION A</div>
           <div class="cc-title">Stage &amp; Floor Design<span class="ar"> · تصميم المسرح والأرضية</span></div>
-          <div class="cc-desc">Classical event treatment — refined main stage, branded floor, warm reception. Photographed-style renders with intimate framing.</div>
+          <div class="cc-desc">The original creative treatment — premium stage build with branded floor, traditional banquet seating, and signature gold-and-navy materiality.</div>
         </div>
-        <div class="cc-cta">Continue with Option 1 <span class="arrow">→</span></div>
+        <div class="cc-cta">Continue with Option A <span class="arrow">→</span></div>
       </div>
 
-      <!-- CARD 2: Option 2 — Apex Pavilion -->
-      <div class="choose-card" id="cc-opt2" role="button" tabindex="0" aria-label="Select Option 2: Apex Pavilion">
-        <div class="cc-corner">02</div>
+      <!-- CARD B: Option B — 3D Event Visualization -->
+      <div class="choose-card" id="cc-opt-b" role="button" tabindex="0" aria-label="Select Option B: 3D Event Visualization">
+        <div class="cc-corner">B</div>
         <div class="cc-thumb">
-          <img src="project/option2/page_06.jpg" alt="Option 2 — Apex Pavilion" loading="eager">
+          <img src="project/option2/page_06.jpg" alt="Option B — 3D Event Visualization" loading="eager">
         </div>
         <div class="cc-body">
-          <div class="cc-eyebrow">Option Two</div>
-          <div class="cc-title">Apex Pavilion<span class="ar"> · رؤية ثلاثية الأبعاد</span></div>
-          <div class="cc-desc">Architectural 3D treatment — triangle apex motif, branded gates, cinematic exterior. Same content with a bolder spatial story.</div>
+          <div class="cc-eyebrow">OPTION B</div>
+          <div class="cc-title">3D Event Visualization<span class="ar"> · رؤية تصميمية ثلاثية الأبعاد</span></div>
+          <div class="cc-desc">Cinematic 3D treatment — triangle archways, illuminated apex monuments, red-carpet approach, and multi-zone hospitality pavilions.</div>
         </div>
-        <div class="cc-cta">Continue with Option 2 <span class="arrow">→</span></div>
+        <div class="cc-cta">Continue with Option B <span class="arrow">→</span></div>
       </div>
 
     </div>
 
     <div class="gal-hint">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="14"><path d="M15 18l-6-6 6-6"/></svg>
-      ← / → · Press <strong style="color:var(--navy);">1</strong> or <strong style="color:var(--navy);">2</strong> to choose
+      Press <strong style="color:var(--navy);">A</strong> or <strong style="color:var(--navy);">B</strong> to choose · click a card to continue
     </div>
   </section>
 
-  <!-- ═══════════════ SLIDE 6 — GALLERY DIVIDER ═══════════════ -->
-  <section id="s-gal-intro" class="gal" data-label="Gallery Intro">
+  <!-- ═══════════════ SLIDE: GALLERY INTRO (OPT-A) ═══════════════ -->
+  <section id="s-gal-intro" class="gal opt-a" data-label="Gallery Intro">
     <div class="head-band"></div>
-    <div class="option-badge"></div>
+    <button class="change-option-pill" data-change-option>&#8592; Change Option</button>
     <div class="slide-idx">04</div>
     <div class="sec-label">Visuals</div>
     <div class="page-title">The <span style="color:var(--gold);">Gallery</span></div>
     <div class="title-rule"></div>
-
     <div style="position:absolute; top: 260px; left: 100px; right: 100px; bottom: 100px; display:grid; grid-template-columns: 1.2fr 1fr; gap: 50px;">
       <div style="display:flex; flex-direction:column; justify-content: space-between;">
         <div>
@@ -1219,34 +1277,68 @@
           <div style="font-size: 28px; font-weight: 400; color: var(--navy); line-height: 1.5; letter-spacing: -0.005em; max-width: 720px;">The following slides present the event's visual identity across six functional zones. <strong style="font-weight: 700; color: var(--gold-s);">Click any image to view fullscreen</strong>; navigate with arrow keys or swipe.</div>
         </div>
         <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 40px;">
-          <div style="background: #fff; border: 1px solid rgba(27,36,68,0.08); padding: 20px 22px;"><div style="font-size: 17px; font-weight: 700; letter-spacing: 0.22em; color: var(--gold); text-transform: uppercase; margin-bottom: 8px;">04.1</div><div style="font-size: 24px; font-weight: 700; color: var(--navy);">Arrival & Registration</div></div>
-          <div style="background: #fff; border: 1px solid rgba(27,36,68,0.08); padding: 20px 22px;"><div style="font-size: 17px; font-weight: 700; letter-spacing: 0.22em; color: var(--gold); text-transform: uppercase; margin-bottom: 8px;">04.2</div><div style="font-size: 24px; font-weight: 700; color: var(--navy);">Foyer & Monument</div></div>
-          <div style="background: #fff; border: 1px solid rgba(27,36,68,0.08); padding: 20px 22px;"><div style="font-size: 17px; font-weight: 700; letter-spacing: 0.22em; color: var(--gold); text-transform: uppercase; margin-bottom: 8px;">04.3</div><div style="font-size: 24px; font-weight: 700; color: var(--navy);">Main Stage & Speaker</div></div>
+          <div style="background: #fff; border: 1px solid rgba(27,36,68,0.08); padding: 20px 22px;"><div style="font-size: 17px; font-weight: 700; letter-spacing: 0.22em; color: var(--gold); text-transform: uppercase; margin-bottom: 8px;">04.1</div><div style="font-size: 24px; font-weight: 700; color: var(--navy);">Arrival &amp; Registration</div></div>
+          <div style="background: #fff; border: 1px solid rgba(27,36,68,0.08); padding: 20px 22px;"><div style="font-size: 17px; font-weight: 700; letter-spacing: 0.22em; color: var(--gold); text-transform: uppercase; margin-bottom: 8px;">04.2</div><div style="font-size: 24px; font-weight: 700; color: var(--navy);">Foyer &amp; Monument</div></div>
+          <div style="background: #fff; border: 1px solid rgba(27,36,68,0.08); padding: 20px 22px;"><div style="font-size: 17px; font-weight: 700; letter-spacing: 0.22em; color: var(--gold); text-transform: uppercase; margin-bottom: 8px;">04.3</div><div style="font-size: 24px; font-weight: 700; color: var(--navy);">Main Stage &amp; Speaker</div></div>
           <div style="background: #fff; border: 1px solid rgba(27,36,68,0.08); padding: 20px 22px;"><div style="font-size: 17px; font-weight: 700; letter-spacing: 0.22em; color: var(--gold); text-transform: uppercase; margin-bottom: 8px;">04.4</div><div style="font-size: 24px; font-weight: 700; color: var(--navy);">Guest Seating</div></div>
           <div style="background: #fff; border: 1px solid rgba(27,36,68,0.08); padding: 20px 22px;"><div style="font-size: 17px; font-weight: 700; letter-spacing: 0.22em; color: var(--gold); text-transform: uppercase; margin-bottom: 8px;">04.5</div><div style="font-size: 24px; font-weight: 700; color: var(--navy);">VIP Lounges</div></div>
-          <div style="background: #fff; border: 1px solid rgba(27,36,68,0.08); padding: 20px 22px;"><div style="font-size: 17px; font-weight: 700; letter-spacing: 0.22em; color: var(--gold); text-transform: uppercase; margin-bottom: 8px;">04.6</div><div style="font-size: 24px; font-weight: 700; color: var(--navy);">Media & Ambience</div></div>
+          <div style="background: #fff; border: 1px solid rgba(27,36,68,0.08); padding: 20px 22px;"><div style="font-size: 17px; font-weight: 700; letter-spacing: 0.22em; color: var(--gold); text-transform: uppercase; margin-bottom: 8px;">04.6</div><div style="font-size: 24px; font-weight: 700; color: var(--navy);">Media &amp; Ambience</div></div>
         </div>
       </div>
       <div style="position: relative; overflow: hidden;">
-        <img src="project/assets/g-birdeye-stage.png" data-o1="project/assets/g-birdeye-stage.png" data-o2="project/option2/page_09.jpg" alt="Main stage preview" style="position:absolute; inset:0; width: 100%; height: 100%; object-fit: cover; cursor: zoom-in;" data-gallery-preview data-category="Preview" data-title="Gallery Preview">
+        <img src="project/assets/g-birdeye-stage.png" alt="Main stage preview" style="position:absolute; inset:0; width: 100%; height: 100%; object-fit: cover; cursor: zoom-in;" data-gallery-preview data-category="Preview" data-title="Gallery Preview — Option A">
         <div style="position:absolute; inset:0; background: linear-gradient(to top, rgba(13,19,34,0.75), transparent 40%);"></div>
         <div style="position:absolute; bottom: 28px; left: 28px; right: 28px; color: #fff;">
-          <div style="font-size: 17px; font-weight: 700; letter-spacing: 0.3em; color: var(--gold-l); text-transform: uppercase; margin-bottom: 8px;">Preview</div>
+          <div style="font-size: 17px; font-weight: 700; letter-spacing: 0.3em; color: var(--gold-l); text-transform: uppercase; margin-bottom: 8px;">Option A Preview</div>
           <div style="font-size: 22px; font-weight: 700; letter-spacing: -0.01em;">Full Gallery Ahead</div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ═══════════════ SLIDE 7 — RECEPTION & ENTRANCE ═══════════════ -->
-  <section id="s-gal-reception" class="gal" data-label="Arrival & Registration">
+  <!-- ═══════════════ SLIDE: GALLERY INTRO (OPT-B) ═══════════════ -->
+  <section id="s-gal-intro-b" class="gal opt-b" data-label="Gallery Intro">
     <div class="head-band"></div>
-    <div class="option-badge"></div>
+    <button class="change-option-pill" data-change-option>&#8592; Change Option</button>
+    <div class="slide-idx">04</div>
+    <div class="sec-label">Visuals</div>
+    <div class="page-title">The <span style="color:var(--gold);">Gallery</span></div>
+    <div class="title-rule"></div>
+    <div style="position:absolute; top: 260px; left: 100px; right: 100px; bottom: 100px; display:grid; grid-template-columns: 1.2fr 1fr; gap: 50px;">
+      <div style="display:flex; flex-direction:column; justify-content: space-between;">
+        <div>
+          <div style="font-size: 21px; font-weight: 700; letter-spacing: 0.3em; color: var(--gold); text-transform: uppercase; margin-bottom: 24px;">25 Renders · 6 Sections</div>
+          <div style="font-size: 28px; font-weight: 400; color: var(--navy); line-height: 1.5; letter-spacing: -0.005em; max-width: 720px;">The following slides present the 3D event visualization across six functional zones. <strong style="font-weight: 700; color: var(--gold-s);">Click any image to view fullscreen</strong>; navigate with arrow keys or swipe.</div>
+        </div>
+        <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 40px;">
+          <div style="background: #fff; border: 1px solid rgba(27,36,68,0.08); padding: 20px 22px;"><div style="font-size: 17px; font-weight: 700; letter-spacing: 0.22em; color: var(--gold); text-transform: uppercase; margin-bottom: 8px;">04.1</div><div style="font-size: 24px; font-weight: 700; color: var(--navy);">Exterior Approach</div></div>
+          <div style="background: #fff; border: 1px solid rgba(27,36,68,0.08); padding: 20px 22px;"><div style="font-size: 17px; font-weight: 700; letter-spacing: 0.22em; color: var(--gold); text-transform: uppercase; margin-bottom: 8px;">04.2</div><div style="font-size: 24px; font-weight: 700; color: var(--navy);">Triangle Archway</div></div>
+          <div style="background: #fff; border: 1px solid rgba(27,36,68,0.08); padding: 20px 22px;"><div style="font-size: 17px; font-weight: 700; letter-spacing: 0.22em; color: var(--gold); text-transform: uppercase; margin-bottom: 8px;">04.3</div><div style="font-size: 24px; font-weight: 700; color: var(--navy);">Main Hall &amp; Stage</div></div>
+          <div style="background: #fff; border: 1px solid rgba(27,36,68,0.08); padding: 20px 22px;"><div style="font-size: 17px; font-weight: 700; letter-spacing: 0.22em; color: var(--gold); text-transform: uppercase; margin-bottom: 8px;">04.4</div><div style="font-size: 24px; font-weight: 700; color: var(--navy);">Guest Seating</div></div>
+          <div style="background: #fff; border: 1px solid rgba(27,36,68,0.08); padding: 20px 22px;"><div style="font-size: 17px; font-weight: 700; letter-spacing: 0.22em; color: var(--gold); text-transform: uppercase; margin-bottom: 8px;">04.5</div><div style="font-size: 24px; font-weight: 700; color: var(--navy);">Hospitality Pavilions</div></div>
+          <div style="background: #fff; border: 1px solid rgba(27,36,68,0.08); padding: 20px 22px;"><div style="font-size: 17px; font-weight: 700; letter-spacing: 0.22em; color: var(--gold); text-transform: uppercase; margin-bottom: 8px;">04.6</div><div style="font-size: 24px; font-weight: 700; color: var(--navy);">Aerial &amp; Ambience</div></div>
+        </div>
+      </div>
+      <div style="position: relative; overflow: hidden;">
+        <img src="project/option2/page_07.jpg" alt="Layout perspective — Option B" style="position:absolute; inset:0; width: 100%; height: 100%; object-fit: cover; cursor: zoom-in;" data-gallery-preview-b data-category="Preview" data-title="Gallery Preview — Option B">
+        <div style="position:absolute; inset:0; background: linear-gradient(to top, rgba(13,19,34,0.75), transparent 40%);"></div>
+        <div style="position:absolute; bottom: 28px; left: 28px; right: 28px; color: #fff;">
+          <div style="font-size: 17px; font-weight: 700; letter-spacing: 0.3em; color: var(--gold-l); text-transform: uppercase; margin-bottom: 8px;">Option B Preview</div>
+          <div style="font-size: 22px; font-weight: 700; letter-spacing: -0.01em;">Full Gallery Ahead</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ ARRIVAL & REGISTRATION — OPT-A ═══════════ -->
+  <section id="s-gal-reception" class="gal opt-a" data-label="Arrival & Registration">
+    <div class="head-band"></div>
+    <button class="change-option-pill" data-change-option>&#8592; Change Option</button>
     <div class="slide-idx">04.1</div>
     <div class="gal-header">
       <div class="gal-header-left">
         <div class="sec">Gallery · Section 01</div>
-        <div class="ttl">Arrival & Registration <span class="ar">الوصول</span></div>
+        <div class="ttl">Arrival &amp; Registration <span class="ar">الوصول</span></div>
         <div class="ttl-rule"></div>
       </div>
       <div class="gal-header-right">
@@ -1254,33 +1346,70 @@
         The guest's first impression — a branded entry axis opens onto registration counters, dedicated check-in desks, and a generous pre-event mingling area for early arrivals.
       </div>
     </div>
-
     <div class="gal-grid gal-3-2">
       <div class="g-tile gal-hero" data-img="project/assets/g-registration.png" data-category="Arrival · Registration Hub" data-title="Registration & Check-In Area">
-        <img src="project/assets/g-registration.png" data-o1="project/assets/g-registration.png" data-o2="project/option2/page_03.jpg" alt="Registration & check-in">
+        <img src="project/assets/g-registration.png" alt="Registration & check-in">
         <div class="g-zoom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
-        <div class="g-label"><div class="gl-idx">01 · Hero View</div><div class="gl-name">Registration & Check-In Hub</div></div>
+        <div class="g-label"><div class="gl-idx">01 · Hero View</div><div class="gl-name">Registration &amp; Check-In Hub</div></div>
       </div>
       <div class="g-tile" data-img="project/assets/g-checkin-1.png" data-category="Arrival · Check-In Desk" data-title="Guest Check-In Desk">
-        <img src="project/assets/g-checkin-1.png" data-o1="project/assets/g-checkin-1.png" data-o2="project/option2/page_02.jpg" alt="Check-in desk 01">
+        <img src="project/assets/g-checkin-1.png" alt="Check-in desk 01">
         <div class="g-zoom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
         <div class="g-label"><div class="gl-idx">02</div><div class="gl-name">Check-In Desk — Arch</div></div>
       </div>
       <div class="g-tile" data-img="project/assets/g-checkin-2.png" data-category="Arrival · Check-In Desk 02" data-title="Secondary Check-In Desk">
-        <img src="project/assets/g-checkin-2.png" data-o1="project/assets/g-checkin-2.png" data-o2="project/option2/page_11.jpg" alt="Check-in desk 02">
+        <img src="project/assets/g-checkin-2.png" alt="Check-in desk 02">
         <div class="g-zoom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
         <div class="g-label"><div class="gl-idx">03</div><div class="gl-name">Check-In Desk — Tiered</div></div>
       </div>
       <div class="g-tile" data-img="project/assets/g-pre-event.png" data-category="Arrival · Pre-Event" data-title="Pre-Event Socialisation Area">
-        <img src="project/assets/g-pre-event.png" data-o1="project/assets/g-pre-event.png" data-o2="project/option2/page_04.jpg" alt="Pre-event mingling">
+        <img src="project/assets/g-pre-event.png" alt="Pre-event mingling">
         <div class="g-zoom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
         <div class="g-label"><div class="gl-idx">04</div><div class="gl-name">Pre-Event Socialisation</div></div>
       </div>
     </div>
-    <div class="gal-hint">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35M11 8v6M8 11h6"/></svg>
-      Click any image to view fullscreen
+    <div class="gal-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35M11 8v6M8 11h6"/></svg>Click any image to view fullscreen</div>
+  </section>
+
+  <!-- ═══════════ ARRIVAL & REGISTRATION — OPT-B ═══════════ -->
+  <section id="s-gal-reception-b" class="gal opt-b" data-label="Arrival & Registration">
+    <div class="head-band"></div>
+    <button class="change-option-pill" data-change-option>&#8592; Change Option</button>
+    <div class="slide-idx">04.1</div>
+    <div class="gal-header">
+      <div class="gal-header-left">
+        <div class="sec">Gallery · Section 01</div>
+        <div class="ttl">Exterior Approach <span class="ar">المدخل</span></div>
+        <div class="ttl-rule"></div>
+      </div>
+      <div class="gal-header-right">
+        <div class="count">04 Renders</div>
+        The red-carpet approach — cinematic exterior views of the branded arrival axis, triangle archway entry, and the illuminated pre-event forecourt.
+      </div>
     </div>
+    <div class="gal-grid gal-3-2">
+      <div class="g-tile gal-hero" data-img="project/option2/page_02.jpg" data-category="Arrival · Exterior Approach" data-title="Exterior Arrival — Main Axis">
+        <img src="project/option2/page_02.jpg" alt="Exterior approach — main axis">
+        <div class="g-zoom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
+        <div class="g-label"><div class="gl-idx">01 · Hero View</div><div class="gl-name">Exterior Arrival — Main Axis</div></div>
+      </div>
+      <div class="g-tile" data-img="project/option2/page_03.jpg" data-category="Arrival · Red Carpet" data-title="Red Carpet Approach">
+        <img src="project/option2/page_03.jpg" alt="Red carpet approach">
+        <div class="g-zoom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
+        <div class="g-label"><div class="gl-idx">02</div><div class="gl-name">Red Carpet Approach</div></div>
+      </div>
+      <div class="g-tile" data-img="project/option2/page_04.jpg" data-category="Arrival · Entry Gate" data-title="Branded Entry Gate">
+        <img src="project/option2/page_04.jpg" alt="Branded entry gate">
+        <div class="g-zoom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
+        <div class="g-label"><div class="gl-idx">03</div><div class="gl-name">Branded Entry Gate</div></div>
+      </div>
+      <div class="g-tile" data-img="project/option2/page_11.jpg" data-category="Arrival · Forecourt" data-title="Pre-Event Forecourt">
+        <img src="project/option2/page_11.jpg" alt="Pre-event forecourt">
+        <div class="g-zoom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
+        <div class="g-label"><div class="gl-idx">04</div><div class="gl-name">Pre-Event Forecourt</div></div>
+      </div>
+    </div>
+    <div class="gal-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35M11 8v6M8 11h6"/></svg>Click any image to view fullscreen</div>
   </section>
 
   <!-- ═══════════════ SLIDE 8 — FOYER & MONUMENT ═══════════════ -->
@@ -1936,12 +2065,12 @@
   .g-tile img { transition: transform .8s cubic-bezier(.2,.8,.2,1); }
 
   /* ── CHOOSER CARD STAGGER ── */
-  #s-choose .choose-card { opacity: 0; transform: translateY(40px); }
-  #s-choose.slide-active .choose-card {
+  #s-chooser .choose-card { opacity: 0; transform: translateY(40px); }
+  #s-chooser.slide-active .choose-card {
     animation: tileIn .9s cubic-bezier(.2,.8,.2,1) forwards;
   }
-  #s-choose.slide-active .choose-card:nth-child(1) { animation-delay: .2s; }
-  #s-choose.slide-active .choose-card:nth-child(2) { animation-delay: .38s; }
+  #s-chooser.slide-active .choose-card:nth-child(1) { animation-delay: .2s; }
+  #s-chooser.slide-active .choose-card:nth-child(2) { animation-delay: .38s; }
 
   /* ── INDEX GRID STAGGER ── */
   #s2 .idx-item { opacity: 0; transform: translateY(30px); }
