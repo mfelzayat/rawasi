@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Option 02 — حياة 3D Event Design | RAWASI Developments</title>
+<meta name="description" content="Option 02: 25-frame 3D event visualization for the حياة launch event, Rawasi Developments, Mansoura, Mid-May 2026.">
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="icon" type="image/png" sizes="192x192" href="favicon-192.png">
+<link rel="apple-touch-icon" href="favicon-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Artifika&family=Alyamama:wght@400;500;600;700;800;900&family=Noto+Naskh+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --navy:   #1B2444;
+    --navy-d: #0D1322;
+    --navy-m: #111A2F;
+    --gold:   #B8965A;
+    --gold-l: #D4AF78;
+    --gold-s: #8C6E3F;
+    --green:  #6B7F4F;
+    --cream:  #F7F3EC;
+    --warm:   #F0EBE0;
+    --off-w:  #FDFBF8;
+    --f-head: 'Artifika', 'Montserrat', serif;
+    --f-body: 'Montserrat', sans-serif;
+    --f-ar:   'Alyamama', 'Noto Naskh Arabic', serif;
+  }
+
+  html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: var(--navy-d);
+    font-family: var(--f-body);
+    -webkit-font-smoothing: antialiased;
+    color: #fff;
+    user-select: none;
+  }
+
+  /* ════════════════════════════════
+     SLIDE DECK CONTAINER
+  ════════════════════════════════ */
+  #deck {
+    position: fixed;
+    inset: 0;
+    background: var(--navy-d);
+  }
+
+  /* ── Slide wrapper ── */
+  .slide {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(16px);
+    transition: opacity 320ms ease, transform 320ms ease;
+    will-change: opacity, transform;
+  }
+  .slide.active {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateX(0);
+  }
+  .slide.prev {
+    opacity: 0;
+    transform: translateX(-16px);
+    pointer-events: none;
+  }
+
+  /* ── Slide image ── */
+  .slide-img-wrap {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--navy-d);
+    overflow: hidden;
+  }
+  .slide-img-wrap img {
+    /* Contain: preserve full image, letterbox remainder */
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    display: block;
+  }
+
+  /* Ken Burns zoom on active slide */
+  @keyframes ken-burns {
+    0%   { transform: scale(1); }
+    100% { transform: scale(1.04); }
+  }
+  .slide.active .slide-img-wrap img {
+    animation: ken-burns 24s ease-in-out infinite alternate;
+  }
+
+  /* ════════════════════════════════
+     CHROME LAYER
+  ════════════════════════════════ */
+  .chrome {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 10;
+  }
+
+  /* ── Header band ── */
+  .chrome-header {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 64px;
+    background: linear-gradient(to bottom, rgba(13,19,34,0.88) 0%, rgba(13,19,34,0) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 32px;
+    pointer-events: auto;
+  }
+  .chrome-header::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 32px; right: 32px;
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(184,150,90,0.35), transparent);
+  }
+  .chrome-eyebrow {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.42em;
+    color: var(--gold);
+    text-transform: uppercase;
+    opacity: 0.8;
+    font-family: var(--f-body);
+  }
+  .chrome-eyebrow .ar {
+    font-family: var(--f-ar);
+    font-weight: 600;
+    letter-spacing: 0;
+    font-size: 13px;
+    vertical-align: middle;
+  }
+  .chrome-idx {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.24em;
+    color: var(--gold);
+    opacity: 0.5;
+    font-variant-numeric: tabular-nums;
+    font-family: 'Courier New', 'Courier', monospace;
+  }
+
+  /* Back to hub link */
+  .back-hub {
+    position: fixed;
+    top: 18px;
+    left: 32px;
+    z-index: 20;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(184,150,90,0.5);
+    text-decoration: none;
+    pointer-events: auto;
+    transition: color 250ms ease, opacity 250ms ease;
+    opacity: 0.7;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .back-hub:hover { color: rgba(184,150,90,0.95); opacity: 1; }
+
+  /* ── Footer band ── */
+  .chrome-footer {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 96px;
+    background: linear-gradient(to top, rgba(13,19,34,0.92) 0%, rgba(13,19,34,0) 100%);
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    padding: 0 32px 24px;
+    pointer-events: auto;
+  }
+
+  /* ── Section label + caption (bottom-left) ── */
+  .chrome-caption {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    max-width: 420px;
+    pointer-events: none;
+  }
+  .caption-section {
+    font-family: var(--f-head);
+    font-size: 14px;
+    font-weight: 400;
+    color: rgba(255,255,255,0.85);
+    letter-spacing: 0.01em;
+    line-height: 1.2;
+    opacity: 0;
+    transform: translateY(4px);
+    transition: opacity 200ms ease 120ms, transform 200ms ease 120ms;
+  }
+  .caption-text {
+    font-size: 12px;
+    font-weight: 400;
+    color: rgba(255,255,255,0.48);
+    letter-spacing: 0.04em;
+    line-height: 1.4;
+    opacity: 0;
+    transform: translateY(4px);
+    transition: opacity 200ms ease 160ms, transform 200ms ease 160ms;
+  }
+  .caption-ready .caption-section,
+  .caption-ready .caption-text {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ── Nav (bottom-right) ── */
+  .chrome-nav {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .nav-btn {
+    background: rgba(13,19,34,0.6);
+    border: 1px solid rgba(184,150,90,0.3);
+    color: var(--gold);
+    width: 38px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background 200ms ease, border-color 200ms ease, color 200ms ease;
+    pointer-events: auto;
+    flex-shrink: 0;
+  }
+  .nav-btn:hover {
+    background: rgba(184,150,90,0.18);
+    border-color: rgba(184,150,90,0.7);
+    color: var(--gold-l);
+  }
+  .nav-btn:disabled {
+    opacity: 0.25;
+    cursor: default;
+    pointer-events: none;
+  }
+  .nav-counter {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.28em;
+    color: var(--gold);
+    opacity: 0.55;
+    font-variant-numeric: tabular-nums;
+    font-family: 'Courier New', 'Courier', monospace;
+    white-space: nowrap;
+    min-width: 56px;
+    text-align: center;
+  }
+
+  /* Fullscreen button */
+  .fs-btn {
+    background: rgba(13,19,34,0.6);
+    border: 1px solid rgba(184,150,90,0.3);
+    color: var(--gold);
+    width: 38px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 200ms ease, border-color 200ms ease, color 200ms ease;
+    pointer-events: auto;
+    margin-left: 8px;
+  }
+  .fs-btn:hover {
+    background: rgba(184,150,90,0.18);
+    border-color: rgba(184,150,90,0.7);
+    color: var(--gold-l);
+  }
+  .fs-btn svg { width: 16px; height: 16px; }
+
+  /* ── Click-zone hot areas ── */
+  .click-zone {
+    position: fixed;
+    top: 64px;
+    bottom: 96px;
+    z-index: 5;
+    cursor: pointer;
+    pointer-events: auto;
+  }
+  .click-zone.left  { left: 0;   width: 14%; }
+  .click-zone.right { right: 0;  width: 50%; }
+
+</style>
+</head>
+<body>
+
+<!-- Slide deck -->
+<div id="deck">
+
+  <!-- slides injected by JS -->
+
+</div>
+
+<!-- Chrome (fixed over everything) -->
+<div class="chrome">
+
+  <header class="chrome-header">
+    <span class="chrome-eyebrow">Option 02 &middot; <span class="ar">حياة</span></span>
+    <span class="chrome-idx" id="hdr-idx">01 / 25</span>
+  </header>
+
+  <!-- Back to hub -->
+  <a class="back-hub" href="index.html" id="back-hub-link">&#8592; Hub</a>
+
+  <footer class="chrome-footer">
+    <div class="chrome-caption" id="caption-block">
+      <div class="caption-section" id="cap-section"></div>
+      <div class="caption-text"   id="cap-text"></div>
+    </div>
+    <div class="chrome-nav">
+      <button class="nav-btn" id="btn-prev" title="Previous (&#8592;)" aria-label="Previous slide">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 2 4 7 9 12"/></svg>
+      </button>
+      <span class="nav-counter" id="nav-counter">01 / 25</span>
+      <button class="nav-btn" id="btn-next" title="Next (&#8594;)" aria-label="Next slide">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="5 2 10 7 5 12"/></svg>
+      </button>
+      <button class="fs-btn" id="fs-btn" title="Fullscreen (F)" aria-label="Toggle fullscreen">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3"/><path d="M21 8V5a2 2 0 0 0-2-2h-3"/><path d="M3 16v3a2 2 0 0 0 2 2h3"/><path d="M16 21h3a2 2 0 0 0 2-2v-3"/></svg>
+      </button>
+    </div>
+  </footer>
+
+</div>
+
+<!-- Click zones -->
+<div class="click-zone left"  id="zone-prev"></div>
+<div class="click-zone right" id="zone-next"></div>
+
+<script>
+(function () {
+  'use strict';
+
+  /* ── Slide data ── */
+  const SLIDES = [
+    { img: 'project/option2/page_01.jpg', section: 'OPENING',          caption: 'Co-Brand Title Card' },
+    { img: 'project/option2/page_02.jpg', section: 'EXTERIOR',         caption: 'Approach — Main Facade by Moonlight' },
+    { img: 'project/option2/page_03.jpg', section: 'EXTERIOR',         caption: 'Branded Facade Walls' },
+    { img: 'project/option2/page_04.jpg', section: 'EXTERIOR',         caption: 'Side Approach — حياة Lockup' },
+    { img: 'project/option2/page_05.jpg', section: 'EXTERIOR',         caption: 'Front Elevation — Wide' },
+    { img: 'project/option2/page_06.jpg', section: 'AERIAL',           caption: 'Top-Down — Full Site Layout' },
+    { img: 'project/option2/page_07.jpg', section: 'EXTERIOR',         caption: 'Pavilion Details' },
+    { img: 'project/option2/page_08.jpg', section: 'AERIAL',           caption: 'Top-Down — Foyer & Pavilions' },
+    { img: 'project/option2/page_09.jpg', section: 'AERIAL',           caption: 'Aerial — Stage & Hall' },
+    { img: 'project/option2/page_10.jpg', section: 'AERIAL',           caption: 'Aerial — Approach Sequence' },
+    { img: 'project/option2/page_11.jpg', section: 'FOYER',            caption: 'Welcome Threshold' },
+    { img: 'project/option2/page_12.jpg', section: 'FOYER',            caption: 'Main Gate — Night Lit' },
+    { img: 'project/option2/page_13.jpg', section: 'PROCESSION',       caption: 'Triangle Archway · Red Carpet' },
+    { img: 'project/option2/page_14.jpg', section: 'PROCESSION',       caption: 'Apex Sequence' },
+    { img: 'project/option2/page_15.jpg', section: 'HERO INSTALLATION',caption: 'RAWASI Hero Sign' },
+    { img: 'project/option2/page_16.jpg', section: 'HERO INSTALLATION',caption: 'Photo-Op Wall' },
+    { img: 'project/option2/page_17.jpg', section: 'HOSPITALITY',      caption: 'حياة Coffee Corner' },
+    { img: 'project/option2/page_18.jpg', section: 'HOSPITALITY',      caption: 'VIP Lounge' },
+    { img: 'project/option2/page_19.jpg', section: 'MAIN STAGE',       caption: 'Stage Hero — Wide' },
+    { img: 'project/option2/page_20.jpg', section: 'MAIN STAGE',       caption: 'Hall — Banquet Seating' },
+    { img: 'project/option2/page_21.jpg', section: 'MAIN STAGE',       caption: 'Stage Detail — LED Wall' },
+    { img: 'project/option2/page_22.jpg', section: 'MAIN STAGE',       caption: 'Hall — Center Aisle' },
+    { img: 'project/option2/page_23.jpg', section: 'DETAILS',          caption: 'Pavilion · حياة' },
+    { img: 'project/option2/page_24.jpg', section: 'DETAILS',          caption: 'Closing Pavilion' },
+    { img: 'project/option2/page_25.jpg', section: 'CLOSING',          caption: 'Co-Brand Sign-Off' },
+  ];
+
+  const TOTAL = SLIDES.length;
+  let current = 0;
+  let captionTimer = null;
+
+  /* ── Build DOM ── */
+  const deck = document.getElementById('deck');
+
+  SLIDES.forEach(function (s, i) {
+    const slide = document.createElement('div');
+    slide.className = 'slide' + (i === 0 ? ' active' : '');
+    slide.id = 'slide-' + i;
+
+    const wrap = document.createElement('div');
+    wrap.className = 'slide-img-wrap';
+
+    const img = document.createElement('img');
+    img.src = s.img;
+    img.alt = s.section + ' — ' + s.caption;
+    img.width = 1840;
+    img.height = 1036;
+    img.decoding = 'async';
+    // Eager-load first two, lazy-load the rest
+    img.loading = (i <= 1) ? 'eager' : 'lazy';
+
+    wrap.appendChild(img);
+    slide.appendChild(wrap);
+    deck.appendChild(slide);
+  });
+
+  /* ── UI refs ── */
+  const hdrIdx     = document.getElementById('hdr-idx');
+  const navCounter = document.getElementById('nav-counter');
+  const btnPrev    = document.getElementById('btn-prev');
+  const btnNext    = document.getElementById('btn-next');
+  const capSection = document.getElementById('cap-section');
+  const capText    = document.getElementById('cap-text');
+  const capBlock   = document.getElementById('caption-block');
+  const fsBtn      = document.getElementById('fs-btn');
+  const zonePrev   = document.getElementById('zone-prev');
+  const zoneNext   = document.getElementById('zone-next');
+
+  /* ── Helpers ── */
+  function pad(n) {
+    return String(n).padStart(2, '0');
+  }
+
+  function updateChrome() {
+    var label = pad(current + 1) + ' / ' + pad(TOTAL);
+    hdrIdx.textContent    = label;
+    navCounter.textContent = label;
+    btnPrev.disabled = (current === 0);
+    btnNext.disabled = (current === TOTAL - 1);
+  }
+
+  function showCaption() {
+    // Reset then re-trigger fade-in
+    capBlock.classList.remove('caption-ready');
+    capSection.textContent = SLIDES[current].section;
+    capText.textContent    = SLIDES[current].caption;
+    if (captionTimer) clearTimeout(captionTimer);
+    captionTimer = setTimeout(function () {
+      capBlock.classList.add('caption-ready');
+    }, 60);
+  }
+
+  /* Preload neighbor slides */
+  function preloadAdjacent(idx) {
+    [-1, 1].forEach(function (delta) {
+      var ni = idx + delta;
+      if (ni >= 0 && ni < TOTAL) {
+        var el = document.querySelector('#slide-' + ni + ' img');
+        if (el && el.loading === 'lazy') {
+          el.loading = 'eager';
+        }
+      }
+    });
+  }
+
+  /* ── Navigate ── */
+  function goTo(target, dir) {
+    if (target < 0 || target >= TOTAL || target === current) return;
+
+    // Mark old slide as leaving
+    var oldSlide = document.getElementById('slide-' + current);
+    oldSlide.classList.remove('active');
+    oldSlide.classList.add(dir < 0 ? 'prev' : '');
+    // clean up after transition
+    setTimeout(function () { oldSlide.classList.remove('prev'); }, 360);
+
+    current = target;
+
+    var newSlide = document.getElementById('slide-' + current);
+    // Force layout so transition fires
+    newSlide.classList.remove('prev');
+    void newSlide.offsetWidth;
+    newSlide.classList.add('active');
+
+    updateChrome();
+    showCaption();
+    preloadAdjacent(current);
+  }
+
+  function goPrev() { goTo(current - 1, -1); }
+  function goNext() { goTo(current + 1,  1); }
+
+  /* ── Button events ── */
+  btnPrev.addEventListener('click', goPrev);
+  btnNext.addEventListener('click', goNext);
+  zonePrev.addEventListener('click', goPrev);
+  zoneNext.addEventListener('click', goNext);
+
+  /* ── Keyboard ── */
+  document.addEventListener('keydown', function (e) {
+    if (e.metaKey || e.ctrlKey || e.altKey) return;
+    switch (e.key) {
+      case 'ArrowLeft':
+      case 'PageUp':
+        e.preventDefault(); goPrev(); break;
+      case 'ArrowRight':
+      case 'PageDown':
+      case ' ':
+        e.preventDefault(); goNext(); break;
+      case 'Home':
+        e.preventDefault(); goTo(0, -1); break;
+      case 'End':
+        e.preventDefault(); goTo(TOTAL - 1, 1); break;
+      case 'Escape':
+        if (document.fullscreenElement) {
+          document.exitFullscreen && document.exitFullscreen();
+        } else {
+          window.location.href = 'index.html';
+        }
+        break;
+      case 'f':
+      case 'F':
+        e.preventDefault(); toggleFullscreen(); break;
+    }
+  });
+
+  /* ── Fullscreen ── */
+  var iconEnter = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3"/><path d="M21 8V5a2 2 0 0 0-2-2h-3"/><path d="M3 16v3a2 2 0 0 0 2 2h3"/><path d="M16 21h3a2 2 0 0 0 2-2v-3"/></svg>';
+  var iconExit  = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3v3a2 2 0 0 1-2 2H3"/><path d="M21 8h-3a2 2 0 0 1-2-2V3"/><path d="M3 16h3a2 2 0 0 1 2 2v3"/><path d="M16 21v-3a2 2 0 0 1 2-2h3"/></svg>';
+
+  function updateFsIcon() {
+    fsBtn.innerHTML = document.fullscreenElement ? iconExit : iconEnter;
+    fsBtn.title = document.fullscreenElement ? 'Exit fullscreen (F)' : 'Enter fullscreen (F)';
+  }
+
+  function toggleFullscreen() {
+    if (!document.fullscreenElement) {
+      document.documentElement.requestFullscreen && document.documentElement.requestFullscreen();
+    } else {
+      document.exitFullscreen && document.exitFullscreen();
+    }
+  }
+
+  fsBtn.addEventListener('click', toggleFullscreen);
+  document.addEventListener('fullscreenchange', updateFsIcon);
+  updateFsIcon();
+
+  /* ── ?fs=1 auto-fullscreen ── */
+  if (/[?&]fs=1/.test(location.search)) {
+    // Needs user gesture — listen for first interaction
+    var fsOnce = function () {
+      document.documentElement.requestFullscreen && document.documentElement.requestFullscreen();
+      document.removeEventListener('click', fsOnce);
+      document.removeEventListener('keydown', fsOnce);
+    };
+    document.addEventListener('click',   fsOnce, { once: true });
+    document.addEventListener('keydown', fsOnce, { once: true });
+  }
+
+  /* ── Init ── */
+  updateChrome();
+  showCaption();
+  preloadAdjacent(0);
+
+})();
+</script>
+
+</body>
+</html>

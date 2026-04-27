@@ -20,3 +20,9 @@ The design medium is **HTML/CSS/JS** — these are prototypes, not production co
 
 - `rawasi-developments-launch-event/README.md` — this file
 - `rawasi-developments-launch-event/project/` — the `Rawasi Developments Launch Event` project files (HTML prototypes, assets, components)
+
+## Site structure (April 2026)
+- `/` (`index.html`) — hub: choose between Option 1 (Stage & Floor) and Option 2 (3D Event Design)
+- `/option-1.html` — original 20-slide stage & floor design deck
+- `/option-2.html` — 25-frame 3D event visualization deck
+- `project/option2/page_01.jpg` … `page_25.jpg` — Option 2 source frames (synced from Drive folder "RAWASI OPTION 2")
