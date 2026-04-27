@@ -832,16 +832,53 @@
   #s-schedule .option-badge,
   #s-choose .option-badge { display: none !important; }
 
+  /* ── Option toggle floating pill ── */
+  .opt-toggle {
+    position: fixed;
+    top: 24px;
+    right: 24px;
+    z-index: 200;
+    display: none;
+    gap: 0;
+    background: rgba(13, 19, 34, 0.82);
+    border: 1px solid rgba(184, 150, 90, 0.4);
+    border-radius: 999px;
+    padding: 4px;
+    backdrop-filter: blur(10px);
+  }
+  body[data-option] .opt-toggle { display: flex; }
+  .opt-pill {
+    padding: 6px 14px;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: all .25s;
+    background: transparent;
+    border: none;
+    font: 700 11px/1 'Montserrat', sans-serif;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.55);
+  }
+  .opt-pill.active {
+    background: var(--gold);
+    color: var(--navy-d);
+  }
+
 </style>
 </head>
 <body>
+
+<div class="opt-toggle" aria-label="Switch render option">
+  <button class="opt-pill" data-opt="1" onclick="RAWASI_DECK.setOption('1')">OPT 1</button>
+  <button class="opt-pill" data-opt="2" onclick="RAWASI_DECK.setOption('2')">OPT 2</button>
+</div>
 
 <deck-stage width="1920" height="1080">
 
   <!-- ═══════════════ SLIDE 1 — COVER ═══════════════ -->
   <section id="s1" data-label="Cover">
     <div class="bg-img">
-      <img src="project/uploads/Edit_this_image_202604201439.png" alt="Main stage" data-opt2="project/option2/page_01.jpg">
+      <img src="project/uploads/Edit_this_image_202604201439.png" data-o1="project/uploads/Edit_this_image_202604201439.png" data-o2="project/option2/page_01.jpg" alt="Main stage">
     </div>
     <div class="grid-dec"></div>
     <div class="corner tl"></div>
@@ -890,7 +927,7 @@
   <!-- ═══════════════ SLIDE 3 — HERO EVENT OVERVIEW ═══════════════ -->
   <section id="s3" data-label="Event Overview">
     <div class="hero-img">
-      <img src="project/uploads/Edit_this_image_202604201608.png" alt="Event aerial" data-opt2="project/option2/page_09.jpg">
+      <img src="project/uploads/Edit_this_image_202604201608.png" data-o1="project/uploads/Edit_this_image_202604201608.png" data-o2="project/option2/page_06.jpg" alt="Event aerial">
     </div>
 
     <div class="h-content">
@@ -917,7 +954,7 @@
     <div class="title-rule"></div>
 
     <div class="map-block">
-      <img src="project/uploads/pasted-1776708742510-0.png" alt="Satellite map" data-opt2="project/option2/page_10.jpg">
+      <img src="project/uploads/pasted-1776708742510-0.png" data-o1="project/uploads/pasted-1776708742510-0.png" data-o2="project/option2/page_08.jpg" alt="Satellite map">
       <div class="map-pin">
         <span class="pulse"></span>
         <svg viewBox="0 0 24 24" fill="#B8965A"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="3" fill="white"/></svg>
@@ -968,7 +1005,7 @@
     <div class="title-rule"></div>
 
     <div class="layout-block">
-      <img src="project/assets/site-layout-topview.png" alt="Event site top-view layout" data-opt2="project/option2/page_06.jpg">
+      <img src="project/assets/site-layout-topview.png" data-o1="project/assets/site-layout-topview.png" data-o2="project/option2/page_07.jpg" alt="Event site top-view layout">
     </div>
 
     <div class="info-side">
@@ -998,7 +1035,7 @@
     <div class="title-rule"></div>
 
     <div class="focus-img">
-      <img src="project/assets/venue-topview-detail.png" alt="Venue top view footprint" data-opt2="project/option2/page_08.jpg">
+      <img src="project/assets/venue-topview-detail.png" data-o1="project/assets/venue-topview-detail.png" data-o2="project/option2/page_10.jpg" alt="Venue top view footprint">
     </div>
 
     <div class="callouts-l">
@@ -1123,47 +1160,46 @@
   <!-- ═══════════════ SLIDE 6 — CHOOSE A VISION ═══════════════ -->
   <section id="s-choose" data-label="Choose a Vision">
     <div class="head-band"></div>
-    <div class="option-badge"></div>
-    <div class="sec-label">BRAND VISION</div>
-    <div class="page-title">Choose a Vision <span class="ar">اختر التصميم</span></div>
+    <div class="slide-idx">03.1</div>
+    <div class="sec-label">VISUAL DIRECTION · <span style="font-family:var(--f-ar);font-size:16px;font-weight:700;letter-spacing:0.05em;">اختر التصميم</span></div>
+    <div class="page-title">Choose a <span style="color:var(--gold);">Vision</span></div>
     <div class="title-rule"></div>
-    <div class="slide-idx" id="choose-slide-idx">08 / 21</div>
 
     <div class="choose-grid">
 
-      <!-- CARD 1: Option 1 — Stage & Floor -->
-      <div class="choose-card" id="cc-opt1" role="button" tabindex="0" aria-label="Select Design Option 01: Stage and Floor">
+      <!-- CARD 1: Option 1 — Stage & Floor Design -->
+      <div class="choose-card" id="cc-opt1" role="button" tabindex="0" aria-label="Select Option 1: Stage and Floor Design">
         <div class="cc-corner">01</div>
-        <div class="cc-body">
-          <div class="cc-eyebrow">DESIGN OPTION 01</div>
-          <div class="cc-title">Stage &amp; Floor<span class="ar"> · المسرح والأرضية</span></div>
-          <div class="cc-desc">The original stage and floor design — a structured architectural treatment with central monument, foyer, and main stage hierarchy.</div>
-        </div>
         <div class="cc-thumb">
-          <img src="project/assets/g-main-stage.png" alt="Option 01 — Stage and Floor preview" loading="eager">
+          <img src="project/assets/g-main-stage.png" alt="Option 1 — Stage and Floor Design" loading="eager">
         </div>
-        <div class="cc-cta">VIEW THIS DIRECTION <span class="arrow">→</span></div>
+        <div class="cc-body">
+          <div class="cc-eyebrow">Option One</div>
+          <div class="cc-title">Stage &amp; Floor Design<span class="ar"> · تصميم المسرح والأرضية</span></div>
+          <div class="cc-desc">Classical event treatment — refined main stage, branded floor, warm reception. Photographed-style renders with intimate framing.</div>
+        </div>
+        <div class="cc-cta">Continue with Option 1 <span class="arrow">→</span></div>
       </div>
 
-      <!-- CARD 2: Option 2 — 3D Pavilion Vision -->
-      <div class="choose-card" id="cc-opt2" role="button" tabindex="0" aria-label="Select Design Option 02: 3D Pavilion Vision">
+      <!-- CARD 2: Option 2 — Apex Pavilion -->
+      <div class="choose-card" id="cc-opt2" role="button" tabindex="0" aria-label="Select Option 2: Apex Pavilion">
         <div class="cc-corner">02</div>
-        <div class="cc-body">
-          <div class="cc-eyebrow">DESIGN OPTION 02</div>
-          <div class="cc-title">3D Pavilion Vision<span class="ar"> · رؤية الجناح ثلاثي الأبعاد</span></div>
-          <div class="cc-desc">An alternative 3D pavilion treatment — triangle apex motif, branded wings, and red-carpet arrival sequence inspired by the RAWASI mark.</div>
-        </div>
         <div class="cc-thumb">
-          <img src="project/option2/page_06.jpg" alt="Option 02 — 3D Pavilion Vision preview" loading="eager">
+          <img src="project/option2/page_06.jpg" alt="Option 2 — Apex Pavilion" loading="eager">
         </div>
-        <div class="cc-cta">VIEW THIS DIRECTION <span class="arrow">→</span></div>
+        <div class="cc-body">
+          <div class="cc-eyebrow">Option Two</div>
+          <div class="cc-title">Apex Pavilion<span class="ar"> · رؤية ثلاثية الأبعاد</span></div>
+          <div class="cc-desc">Architectural 3D treatment — triangle apex motif, branded gates, cinematic exterior. Same content with a bolder spatial story.</div>
+        </div>
+        <div class="cc-cta">Continue with Option 2 <span class="arrow">→</span></div>
       </div>
 
     </div>
 
     <div class="gal-hint">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="14"><path d="M15 18l-6-6 6-6"/></svg>
-      ← / → · Press <strong style="color:var(--navy);">1</strong> or <strong style="color:var(--navy);">2</strong> to choose · ESC
+      ← / → · Press <strong style="color:var(--navy);">1</strong> or <strong style="color:var(--navy);">2</strong> to choose
     </div>
   </section>
 
@@ -1192,7 +1228,7 @@
         </div>
       </div>
       <div style="position: relative; overflow: hidden;">
-        <img src="project/assets/g-birdeye-stage.png" alt="Main stage preview" style="position:absolute; inset:0; width: 100%; height: 100%; object-fit: cover; cursor: zoom-in;" data-gallery-preview data-category="Preview" data-title="Gallery Preview" data-opt2="project/option2/page_07.jpg">
+        <img src="project/assets/g-birdeye-stage.png" data-o1="project/assets/g-birdeye-stage.png" data-o2="project/option2/page_09.jpg" alt="Main stage preview" style="position:absolute; inset:0; width: 100%; height: 100%; object-fit: cover; cursor: zoom-in;" data-gallery-preview data-category="Preview" data-title="Gallery Preview">
         <div style="position:absolute; inset:0; background: linear-gradient(to top, rgba(13,19,34,0.75), transparent 40%);"></div>
         <div style="position:absolute; bottom: 28px; left: 28px; right: 28px; color: #fff;">
           <div style="font-size: 17px; font-weight: 700; letter-spacing: 0.3em; color: var(--gold-l); text-transform: uppercase; margin-bottom: 8px;">Preview</div>
@@ -1221,22 +1257,22 @@
 
     <div class="gal-grid gal-3-2">
       <div class="g-tile gal-hero" data-img="project/assets/g-registration.png" data-category="Arrival · Registration Hub" data-title="Registration & Check-In Area">
-        <img src="project/assets/g-registration.png" alt="Registration & check-in" data-opt2="project/option2/page_11.jpg">
+        <img src="project/assets/g-registration.png" data-o1="project/assets/g-registration.png" data-o2="project/option2/page_03.jpg" alt="Registration & check-in">
         <div class="g-zoom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
         <div class="g-label"><div class="gl-idx">01 · Hero View</div><div class="gl-name">Registration & Check-In Hub</div></div>
       </div>
       <div class="g-tile" data-img="project/assets/g-checkin-1.png" data-category="Arrival · Check-In Desk" data-title="Guest Check-In Desk">
-        <img src="project/assets/g-checkin-1.png" alt="Check-in desk 01" data-opt2="project/option2/page_02.jpg">
+        <img src="project/assets/g-checkin-1.png" data-o1="project/assets/g-checkin-1.png" data-o2="project/option2/page_02.jpg" alt="Check-in desk 01">
         <div class="g-zoom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
         <div class="g-label"><div class="gl-idx">02</div><div class="gl-name">Check-In Desk — Arch</div></div>
       </div>
       <div class="g-tile" data-img="project/assets/g-checkin-2.png" data-category="Arrival · Check-In Desk 02" data-title="Secondary Check-In Desk">
-        <img src="project/assets/g-checkin-2.png" alt="Check-in desk 02" data-opt2="project/option2/page_03.jpg">
+        <img src="project/assets/g-checkin-2.png" data-o1="project/assets/g-checkin-2.png" data-o2="project/option2/page_11.jpg" alt="Check-in desk 02">
         <div class="g-zoom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
         <div class="g-label"><div class="gl-idx">03</div><div class="gl-name">Check-In Desk — Tiered</div></div>
       </div>
       <div class="g-tile" data-img="project/assets/g-pre-event.png" data-category="Arrival · Pre-Event" data-title="Pre-Event Socialisation Area">
-        <img src="project/assets/g-pre-event.png" alt="Pre-event mingling" data-opt2="project/option2/page_04.jpg">
+        <img src="project/assets/g-pre-event.png" data-o1="project/assets/g-pre-event.png" data-o2="project/option2/page_04.jpg" alt="Pre-event mingling">
         <div class="g-zoom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
         <div class="g-label"><div class="gl-idx">04</div><div class="gl-name">Pre-Event Socialisation</div></div>
       </div>
@@ -1266,17 +1302,17 @@
 
     <div class="gal-grid gal-3-2">
       <div class="g-tile gal-hero" data-img="project/assets/g-foyer.png" data-category="Foyer · Main Hall" data-title="Welcome Foyer">
-        <img src="project/assets/g-foyer.png" alt="Main foyer" data-opt2="project/option2/page_12.jpg">
+        <img src="project/assets/g-foyer.png" data-o1="project/assets/g-foyer.png" data-o2="project/option2/page_12.jpg" alt="Main foyer">
         <div class="g-zoom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
         <div class="g-label"><div class="gl-idx">01 · Hero View</div><div class="gl-name">Welcome Foyer</div></div>
       </div>
       <div class="g-tile gal-wide" data-img="project/assets/g-foyer-monument.png" data-category="Foyer · Monument View" data-title="Foyer with Central Monument">
-        <img src="project/assets/g-foyer-monument.png" alt="Foyer monument view" data-opt2="project/option2/page_13.jpg">
+        <img src="project/assets/g-foyer-monument.png" data-o1="project/assets/g-foyer-monument.png" data-o2="project/option2/page_13.jpg" alt="Foyer monument view">
         <div class="g-zoom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
         <div class="g-label"><div class="gl-idx">02</div><div class="gl-name">Foyer → Monument Axis</div></div>
       </div>
       <div class="g-tile gal-wide" data-img="project/assets/g-central-monument.png" data-category="Foyer · Hayat Sculpture" data-title="Central Hayat Monument">
-        <img src="project/assets/g-central-monument.png" alt="Central monument" data-opt2="project/option2/page_14.jpg">
+        <img src="project/assets/g-central-monument.png" data-o1="project/assets/g-central-monument.png" data-o2="project/option2/page_14.jpg" alt="Central monument">
         <div class="g-zoom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
         <div class="g-label"><div class="gl-idx">03</div><div class="gl-name">Central حياة Monument</div></div>
       </div>
@@ -1306,22 +1342,22 @@
 
     <div class="gal-grid gal-3-2">
       <div class="g-tile gal-hero" data-img="project/assets/g-birdeye-stage.png" data-category="Stage · Birdseye" data-title="Birdseye — Stage Full Shot">
-        <img src="project/assets/g-birdeye-stage.png" alt="Birdseye stage" data-opt2="project/option2/page_15.jpg">
+        <img src="project/assets/g-birdeye-stage.png" data-o1="project/assets/g-birdeye-stage.png" data-o2="project/option2/page_22.jpg" alt="Birdseye stage">
         <div class="g-zoom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
         <div class="g-label"><div class="gl-idx">01 · Hero View</div><div class="gl-name">Birdseye — Stage Full Shot</div></div>
       </div>
       <div class="g-tile" data-img="project/assets/g-main-stage.png" data-category="Stage · Main View" data-title="Main Stage Front View">
-        <img src="project/assets/g-main-stage.png" alt="Main stage" data-opt2="project/option2/page_19.jpg">
+        <img src="project/assets/g-main-stage.png" data-o1="project/assets/g-main-stage.png" data-o2="project/option2/page_19.jpg" alt="Main stage">
         <div class="g-zoom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
         <div class="g-label"><div class="gl-idx">02</div><div class="gl-name">Main Stage</div></div>
       </div>
       <div class="g-tile" data-img="project/assets/g-podium.png" data-category="Stage · Speaker Podium" data-title="Speaker Podium">
-        <img src="project/assets/g-podium.png" alt="Speaker podium" data-opt2="project/option2/page_21.jpg">
+        <img src="project/assets/g-podium.png" data-o1="project/assets/g-podium.png" data-o2="project/option2/page_21.jpg" alt="Speaker podium">
         <div class="g-zoom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
         <div class="g-label"><div class="gl-idx">03</div><div class="gl-name">Speaker Podium</div></div>
       </div>
       <div class="g-tile" data-img="project/assets/g-photo-op.png" data-category="Stage · Photo Opportunity" data-title="Photo Opportunity Installation">
-        <img src="project/assets/g-photo-op.png" alt="Photo opportunity" data-opt2="project/option2/page_24.jpg">
+        <img src="project/assets/g-photo-op.png" data-o1="project/assets/g-photo-op.png" data-o2="project/option2/page_16.jpg" alt="Photo opportunity">
         <div class="g-zoom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
         <div class="g-label"><div class="gl-idx">04</div><div class="gl-name">Photo Opportunity</div></div>
       </div>
@@ -1351,12 +1387,12 @@
 
     <div class="gal-grid gal-2-2">
       <div class="g-tile gal-tall" data-img="project/assets/g-guest-left.png" data-category="Guest · Left Wing" data-title="View from Guest Left Section">
-        <img src="project/assets/g-guest-left.png" alt="Guest left section" data-opt2="project/option2/page_20.jpg">
+        <img src="project/assets/g-guest-left.png" data-o1="project/assets/g-guest-left.png" data-o2="project/option2/page_20.jpg" alt="Guest left section">
         <div class="g-zoom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
         <div class="g-label"><div class="gl-idx">01 · Hero View</div><div class="gl-name">Guest Left — Stage Sightline</div></div>
       </div>
       <div class="g-tile" data-img="project/assets/g-guest-right.png" data-category="Guest · Right Wing" data-title="Guest Right Area">
-        <img src="project/assets/g-guest-right.png" alt="Guest right area" data-opt2="project/option2/page_22.jpg">
+        <img src="project/assets/g-guest-right.png" data-o1="project/assets/g-guest-right.png" data-o2="project/option2/page_24.jpg" alt="Guest right area">
         <div class="g-zoom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
         <div class="g-label"><div class="gl-idx">02</div><div class="gl-name">Guest Right Area</div></div>
       </div>
@@ -1386,17 +1422,17 @@
 
     <div class="gal-grid gal-3-2">
       <div class="g-tile gal-hero" data-img="project/assets/g-vip-perspective.png" data-category="VIP · Perspective" data-title="VIP Area Perspective">
-        <img src="project/assets/g-vip-perspective.png" alt="VIP perspective" data-opt2="project/option2/page_18.jpg">
+        <img src="project/assets/g-vip-perspective.png" data-o1="project/assets/g-vip-perspective.png" data-o2="project/option2/page_18.jpg" alt="VIP perspective">
         <div class="g-zoom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
         <div class="g-label"><div class="gl-idx">01 · Hero View</div><div class="gl-name">VIP Area Perspective</div></div>
       </div>
       <div class="g-tile" data-img="project/assets/g-vip-lounge.png" data-category="VIP · Lounge Seating" data-title="VIP Guest Lounges">
-        <img src="project/assets/g-vip-lounge.png" alt="VIP lounges" data-opt2="project/option2/page_17.jpg">
+        <img src="project/assets/g-vip-lounge.png" data-o1="project/assets/g-vip-lounge.png" data-o2="project/option2/page_17.jpg" alt="VIP lounges">
         <div class="g-zoom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
         <div class="g-label"><div class="gl-idx">02</div><div class="gl-name">VIP Guest Lounges</div></div>
       </div>
       <div class="g-tile" data-img="project/assets/g-vip-right.png" data-category="VIP · Right Wing" data-title="VIP Right Section">
-        <img src="project/assets/g-vip-right.png" alt="VIP right section" data-opt2="project/option2/page_23.jpg">
+        <img src="project/assets/g-vip-right.png" data-o1="project/assets/g-vip-right.png" data-o2="project/option2/page_23.jpg" alt="VIP right section">
         <div class="g-zoom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
         <div class="g-label"><div class="gl-idx">03</div><div class="gl-name">VIP Right Section</div></div>
       </div>
@@ -1426,12 +1462,12 @@
 
     <div class="gal-grid gal-2-2">
       <div class="g-tile gal-tall" data-img="project/assets/g-media.png" data-category="Media · Interview Set" data-title="Media & Interview Section">
-        <img src="project/assets/g-media.png" alt="Media section" data-opt2="project/option2/page_16.jpg">
+        <img src="project/assets/g-media.png" data-o1="project/assets/g-media.png" data-o2="project/option2/page_15.jpg" alt="Media section">
         <div class="g-zoom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
         <div class="g-label"><div class="gl-idx">01 · Hero View</div><div class="gl-name">Media & Interview Section</div></div>
       </div>
       <div class="g-tile" data-img="project/assets/g-warm-moment.png" data-category="Ambience · Warm Moment" data-title="Warm Ambient Moment">
-        <img src="project/assets/g-warm-moment.png" alt="Warm ambient moment" data-opt2="project/option2/page_25.jpg">
+        <img src="project/assets/g-warm-moment.png" data-o1="project/assets/g-warm-moment.png" data-o2="project/option2/page_25.jpg" alt="Warm ambient moment">
         <div class="g-zoom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
         <div class="g-label"><div class="gl-idx">02</div><div class="gl-name">Warm Happy Moment</div></div>
       </div>
@@ -1708,7 +1744,7 @@
 
   <!-- ═══════════════ SLIDE 17 — CLOSING ═══════════════ -->
   <section id="s-close" data-label="Closing">
-    <div class="bg-img"><img src="project/uploads/Edit_this_image_202604201417.png" alt="Finale panorama" data-opt2="project/option2/page_05.jpg"></div>
+    <div class="bg-img"><img src="project/uploads/Edit_this_image_202604201417.png" data-o1="project/uploads/Edit_this_image_202604201417.png" data-o2="project/option2/page_05.jpg" alt="Finale panorama"></div>
     <div class="corner tl"></div>
     <div class="corner br"></div>
 
@@ -1900,12 +1936,12 @@
   .g-tile img { transition: transform .8s cubic-bezier(.2,.8,.2,1); }
 
   /* ── CHOOSER CARD STAGGER ── */
-  #s-chooser .ch-card { opacity: 0; transform: translateY(40px); }
-  #s-chooser.slide-active .ch-card {
+  #s-choose .choose-card { opacity: 0; transform: translateY(40px); }
+  #s-choose.slide-active .choose-card {
     animation: tileIn .9s cubic-bezier(.2,.8,.2,1) forwards;
   }
-  #s-chooser.slide-active .ch-card:nth-child(1) { animation-delay: .2s; }
-  #s-chooser.slide-active .ch-card:nth-child(2) { animation-delay: .38s; }
+  #s-choose.slide-active .choose-card:nth-child(1) { animation-delay: .2s; }
+  #s-choose.slide-active .choose-card:nth-child(2) { animation-delay: .38s; }
 
   /* ── INDEX GRID STAGGER ── */
   #s2 .idx-item { opacity: 0; transform: translateY(30px); }
@@ -2339,7 +2375,8 @@
     if (p === '1' || p === '2') return p;
     // 2. sessionStorage fallback
     try { var s = sessionStorage.getItem(STORAGE_KEY); if (s === '1' || s === '2') return s; } catch(e) {}
-    return null;
+    // 3. Default to Option 1
+    return '1';
   }
 
   function applyOption(opt) {
@@ -2439,9 +2476,8 @@
       if (e.key === '2') { e.stopImmediatePropagation(); e.preventDefault(); commitOption('2'); goToGallery(); }
     }, true); // capture so we run before deck-stage's 1-9 jump handler
 
-    // Apply on load
-    var opt = readOption();
-    if (opt) applyOption(opt);
+    // Apply on load — always (readOption now defaults to '1')
+    applyOption(readOption());
   });
 })();
 </script>
