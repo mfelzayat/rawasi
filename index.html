@@ -2818,22 +2818,18 @@
     goToGallery();
   }
 
-  // ── Navigate to #s-gal-intro (first gallery slide in active branch) ──
+  // ── Advance to the next visible slide after the chooser ──
+  // (Don't jump to gallery — let the deck flow naturally through the
+  //  branched venue-focus / shared schedule / branched gallery, etc.)
   function goToGallery() {
     var deck = document.querySelector('deck-stage');
     if (!deck) return;
-    // Use the deck's filtered slide list via its internal state
-    // The deck.goTo() uses index within its _slides array (filtered)
-    // We find s-gal-intro (opt-a) or s-gal-intro-b (opt-b)
-    var opt = document.body.classList.contains('option-b') ? 'b' : 'a';
-    var targetId = opt === 'b' ? 's-gal-intro-b' : 's-gal-intro';
-    var target = document.getElementById(targetId);
-    if (!target) return;
-    // _slides may not be updated yet; use requestAnimationFrame to wait
     requestAnimationFrame(function() {
-      if (deck._slides) {
-        var idx = deck._slides.indexOf(target);
-        if (idx >= 0) deck.goTo(idx);
+      if (!deck._slides) return;
+      var chooser = document.getElementById('s-chooser');
+      var idx = deck._slides.indexOf(chooser);
+      if (idx >= 0 && idx + 1 < deck._slides.length) {
+        deck.goTo(idx + 1);
       }
     });
   }
