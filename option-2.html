@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Option 02 — حياة 3D Event Design | RAWASI Developments</title>
+<title>Option 2 — حياة Launch Event | RAWASI</title>
 <meta name="description" content="Option 02: 25-frame 3D event visualization for the حياة launch event, Rawasi Developments, Mansoura, Mid-May 2026.">
 <link rel="icon" type="image/x-icon" href="favicon.ico">
 <link rel="icon" type="image/png" sizes="192x192" href="favicon-192.png">
@@ -158,6 +158,21 @@
     font-family: 'Courier New', 'Courier', monospace;
   }
 
+  /* RAWASI logo — always visible top-right */
+  .chrome-logo {
+    position: fixed;
+    top: 14px;
+    right: 32px;
+    z-index: 20;
+    pointer-events: none;
+    opacity: 0.85;
+  }
+  .chrome-logo img {
+    width: 40px;
+    height: auto;
+    display: block;
+  }
+
   /* Back to hub link */
   .back-hub {
     position: fixed;
@@ -201,21 +216,23 @@
     pointer-events: none;
   }
   .caption-section {
-    font-family: var(--f-head);
-    font-size: 14px;
-    font-weight: 400;
-    color: rgba(255,255,255,0.85);
-    letter-spacing: 0.01em;
+    font-family: var(--f-body);
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
     line-height: 1.2;
     opacity: 0;
     transform: translateY(4px);
     transition: opacity 200ms ease 120ms, transform 200ms ease 120ms;
   }
   .caption-text {
-    font-size: 12px;
+    font-family: var(--f-body);
+    font-size: 11px;
     font-weight: 400;
-    color: rgba(255,255,255,0.48);
-    letter-spacing: 0.04em;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 0.06em;
     line-height: 1.4;
     opacity: 0;
     transform: translateY(4px);
@@ -324,6 +341,11 @@
     <span class="chrome-idx" id="hdr-idx">01 / 25</span>
   </header>
 
+  <!-- RAWASI logo top-right -->
+  <div class="chrome-logo" aria-hidden="true">
+    <img src="project/assets/rawasi-logo-white.png" alt="" width="40">
+  </div>
+
   <!-- Back to hub -->
   <a class="back-hub" href="index.html" id="back-hub-link">&#8592; Hub</a>
 
@@ -358,31 +380,31 @@
 
   /* ── Slide data ── */
   const SLIDES = [
-    { img: 'project/option2/page_01.jpg', section: 'OPENING',          caption: 'Co-Brand Title Card' },
-    { img: 'project/option2/page_02.jpg', section: 'EXTERIOR',         caption: 'Approach — Main Facade by Moonlight' },
-    { img: 'project/option2/page_03.jpg', section: 'EXTERIOR',         caption: 'Branded Facade Walls' },
-    { img: 'project/option2/page_04.jpg', section: 'EXTERIOR',         caption: 'Side Approach — حياة Lockup' },
-    { img: 'project/option2/page_05.jpg', section: 'EXTERIOR',         caption: 'Front Elevation — Wide' },
-    { img: 'project/option2/page_06.jpg', section: 'AERIAL',           caption: 'Top-Down — Full Site Layout' },
-    { img: 'project/option2/page_07.jpg', section: 'EXTERIOR',         caption: 'Pavilion Details' },
-    { img: 'project/option2/page_08.jpg', section: 'AERIAL',           caption: 'Top-Down — Foyer & Pavilions' },
-    { img: 'project/option2/page_09.jpg', section: 'AERIAL',           caption: 'Aerial — Stage & Hall' },
-    { img: 'project/option2/page_10.jpg', section: 'AERIAL',           caption: 'Aerial — Approach Sequence' },
-    { img: 'project/option2/page_11.jpg', section: 'FOYER',            caption: 'Welcome Threshold' },
-    { img: 'project/option2/page_12.jpg', section: 'FOYER',            caption: 'Main Gate — Night Lit' },
-    { img: 'project/option2/page_13.jpg', section: 'PROCESSION',       caption: 'Triangle Archway · Red Carpet' },
-    { img: 'project/option2/page_14.jpg', section: 'PROCESSION',       caption: 'Apex Sequence' },
-    { img: 'project/option2/page_15.jpg', section: 'HERO INSTALLATION',caption: 'RAWASI Hero Sign' },
-    { img: 'project/option2/page_16.jpg', section: 'HERO INSTALLATION',caption: 'Photo-Op Wall' },
-    { img: 'project/option2/page_17.jpg', section: 'HOSPITALITY',      caption: 'حياة Coffee Corner' },
-    { img: 'project/option2/page_18.jpg', section: 'HOSPITALITY',      caption: 'VIP Lounge' },
-    { img: 'project/option2/page_19.jpg', section: 'MAIN STAGE',       caption: 'Stage Hero — Wide' },
-    { img: 'project/option2/page_20.jpg', section: 'MAIN STAGE',       caption: 'Hall — Banquet Seating' },
-    { img: 'project/option2/page_21.jpg', section: 'MAIN STAGE',       caption: 'Stage Detail — LED Wall' },
-    { img: 'project/option2/page_22.jpg', section: 'MAIN STAGE',       caption: 'Hall — Center Aisle' },
-    { img: 'project/option2/page_23.jpg', section: 'DETAILS',          caption: 'Pavilion · حياة' },
-    { img: 'project/option2/page_24.jpg', section: 'DETAILS',          caption: 'Closing Pavilion' },
-    { img: 'project/option2/page_25.jpg', section: 'CLOSING',          caption: 'Co-Brand Sign-Off' },
+    { img: 'project/option2/page_01.jpg', section: 'Co-Branding',        caption: 'Co-Brand Title Card' },
+    { img: 'project/option2/page_02.jpg', section: 'Approach & Exterior', caption: 'Main Facade by Moonlight' },
+    { img: 'project/option2/page_03.jpg', section: 'Approach & Exterior', caption: 'Branded Facade Walls' },
+    { img: 'project/option2/page_04.jpg', section: 'Approach & Exterior', caption: 'Side Approach — حياة Lockup' },
+    { img: 'project/option2/page_05.jpg', section: 'Approach & Exterior', caption: 'Front Elevation — Wide' },
+    { img: 'project/option2/page_06.jpg', section: 'Approach & Exterior', caption: 'Aerial — Full Site Layout' },
+    { img: 'project/option2/page_07.jpg', section: 'Approach & Exterior', caption: 'Pavilion Details' },
+    { img: 'project/option2/page_08.jpg', section: 'Welcome Gate',        caption: 'Top-Down — Foyer & Pavilions' },
+    { img: 'project/option2/page_09.jpg', section: 'Welcome Gate',        caption: 'Aerial — Stage & Hall' },
+    { img: 'project/option2/page_10.jpg', section: 'Welcome Gate',        caption: 'Aerial — Approach Sequence' },
+    { img: 'project/option2/page_11.jpg', section: 'Welcome Gate',        caption: 'Welcome Threshold' },
+    { img: 'project/option2/page_12.jpg', section: 'Welcome Gate',        caption: 'Main Gate — Night Lit' },
+    { img: 'project/option2/page_13.jpg', section: 'Hero Moments',        caption: 'Triangle Archway · Red Carpet' },
+    { img: 'project/option2/page_14.jpg', section: 'Hero Moments',        caption: 'Apex Sequence' },
+    { img: 'project/option2/page_15.jpg', section: 'Hero Moments',        caption: 'RAWASI Hero Sign' },
+    { img: 'project/option2/page_16.jpg', section: 'Hero Moments',        caption: 'Photo-Op Wall' },
+    { img: 'project/option2/page_17.jpg', section: 'Hero Moments',        caption: 'حياة Coffee Corner' },
+    { img: 'project/option2/page_18.jpg', section: 'Hero Moments',        caption: 'VIP Lounge' },
+    { img: 'project/option2/page_19.jpg', section: 'Main Hall',           caption: 'Stage Hero — Wide' },
+    { img: 'project/option2/page_20.jpg', section: 'Main Hall',           caption: 'Hall — Banquet Seating' },
+    { img: 'project/option2/page_21.jpg', section: 'Main Hall',           caption: 'Stage Detail — LED Wall' },
+    { img: 'project/option2/page_22.jpg', section: 'Main Hall',           caption: 'Hall — Center Aisle' },
+    { img: 'project/option2/page_23.jpg', section: 'Networking',          caption: 'Pavilion · حياة' },
+    { img: 'project/option2/page_24.jpg', section: 'Networking',          caption: 'Closing Pavilion' },
+    { img: 'project/option2/page_25.jpg', section: 'Closing',             caption: 'Co-Brand Sign-Off' },
   ];
 
   const TOTAL = SLIDES.length;
@@ -442,7 +464,8 @@
   function showCaption() {
     // Reset then re-trigger fade-in
     capBlock.classList.remove('caption-ready');
-    capSection.textContent = SLIDES[current].section;
+    // "Hero Moments · 13 / 25" format per spec
+    capSection.textContent = SLIDES[current].section + ' · ' + pad(current + 1) + ' / ' + pad(TOTAL);
     capText.textContent    = SLIDES[current].caption;
     if (captionTimer) clearTimeout(captionTimer);
     captionTimer = setTimeout(function () {
